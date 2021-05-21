@@ -1,0 +1,35 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Pocio : MonoBehaviour
+{
+    public Colleccionable[] llista;
+    public int index;
+    public bool final;
+
+    public void Comencar()
+    {
+        index = 0;
+    }
+
+    public bool esCollecicionableCorrecte(Colleccionable colleccionable)
+    {
+        return colleccionable.color.Equals(llista[index].color);
+    }
+
+    public void Seguent()
+    {
+        index++;
+        if(esUltim())
+        {
+            final = true;
+            Debug.Log("FINAL");
+        }
+    }
+
+    public bool esUltim()
+    {
+        return index == llista.Length;
+    }
+}
