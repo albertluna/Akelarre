@@ -221,12 +221,13 @@ namespace Photon.Pun.Demo.Asteroids
             string roomName = RoomNameInputField.text;
             roomName = (roomName.Equals(string.Empty)) ? "Room " + Random.Range(1000, 10000) : roomName;
 
-            byte maxPlayers;
-            byte.TryParse(MaxPlayersInputField.text, out maxPlayers);
-            maxPlayers = (byte) Mathf.Clamp(maxPlayers, 2, 8);
+            //byte maxPlayers;
+            //byte.TryParse(MaxPlayersInputField.text, out maxPlayers);
+            //maxPlayers = (byte)3;//(byte) Mathf.Clamp(maxPlayers, 2, 8);
 
-            RoomOptions options = new RoomOptions {MaxPlayers = maxPlayers, PlayerTtl = 10000 };
-
+            //sales de 3 persones
+            RoomOptions options = new RoomOptions {MaxPlayers = (byte)3, PlayerTtl = 10000 };
+            Debug.Log("Sala de " + options.MaxPlayers);
             PhotonNetwork.CreateRoom(roomName, options, null);
         }
 
@@ -248,6 +249,7 @@ namespace Photon.Pun.Demo.Asteroids
 
             if (!playerName.Equals(""))
             {
+                
                 PhotonNetwork.LocalPlayer.NickName = playerName;
                 PhotonNetwork.ConnectUsingSettings();
             }

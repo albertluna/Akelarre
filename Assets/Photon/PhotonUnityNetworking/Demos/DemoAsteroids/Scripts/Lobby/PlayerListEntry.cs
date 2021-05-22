@@ -28,6 +28,7 @@ namespace Photon.Pun.Demo.Asteroids
 
         private int ownerId;
         private bool isPlayerReady;
+        public string rol;
 
         #region UNITY
 
@@ -92,6 +93,22 @@ namespace Photon.Pun.Demo.Asteroids
         {
             PlayerReadyButton.GetComponentInChildren<Text>().text = playerReady ? "Ready!" : "Ready?";
             PlayerReadyImage.enabled = playerReady;
+        }
+
+        public void setButtonRolConstructor()
+        {
+            rol = "CONSTRUCTOR";
+            Debug.Log("Rol = " + rol);
+        }
+        public void setButtonRolDefensor()
+        {
+            rol = "DEFENSOR";
+            Debug.Log("Rol = " + rol);
+        }
+        public void setButtonRolRecollector()
+        {
+            rol = "RECOLLECTOR";
+            Debug.Log("Rol = " + rol);
         }
     }
 }
