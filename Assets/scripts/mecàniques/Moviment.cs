@@ -5,29 +5,69 @@ using Photon.Pun;
 
 public class Moviment : MonoBehaviourPun
 {
-    private Rigidbody rb;
-    public PhotonView pv;
+    private Rigidbody rigidbody;
+    public PhotonView photonView;
+    private bool controllable = true;
+
+    public float MaxSpeed = 0.2f;
+
+    private float horizontalInput;
+    private float verticalInput;
 
     public float velocity = 10;
     public camera camera;
     Vector3 dir;
-    // Start is called before the first frame update
+
+
     void Start()
     {
-        rb = GetComponent<Rigidbody>();
+        rigidbody = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        float horizontalInput = Input.GetAxis("Horizontal");
-        float verticalInput = Input.GetAxis("Vertical");
+        if (!photonView.IsMine || !controllable)
+        {
+            return;
+        }
+
+        horizontalInput = Input.GetAxis("Horizontal");
+        verticalInput = Input.GetAxis("Vertical");
         dir = camera.transform.forward + camera.transform.right;
         dir.Normalize();
 
         //animator.SetFloat("Speed", Mathf.Abs(horizontalInput) + Mathf.Abs(verticalInput));
 
         Vector3 tmp = camera.transform.right * horizontalInput + camera.transform.forward * verticalInput;
-        rb.velocity = velocity * new Vector3(tmp.x, 0, tmp.z);
+        rigidbody.velocity = velocity * new Vector3(tmp.x, 0, tmp.z);
     }
+
+    public void FixedUpdate()
+    {
+        if (!photonView.IsMine)
+        {
+            return;
+        }
+
+        if (!controllable)
+        {
+            return;
+        }
+
+        Quaternion rot = rigidbody.rotation * Quaternion.Euler(0, horizontalInput * MaxSpeed * Time.fixedDeltaTime, 0);
+        GetComponent<Rigidbody>().MoveRotation(rot);
+
+        Vector3 force = (rot * Vector3.forward) * verticalInput * 1000.0f * MaxSpeed * Time.fixedDeltaTime;
+        GetComponent<Rigidbody>().AddForce(force);
+
+        if (GetComponent<Rigidbody>().velocity.magnitude > (MaxSpeed * 1000.0f))
+        {
+            GetComponent<Rigidbody>().velocity = GetComponent<Rigidbody>().velocity.normalized * MaxSpeed * 1000.0f;
+        }
+    }
+
+
+
+
 }

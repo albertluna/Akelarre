@@ -34,6 +34,10 @@ namespace Photon.Pun.Demo.Asteroids
         [Header("Inside Room Panel")]
         public GameObject InsideRoomPanel;
 
+        public Button Constructor;
+        public Button Defensor;
+        public Button Recollector;
+
         public Button StartGameButton;
         public GameObject PlayerListEntryPrefab;
 
@@ -366,9 +370,16 @@ namespace Photon.Pun.Demo.Asteroids
                 entry.transform.SetParent(RoomListContent.transform);
                 entry.transform.localScale = Vector3.one;
                 entry.GetComponent<RoomListEntry>().Initialize(info.Name, (byte)info.PlayerCount, info.MaxPlayers);
-
+                
                 roomListEntries.Add(info.Name, entry);
             }
         }
+
+        public void UpdateRoomRols()
+        {
+            roomListEntries.
+        }
+
+
     }
 }
