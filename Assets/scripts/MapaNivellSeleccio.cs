@@ -3,11 +3,23 @@ using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
 using Photon.Realtime;
+using UnityEngine.SceneManagement;
+using System.IO;
 
 public class MapaNivellSeleccio : MonoBehaviourPunCallbacks, IInRoomCallbacks {
 
     public static MapaNivellSeleccio room;
     private PhotonView PV;
+
+    public bool isGameLoaded;
+    public int currentScene;
+    public int multiplayerScene;
+
+    Player[] photonPlayers;
+    public int playersInRoom;
+    public int muNumberInGame;
+
+    public int playersInGame;
 
     // Start is called before the first frame update
     void Start()
@@ -15,25 +27,82 @@ public class MapaNivellSeleccio : MonoBehaviourPunCallbacks, IInRoomCallbacks {
         PV = GetComponent<PhotonView>();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Awake()
     {
-        
+        if(MapaNivellSeleccio.room == null)
+        {
+            MapaNivellSeleccio.room = this;
+        } else
+        {
+            if(MapaNivellSeleccio.room != this)
+            {
+                Destroy(MapaNivellSeleccio.room.gameObject);
+                MapaNivellSeleccio.room = this;
+            }
+        }
+        DontDestroyOnLoad(this.gameObject);
     }
 
-    public void OnTutorialButtonClicked()
+    public override void OnEnable()
     {
+        base.OnEnable();
+        PhotonNetwork.AddCallbackTarget(this);
+        SceneManager.sceneLoaded += OnSceneFinishedLoading;
+    }
+
+    public override void OnDisable()
+    {
+        base.OnDisable();
+        PhotonNetwork.RemoveCallbackTarget(this);
+        SceneManager.sceneLoaded -= OnSceneFinishedLoading;
+    }
+
+    public override void OnJoinedRoom()
+    {
+        base.OnJoinedRoom();
+        Debug.Log("We r now in a room");
+        /*photonPlayers = PhotonNetwork.PlayerList;
+        playersInRoom = photonPlayers.Length;
+        myNumberInRoom = playersInRoom;
+        PhotonNetwork.Nickname = myNumberInRoom.ToString();*/
+        StartGame();
+    }
+
+    void StartGame() {
         PhotonNetwork.AutomaticallySyncScene = false;
         if (PhotonNetwork.IsMasterClient)
         {
-            
+
             PhotonNetwork.LoadLevel(ScenesManager.GetScene(ScenesManager.Scene.Constructor));
-        } else
+        }
+        else
         {
             PhotonNetwork.LoadLevel(ScenesManager.GetScene(ScenesManager.Scene.Prototip));
         }
     }
 
+    public void OnTutorialButtonClicked()
+    {
+        StartGame();
+    }
 
+    void OnSceneFinishedLoading(Scene scene, LoadSceneMode mode)
+    {
+        currentScene = scene.buildIndex;
+        if (currentScene == multiplayerScene)
+        {
+            CreatePlayer();
+        }
+    }
 
+    void CreatePlayer()
+    {
+        PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "PhotonNetworkPlayer"), transform.position,
+            Quaternion.identity, 0);
+    }
+
+    public override void OnPlayerLeftRoom(Player otherPlayer)
+    {
+
+    }
 }
