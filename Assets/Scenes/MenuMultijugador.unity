@@ -982,7 +982,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 985.5714, y: -225}
+  m_AnchoredPosition: {x: 730.3277, y: -225}
   m_SizeDelta: {x: 300, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &421690870
@@ -1028,7 +1028,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1718222734}
+      - m_Target: {fileID: 1718222737}
         m_MethodName: OnBackButtonClicked
         m_Mode: 1
         m_Arguments:
@@ -1293,7 +1293,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 985.5714, y: -125}
+  m_AnchoredPosition: {x: 730.3277, y: -125}
   m_SizeDelta: {x: 300, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &521000442
@@ -2451,7 +2451,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1718222734}
+      - m_Target: {fileID: 1718222737}
         m_MethodName: OnBackButtonClicked
         m_Mode: 1
         m_Arguments:
@@ -2743,7 +2743,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 1335.5714, y: -225}
+  m_AnchoredPosition: {x: 1080.3276, y: -225}
   m_SizeDelta: {x: 300, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1161391522
@@ -2789,7 +2789,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1718222734}
+      - m_Target: {fileID: 1718222737}
         m_MethodName: OnCreateRoomButtonClicked
         m_Mode: 1
         m_Arguments:
@@ -2918,7 +2918,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 179025921}
   m_HandleRect: {fileID: 179025920}
   m_Direction: 0
-  m_Value: 1
+  m_Value: 0
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -3436,7 +3436,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1718222734}
+      - m_Target: {fileID: 0}
         m_MethodName: OnJoinRandomRoomButtonClicked
         m_Mode: 1
         m_Arguments:
@@ -3587,7 +3587,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1718222734}
+      - m_Target: {fileID: 1718222737}
         m_MethodName: OnLeaveGameButtonClicked
         m_Mode: 1
         m_Arguments:
@@ -3845,8 +3845,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 1160.5714, y: -440}
-  m_SizeDelta: {x: 1721.1428, y: 680}
+  m_AnchoredPosition: {x: 905.3277, y: -440}
+  m_SizeDelta: {x: 1210.6554, y: 680}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1463219339
 MonoBehaviour:
@@ -4091,7 +4091,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1718222734}
+      - m_Target: {fileID: 1718222737}
         m_MethodName: OnLoginButtonClicked
         m_Mode: 1
         m_Arguments:
@@ -4176,7 +4176,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 1292.5715, y: -125}
+  m_AnchoredPosition: {x: 905.3277, y: -125}
   m_SizeDelta: {x: 300, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1673672685
@@ -4242,7 +4242,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1718222734}
+      - m_Target: {fileID: 1718222737}
         m_MethodName: SetActivePanel
         m_Mode: 5
         m_Arguments:
@@ -4308,7 +4308,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1701489362
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4405,8 +4405,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1718222733}
   - component: {fileID: 1718222736}
-  - component: {fileID: 1718222734}
   - component: {fileID: 1718222735}
+  - component: {fileID: 1718222737}
   m_Layer: 5
   m_Name: MainPanel
   m_TagString: Untagged
@@ -4439,35 +4439,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 440}
   m_SizeDelta: {x: 0, y: 880}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1718222734
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1718222732}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 84fd812a67908014cb408f749ca7a55e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  LoginPanel: {fileID: 1903137508}
-  PlayerNameInput: {fileID: 614200609}
-  SelectionPanel: {fileID: 382948994}
-  CreateRoomPanel: {fileID: 577939935}
-  RoomNameInputField: {fileID: 1976501576}
-  MaxPlayersInputField: {fileID: 2093220664}
-  JoinRandomRoomPanel: {fileID: 607980913}
-  RoomListPanel: {fileID: 1723304423}
-  RoomListContent: {fileID: 2130096915}
-  RoomListEntryPrefab: {fileID: 114706, guid: 03c5e15309335324fba99d68e38cb08b, type: 3}
-  InsideRoomPanel: {fileID: 1701489361}
-  Constructor: {fileID: 0}
-  Defensor: {fileID: 0}
-  Recollector: {fileID: 0}
-  StartGameButton: {fileID: 1951770711}
-  PlayerListEntryPrefab: {fileID: 195212, guid: d68bf8413681d9b4aa7328277e632e3f,
-    type: 3}
 --- !u!114 &1718222735
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4489,6 +4460,35 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1718222732}
   m_CullTransparentMesh: 0
+--- !u!114 &1718222737
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1718222732}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5bf8a4bb9869f4642ba7defc08a5f0d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  LoginPanel: {fileID: 1903137508}
+  PlayerNameInput: {fileID: 614200609}
+  SelectionPanel: {fileID: 382948994}
+  CreateRoomPanel: {fileID: 577939935}
+  RoomNameInputField: {fileID: 1976501576}
+  MaxPlayersInputField: {fileID: 2093220664}
+  JoinRandomRoomPanel: {fileID: 607980913}
+  RoomListPanel: {fileID: 1723304423}
+  RoomListContent: {fileID: 2130096915}
+  RoomListEntryPrefab: {fileID: 114706, guid: 03c5e15309335324fba99d68e38cb08b, type: 3}
+  InsideRoomPanel: {fileID: 1701489361}
+  Constructor: {fileID: 0}
+  Defensor: {fileID: 0}
+  Recollector: {fileID: 0}
+  StartGameButton: {fileID: 1951770711}
+  PlayerListEntryPrefab: {fileID: 195212, guid: d68bf8413681d9b4aa7328277e632e3f,
+    type: 3}
 --- !u!1 &1722018931
 GameObject:
   m_ObjectHideFlags: 0
@@ -4800,7 +4800,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 1292.5715, y: -225}
+  m_AnchoredPosition: {x: 905.3277, y: -225}
   m_SizeDelta: {x: 300, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1789955870
@@ -4866,7 +4866,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1718222734}
+      - m_Target: {fileID: 1718222737}
         m_MethodName: OnRoomListButtonClicked
         m_Mode: 1
         m_Arguments:
@@ -5504,7 +5504,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1718222734}
+      - m_Target: {fileID: 1718222737}
         m_MethodName: OnStartGameButtonClicked
         m_Mode: 1
         m_Arguments:
@@ -5688,7 +5688,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 1335.5714, y: -125}
+  m_AnchoredPosition: {x: 1080.3276, y: -125}
   m_SizeDelta: {x: 300, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1976501578

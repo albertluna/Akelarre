@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 namespace Photon.Pun.Demo.Asteroids
 {
-    public class LobbyMainPanel : MonoBehaviourPunCallbacks
+    public class LobbyMain : MonoBehaviourPunCallbacks
     {
         [Header("Login Panel")]
         public GameObject LoginPanel;
@@ -132,7 +132,7 @@ namespace Photon.Pun.Demo.Asteroids
                 {
                     entry.GetComponent<PlayerListEntry>().SetPlayerReady((bool) isPlayerReady);
                 }
-
+                Debug.Log("ActorNumber = " + p.ActorNumber);
                 playerListEntries.Add(p.ActorNumber, entry);
             }
 
@@ -277,8 +277,23 @@ namespace Photon.Pun.Demo.Asteroids
         {
             PhotonNetwork.CurrentRoom.IsOpen = false;
             PhotonNetwork.CurrentRoom.IsVisible = false;
+            PhotonNetwork.AutomaticallySyncScene = true;
+            /*foreach (Player p in PhotonNetwork.PlayerList)
+            {
+                Debug.Log("EL actor number es " + p.ActorNumber + " isLocal es " + p.IsLocal);
+                if(p.ActorNumber == 1 && p.IsLocal)
+                {
+                    //PhotonNetwork.LoadLevel("DemoAsteroids-GameScene");
+                    PhotonNetwork.LoadLevel("Constructor");
 
-            PhotonNetwork.LoadLevel("DemoAsteroids-GameScene");
+                } else if( p.IsLocal )
+                {
+                    PhotonNetwork.LoadLevel("Prototip");
+                }
+                
+            }
+            //PhotonNetwork.LoadLevel("DemoAsteroids-GameScene");*/
+            PhotonNetwork.LoadLevel(ScenesManager.GetScene(ScenesManager.Scene.MapaNivells));
         }
 
         #endregion
@@ -324,7 +339,7 @@ namespace Photon.Pun.Demo.Asteroids
             StartGameButton.gameObject.SetActive(CheckPlayersReady());
         }
 
-        private void SetActivePanel(string activePanel)
+        public void SetActivePanel(string activePanel)
         {
             LoginPanel.SetActive(activePanel.Equals(LoginPanel.name));
             SelectionPanel.SetActive(activePanel.Equals(SelectionPanel.name));
@@ -377,7 +392,7 @@ namespace Photon.Pun.Demo.Asteroids
 
         public void UpdateRoomRols()
         {
-            roomListEntries.
+            //roomListEntries.
         }
 
 

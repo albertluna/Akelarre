@@ -59,7 +59,7 @@ namespace Photon.Pun.Demo.Asteroids
 
                     if (PhotonNetwork.IsMasterClient)
                     {
-                        FindObjectOfType<LobbyMainPanel>().LocalPlayerPropertiesUpdated();
+                        FindObjectOfType<LobbyMain>().LocalPlayerPropertiesUpdated();
                     }
                 });
             }

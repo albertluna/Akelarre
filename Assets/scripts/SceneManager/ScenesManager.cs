@@ -7,18 +7,20 @@ public static class ScenesManager {
 
     public enum Scene
     {
-        Fase_1,
-        escena_habitacio,
-        Fase_2,
-        Fase_3,
-        Fase_0,
-        Settings_Menu,
-        menu,
-        creditsFinals
+        Constructor,
+        Prototip,
+        MenuMultijugador,
+        MapaNivells
+        
     }
 
     public static void Load(Scene scene)
     {
         SceneManager.LoadScene(scene.ToString());
+    }
+
+    public static string GetScene(Scene scene)
+    {
+        return scene.ToString();
     }
 }

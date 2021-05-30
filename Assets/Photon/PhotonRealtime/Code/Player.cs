@@ -180,7 +180,7 @@ namespace Photon.Realtime
             {
                 return null;
             }
-
+            Debug.Log("Player id= " + id + ". Player = " + this.RoomReference.GetPlayer(id));
             return this.RoomReference.GetPlayer(id);
         }
 
