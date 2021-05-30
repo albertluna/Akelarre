@@ -95,11 +95,11 @@ public class MapaNivellSeleccio : MonoBehaviourPunCallbacks, IInRoomCallbacks {
         }
     }
 
-    [RunRPC]
+    /*[RunRPC]
     private void RPC_LoadedGameScene()
     {
         PV.RPC("RPC_CreatePlayer", RpcTarget.All);
-    }
+    }*/
 
     void CreatePlayer()
     {
