@@ -68,19 +68,6 @@ public class MapaNivellSeleccio : MonoBehaviourPunCallbacks, IInRoomCallbacks {
         PhotonNetwork.Nickname = myNumberInRoom.ToString();*/
     }
 
-    void StartGame() {
-        
-        if (PhotonNetwork.IsMasterClient)
-        {
-
-            
-        }
-        else
-        {
-            
-        }
-    }
-
     public void OnTutorialButtonClicked()
     {
         if(PhotonNetwork.IsMasterClient && PV.IsMine)
@@ -90,9 +77,10 @@ public class MapaNivellSeleccio : MonoBehaviourPunCallbacks, IInRoomCallbacks {
         }
     }
     
-    [RunRPC]
+    [PunRPC]
     private void RPC_LoadGameScene()
     {
+        Debug.Log("Nou nivell");
         PhotonNetwork.LoadLevel(ScenesManager.GetScene(ScenesManager.Scene.Prototip));
     }
 
