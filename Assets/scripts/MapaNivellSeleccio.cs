@@ -25,6 +25,7 @@ public class MapaNivellSeleccio : MonoBehaviourPunCallbacks, IInRoomCallbacks {
     void Start()
     {
         PV = GetComponent<PhotonView>();
+        PhotonNetwork.AutomaticallySyncScene = false;
     }
 
     private void Awake()
@@ -65,25 +66,34 @@ public class MapaNivellSeleccio : MonoBehaviourPunCallbacks, IInRoomCallbacks {
         playersInRoom = photonPlayers.Length;
         myNumberInRoom = playersInRoom;
         PhotonNetwork.Nickname = myNumberInRoom.ToString();*/
-        StartGame();
     }
 
     void StartGame() {
-        PhotonNetwork.AutomaticallySyncScene = false;
+        
         if (PhotonNetwork.IsMasterClient)
         {
 
-            PhotonNetwork.LoadLevel(ScenesManager.GetScene(ScenesManager.Scene.Constructor));
+            
         }
         else
         {
-            PhotonNetwork.LoadLevel(ScenesManager.GetScene(ScenesManager.Scene.Prototip));
+            
         }
     }
 
     public void OnTutorialButtonClicked()
     {
-        StartGame();
+        if(PhotonNetwork.IsMasterClient && PV.IsMine)
+        {
+            PV.RPC("RPC_LoadGameScene", RpcTarget.All);
+            PhotonNetwork.LoadLevel(ScenesManager.GetScene(ScenesManager.Scene.Constructor));
+        }
+    }
+    
+    [RunRPC]
+    private void RPC_LoadGameScene()
+    {
+        PhotonNetwork.LoadLevel(ScenesManager.GetScene(ScenesManager.Scene.Prototip));
     }
 
     void OnSceneFinishedLoading(Scene scene, LoadSceneMode mode)
@@ -95,11 +105,7 @@ public class MapaNivellSeleccio : MonoBehaviourPunCallbacks, IInRoomCallbacks {
         }
     }
 
-    /*[RunRPC]
-    private void RPC_LoadedGameScene()
-    {
-        PV.RPC("RPC_CreatePlayer", RpcTarget.All);
-    }*/
+    
 
     void CreatePlayer()
     {
