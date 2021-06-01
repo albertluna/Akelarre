@@ -32,4 +32,9 @@ public class camera : MonoBehaviour
         transform.position = posicioIntermitja;
         transform.LookAt(jugador.transform);
     }
+
+    public void setJugador(GameObject jugador)
+    {
+        this.jugador = jugador;
+    }
 }

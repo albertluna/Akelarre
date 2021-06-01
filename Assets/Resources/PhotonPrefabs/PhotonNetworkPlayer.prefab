@@ -45,7 +45,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PV: {fileID: 0}
-  myAvatar: {fileID: 0}
+  myAvatar: {fileID: 3800794584934393199, guid: 25667044bcc3f7944b5727c0157aff8e,
+    type: 3}
+  Rol: 
 --- !u!114 &5933256944059018656
 MonoBehaviour:
   m_ObjectHideFlags: 0
