@@ -12,8 +12,8 @@ public class RoomController : MonoBehaviourPunCallbacks, IInRoomCallbacks {
     public static RoomController room;
     private PhotonView PV;
     
-    public int currentScene;
-    public int multiplayerScene;
+    public string currentScene;
+    public string multiplayerScene;
 
     public PhotonPlayer photonPlayer;
 
@@ -102,8 +102,8 @@ public class RoomController : MonoBehaviourPunCallbacks, IInRoomCallbacks {
 
     void OnSceneFinishedLoading(Scene scene, LoadSceneMode mode)
     {
-        currentScene = scene.buildIndex;
-        if (currentScene == multiplayerScene)
+        currentScene = scene.ToString();
+        if (currentScene.Equals(ScenesManager.GetScene(ScenesManager.Scene.MenuMultijugador)))
         {
             CreatePlayer();
         }
