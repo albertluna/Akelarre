@@ -125,6 +125,11 @@ public class RoomController : MonoBehaviourPunCallbacks, IInRoomCallbacks {
         PhotonNetwork.LoadLevel(ScenesManager.GetScene(ScenesManager.Scene.MenuMultijugador));
     }
 
+    /// <summary>
+    /// Quan un jugador selecciona un boto dels rols, s'ha de guardar el rol seleccionat i fer que la resta de jugadors no
+    /// puguin seleccionar el seu rol. Si torna a clica en el rol que ja ha seleccionat, es des-seleccionarà
+    /// </summary>
+    /// <param name="rol"></param>
     public void OnSelectRolButton(string rol)
     {
         ButtonRolController botoVell = modificarBoto(photonPlayer.Rol); //fer interactable per la resta
@@ -134,16 +139,34 @@ public class RoomController : MonoBehaviourPunCallbacks, IInRoomCallbacks {
             PV.RPC("RPC_setInteractableButton", RpcTarget.All, photonPlayer.Rol, true);
         }
 
-
-        ButtonRolController botoNou = modificarBoto(rol); //no interactable per la resta
-        PV.RPC("RPC_setInteractableButton", RpcTarget.All, rol, false);
-        text.text = rol;
-        photonPlayer.Rol = rol;
+        
+        //Des-seleccionar
+        if (rol.Equals(photonPlayer.Rol))
+        {
+            PV.RPC("RPC_setInteractableButton", RpcTarget.All, rol, true);
+            photonPlayer.Rol = null;
+        }
+        //Seleccionar
+        //no interactable per la resta de jugador i en el jugador propi sí.
+        else
+        {
+            ButtonRolController botoNou = modificarBoto(rol);
+            PV.RPC("RPC_setInteractableButton", RpcTarget.All, rol, false);
+            botoNou.boto.interactable = true;
+            text.text = rol;
+            photonPlayer.Rol = rol;
+        }
 
 
         //activarBoto(rol, false);
         
     }
+
+    /// <summary>
+    /// Funcio que fa els botons del rol interactables segons lestat
+    /// </summary>
+    /// <param name="rol"></param>
+    /// <param name="estat"></param>
     [PunRPC]
     private void RPC_setInteractableButton(string rol, bool estat)
     {
