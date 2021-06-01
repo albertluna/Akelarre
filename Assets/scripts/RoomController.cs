@@ -102,8 +102,9 @@ public class RoomController : MonoBehaviourPunCallbacks, IInRoomCallbacks {
 
     void OnSceneFinishedLoading(Scene scene, LoadSceneMode mode)
     {
-        currentScene = scene.ToString();
-        if (currentScene.Equals(ScenesManager.GetScene(ScenesManager.Scene.MenuMultijugador)))
+        currentScene = scene.name;
+        Debug.Log("current scene = " + currentScene);
+        if (currentScene.Equals(ScenesManager.GetScene(ScenesManager.Scene.MapaNivells)))
         {
             CreatePlayer();
         }
