@@ -128,8 +128,11 @@ public class RoomController : MonoBehaviourPunCallbacks, IInRoomCallbacks {
     public void OnSelectRolButton(string rol)
     {
         ButtonRolController botoVell = modificarBoto(photonPlayer.Rol); //fer interactable per la resta
-        botoVell.boto.interactable = true;
-        PV.RPC("RPC_setInteractableButton", RpcTarget.All, photonPlayer.Rol, true);
+        if (botoVell != null)
+        {
+            botoVell.boto.interactable = true;
+            PV.RPC("RPC_setInteractableButton", RpcTarget.All, photonPlayer.Rol, true);
+        }
 
 
         ButtonRolController botoNou = modificarBoto(rol); //no interactable per la resta
