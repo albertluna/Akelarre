@@ -116,6 +116,7 @@ public class RoomController : MonoBehaviourPunCallbacks, IInRoomCallbacks {
         GameObject pp = PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "PhotonNetworkPlayer"), transform.position,
             Quaternion.identity, 0);
         photonPlayer = pp.GetComponent<PhotonPlayer>();
+        Debug.Log("CREATE PLAYER" + photonPlayer.PV.Owner.NickName);
         
     }
 
