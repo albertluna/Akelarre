@@ -24,15 +24,5 @@ public class GameSetUp : MonoBehaviour
         {
             GameSetUp.GS = this;
         }
-        else
-        {
-            if (GameSetUp.GS != this)
-            {
-                Destroy(GameSetUp.GS.gameObject);
-                GameSetUp.GS = this;
-            }
-        }
-    }
-  
-    
+    }  
 }

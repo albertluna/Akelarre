@@ -17,9 +17,6 @@ public class RoomController : MonoBehaviourPunCallbacks, IInRoomCallbacks {
 
     public PhotonPlayer photonPlayer;
 
-    //Player[] photonPlayers;
-    public Dictionary<string, Player> Rols;
-
     public Text text;
     public ButtonRolController constructor;
     public ButtonRolController defensor;
@@ -104,7 +101,7 @@ public class RoomController : MonoBehaviourPunCallbacks, IInRoomCallbacks {
         }
     }
 
-    void OnSceneFinishedLoading(Scene scene, LoadSceneMode mode)
+    /*void OnSceneFinishedLoading(Scene scene, LoadSceneMode mode)
     {
         currentScene = scene.name;
         Debug.Log("current scene = " + currentScene);
@@ -112,13 +109,23 @@ public class RoomController : MonoBehaviourPunCallbacks, IInRoomCallbacks {
         {
             CreatePlayer();
         }
+    }*/
+
+    void OnSceneFinishedLoading(Scene scene, LoadSceneMode mode)
+    {
+        currentScene = scene.name;
+        Debug.Log("current scene = " + currentScene);
+        if (currentScene.Equals(ScenesManager.GetScene(ScenesManager.Scene.Prototip)))
+        {
+            photonPlayer.Instantiate();
+        }
     }
 
     void CreatePlayer()
     {
-        GameObject pp = PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "PhotonNetworkPlayer"), transform.position,
-            Quaternion.identity, 0);
-        photonPlayer = pp.GetComponent<PhotonPlayer>();
+        //GameObject pp = PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "PhotonNetworkPlayer"), transform.position,
+            //Quaternion.identity, 0);
+        photonPlayer = this.GetComponent<PhotonPlayer>();
         
     }
 
