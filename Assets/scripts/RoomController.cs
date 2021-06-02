@@ -32,16 +32,6 @@ public class RoomController : MonoBehaviourPunCallbacks, IInRoomCallbacks {
     {
         PV = GetComponent<PhotonView>();
         PhotonNetwork.AutomaticallySyncScene = false;
-        AdjudicarRols();
-    }
-
-    void AdjudicarRols()
-    {
-        Rols = new Dictionary<string, Player>();
-        foreach (Player p in PhotonNetwork.PlayerList)
-        {
-
-        }
     }
 
     private void Awake()
@@ -91,7 +81,7 @@ public class RoomController : MonoBehaviourPunCallbacks, IInRoomCallbacks {
             if (PhotonNetwork.IsMasterClient && PV.IsMine)
             {
                 PV.RPC("RPC_LoadGameScene", RpcTarget.All);
-                PhotonNetwork.LoadLevel(ScenesManager.GetScene(ScenesManager.Scene.Constructor));
+                RPC_LoadGameScene();
             }
         } else
         {
@@ -103,8 +93,15 @@ public class RoomController : MonoBehaviourPunCallbacks, IInRoomCallbacks {
     [PunRPC]
     private void RPC_LoadGameScene()
     {
-        Debug.Log("Nou nivell");
-        PhotonNetwork.LoadLevel(ScenesManager.GetScene(ScenesManager.Scene.Prototip));
+        Debug.Log("Nou nivell pel rol" + photonPlayer.Rol);
+        if (photonPlayer.Rol.Equals(PhotonPlayer.CONSTRUCTOR))
+        {
+            PhotonNetwork.LoadLevel(ScenesManager.GetScene(ScenesManager.Scene.Constructor));
+        }
+        else
+        {
+            PhotonNetwork.LoadLevel(ScenesManager.GetScene(ScenesManager.Scene.Prototip));
+        }
     }
 
     void OnSceneFinishedLoading(Scene scene, LoadSceneMode mode)

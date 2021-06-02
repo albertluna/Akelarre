@@ -12,15 +12,25 @@ public class GameSetUp : MonoBehaviour
     void Start()
     {
         Debug.Log("get photon player");
+        OnEnable();
         player = GameObject.Find("RoomController").GetComponent<RoomController>().photonPlayer;
         player.Instantiate();
     }
 
     private void OnEnable()
     {
+        Debug.Log("Enabelitzar");
         if(GameSetUp.GS = null)
         {
             GameSetUp.GS = this;
+        }
+        else
+        {
+            if (GameSetUp.GS != this)
+            {
+                Destroy(GameSetUp.GS.gameObject);
+                GameSetUp.GS = this;
+            }
         }
     }
   
