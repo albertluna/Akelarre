@@ -11,7 +11,7 @@ public class GameSetUp : MonoBehaviour
 
     void Start()
     {
-        Debug.Log("get photon player")
+        Debug.Log("get photon player");
         player = GameObject.Find("RoomController").GetComponent<RoomController>().photonPlayer;
         player.Instantiate();
     }
