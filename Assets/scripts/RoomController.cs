@@ -86,11 +86,18 @@ public class RoomController : MonoBehaviourPunCallbacks, IInRoomCallbacks {
 
     public void OnTutorialButtonClicked()
     {
-        if(PhotonNetwork.IsMasterClient && PV.IsMine)
+        if(constructor.isSelected && defensor.isSelected && recollector.isSelected)
         {
-            PV.RPC("RPC_LoadGameScene", RpcTarget.All);
-            PhotonNetwork.LoadLevel(ScenesManager.GetScene(ScenesManager.Scene.Constructor));
+            if (PhotonNetwork.IsMasterClient && PV.IsMine)
+            {
+                PV.RPC("RPC_LoadGameScene", RpcTarget.All);
+                PhotonNetwork.LoadLevel(ScenesManager.GetScene(ScenesManager.Scene.Constructor));
+            }
+        } else
+        {
+            Debug.Log("NO ESTAN TOTS ELS ROLS SELECCIONATS");
         }
+        
     }
     
     [PunRPC]
@@ -110,14 +117,11 @@ public class RoomController : MonoBehaviourPunCallbacks, IInRoomCallbacks {
         }
     }
 
-    
-
     void CreatePlayer()
     {
         GameObject pp = PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "PhotonNetworkPlayer"), transform.position,
             Quaternion.identity, 0);
         photonPlayer = pp.GetComponent<PhotonPlayer>();
-        Debug.Log("CREATE PLAYER" + photonPlayer.PV.Owner.NickName);
         
     }
 
@@ -147,6 +151,7 @@ public class RoomController : MonoBehaviourPunCallbacks, IInRoomCallbacks {
         {
             PV.RPC("RPC_setInteractableButton", RpcTarget.All, rol, true);
             photonPlayer.Rol = null;
+            text.text = "";
         }
         //Seleccionar
         //no interactable per la resta de jugador i en el jugador propi sí.
@@ -155,6 +160,7 @@ public class RoomController : MonoBehaviourPunCallbacks, IInRoomCallbacks {
             ButtonRolController botoNou = modificarBoto(rol);
             PV.RPC("RPC_setInteractableButton", RpcTarget.All, rol, false);
             botoNou.boto.interactable = true;
+            botoNou.isSelected = true;
             text.text = rol;
             photonPlayer.Rol = rol;
         }
@@ -165,14 +171,17 @@ public class RoomController : MonoBehaviourPunCallbacks, IInRoomCallbacks {
     }
 
     /// <summary>
-    /// Funcio que fa els botons del rol interactables segons lestat
+    /// Funcio que setteja els botons del rol interactables segons lestat
+    /// i indica si estan seleccionats
     /// </summary>
     /// <param name="rol"></param>
     /// <param name="estat"></param>
     [PunRPC]
     private void RPC_setInteractableButton(string rol, bool estat)
     {
-        modificarBoto(rol).boto.interactable = estat;
+        ButtonRolController brc =  modificarBoto(rol);
+        brc.boto.interactable = estat;
+        brc.isSelected = !estat;
     }
 
 

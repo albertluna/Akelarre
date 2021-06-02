@@ -278,21 +278,6 @@ namespace Photon.Pun.Demo.Asteroids
             PhotonNetwork.CurrentRoom.IsOpen = false;
             PhotonNetwork.CurrentRoom.IsVisible = false;
             PhotonNetwork.AutomaticallySyncScene = true;
-            /*foreach (Player p in PhotonNetwork.PlayerList)
-            {
-                Debug.Log("EL actor number es " + p.ActorNumber + " isLocal es " + p.IsLocal);
-                if(p.ActorNumber == 1 && p.IsLocal)
-                {
-                    //PhotonNetwork.LoadLevel("DemoAsteroids-GameScene");
-                    PhotonNetwork.LoadLevel("Constructor");
-
-                } else if( p.IsLocal )
-                {
-                    PhotonNetwork.LoadLevel("Prototip");
-                }
-                
-            }
-            //PhotonNetwork.LoadLevel("DemoAsteroids-GameScene");*/
             PhotonNetwork.LoadLevel(ScenesManager.GetScene(ScenesManager.Scene.MapaNivells));
         }
 
