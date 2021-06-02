@@ -23,18 +23,19 @@ public class PhotonPlayer : MonoBehaviour
 
     public void Instantiate()
     {
-        int spawnPicker = Random.Range(0, GameSetUp.GS.spawnPoints.Length);
+        GameSetUp GS = FindObjectOfType<GameSetUp>();
+        int spawnPicker = Random.Range(0, GS.getSpawnpointLength());
         Debug.Log("spawnpicker = " + spawnPicker);
         if (PV.IsMine)
         {
             switch (Rol) {
                 case DEFENSOR:
                 myAvatar = PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "PlayerDefensorVariant"),
-                    GameSetUp.GS.spawnPoints[spawnPicker].position, GameSetUp.GS.spawnPoints[spawnPicker].rotation, 0);
+                    GS.spawnPoints[spawnPicker].position, GS.spawnPoints[spawnPicker].rotation, 0);
                     break;
                 case RECOLLECTOR:
                     myAvatar = PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "PlayerRecollectorVariant"),
-                    GameSetUp.GS.spawnPoints[spawnPicker].position, GameSetUp.GS.spawnPoints[spawnPicker].rotation, 0);
+                    GS.spawnPoints[spawnPicker].position, GS.spawnPoints[spawnPicker].rotation, 0);
                     break;
             }
         }

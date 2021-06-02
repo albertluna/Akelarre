@@ -12,9 +12,8 @@ public class GameSetUp : MonoBehaviour
     void Start()
     {
         Debug.Log("get photon player");
-        OnEnable();
-        player = GameObject.Find("RoomController").GetComponent<RoomController>().photonPlayer;
-        player.Instantiate();
+        //player = GameObject.Find("RoomController").GetComponent<RoomController>().photonPlayer;
+        //player.Instantiate();
     }
 
     private void OnEnable()
@@ -24,5 +23,10 @@ public class GameSetUp : MonoBehaviour
         {
             GameSetUp.GS = this;
         }
-    }  
+    }
+
+    public int getSpawnpointLength()
+    {
+        return spawnPoints.Length;
+    }
 }
