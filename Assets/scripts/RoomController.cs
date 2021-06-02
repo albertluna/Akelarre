@@ -29,6 +29,8 @@ public class RoomController : MonoBehaviourPunCallbacks, IInRoomCallbacks {
     {
         PV = GetComponent<PhotonView>();
         PhotonNetwork.AutomaticallySyncScene = false;
+        photonPlayer = this.GetComponent<PhotonPlayer>();
+
     }
 
     private void Awake()

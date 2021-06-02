@@ -840,7 +840,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rol: DEFENSOR
   boto: {fileID: 0}
-  isActive: 0
+  isSelected: 0
 --- !u!114 &665362292
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1486,6 +1486,7 @@ GameObject:
   - component: {fileID: 1058867072}
   - component: {fileID: 1058867071}
   - component: {fileID: 1058867070}
+  - component: {fileID: 1058867073}
   m_Layer: 0
   m_Name: RoomController
   m_TagString: Untagged
@@ -1548,6 +1549,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1058867073
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1058867069}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ce747bc048ba97439df290ca93fa8b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PV: {fileID: 0}
+  myAvatar: {fileID: 0}
+  Rol: 
 --- !u!1 &1445148741
 GameObject:
   m_ObjectHideFlags: 0
@@ -1758,7 +1774,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rol: RECOLLECTOR
   boto: {fileID: 0}
-  isActive: 0
+  isSelected: 0
 --- !u!114 &1697839724
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2070,7 +2086,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rol: CONSTRUCTOR
   boto: {fileID: 0}
-  isActive: 0
+  isSelected: 0
 --- !u!114 &2078418775
 MonoBehaviour:
   m_ObjectHideFlags: 0
