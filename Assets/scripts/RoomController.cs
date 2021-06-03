@@ -46,7 +46,7 @@ public class RoomController : MonoBehaviourPunCallbacks, IInRoomCallbacks {
                 RoomController.room = this;
             }
         }
-        //DontDestroyOnLoad(this.gameObject);
+        DontDestroyOnLoad(this.gameObject);
     }
 
     public override void OnEnable()
