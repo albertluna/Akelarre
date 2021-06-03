@@ -120,8 +120,8 @@ public class RoomController : MonoBehaviourPunCallbacks, IInRoomCallbacks {
         if (currentScene.Equals(ScenesManager.GetScene(ScenesManager.Scene.Prototip)))
         {
             Debug.Log("Nem a instanciar jugador");
-            PV = null;
             photonPlayer.Instantiate();
+            Destroy(this);
         }
     }
 
