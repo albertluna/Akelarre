@@ -2086,7 +2086,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rol: CONSTRUCTOR
   boto: {fileID: 0}
-  isSelected: 0
+  isSelected: 1
 --- !u!114 &2078418775
 MonoBehaviour:
   m_ObjectHideFlags: 0
