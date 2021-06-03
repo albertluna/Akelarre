@@ -16,6 +16,7 @@ public class Moviment : MonoBehaviourPunCallbacks
 
     public float velocity = 10;
     public camera camera;
+    public AudioListener AL;
     Vector3 dir;
 
 
@@ -23,7 +24,11 @@ public class Moviment : MonoBehaviourPunCallbacks
     {
         rigidbody = GetComponent<Rigidbody>();
         PV = GetComponent<PhotonView>();
-        camera = GameObject.Find("camera").GetComponent<camera>();
+        if (!PV.IsMine)
+        {
+            Destroy(camera);
+            Destroy(AL);
+        }
     }
 
     public override void OnEnable()

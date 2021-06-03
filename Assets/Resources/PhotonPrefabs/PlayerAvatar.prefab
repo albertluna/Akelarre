@@ -236,6 +236,7 @@ MonoBehaviour:
   MaxSpeed: 0.2
   velocity: 10
   camera: {fileID: 501862322}
+  AL: {fileID: 501862319}
 --- !u!54 &8367320434267191822
 Rigidbody:
   m_ObjectHideFlags: 0

@@ -121,7 +121,7 @@ public class RoomController : MonoBehaviourPunCallbacks, IInRoomCallbacks {
         {
             Debug.Log("Nem a instanciar jugador");
             photonPlayer.Instantiate();
-            Destroy(this);
+            Destroy(this.gameObject);
         }
     }
 
