@@ -80,7 +80,7 @@ public class RoomController : MonoBehaviourPunCallbacks, IInRoomCallbacks {
             if (PhotonNetwork.IsMasterClient && PV.IsMine)
             {
                 PV.RPC("RPC_LoadGameScene", RpcTarget.All);
-                RPC_LoadGameScene();
+                //RPC_LoadGameScene();
             }
         } else
         {
