@@ -16,7 +16,6 @@ public class Moviment : MonoBehaviourPunCallbacks
 
     public float velocity = 10;
     public camera camera;
-    public AudioListener AL;
     Vector3 dir;
 
 
@@ -26,8 +25,7 @@ public class Moviment : MonoBehaviourPunCallbacks
         PV = GetComponent<PhotonView>();
         if (!PV.IsMine)
         {
-            Destroy(camera);
-            Destroy(AL);
+            Destroy(camera.gameObject);
         }
     }
 
