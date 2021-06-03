@@ -38,20 +38,18 @@ public class Moviment : MonoBehaviourPunCallbacks
     // Update is called once per frame
     void Update()
     {
-        if (!PV.IsMine || !controllable)
+        if (PV.IsMine)
         {
-            return;
+            horizontalInput = Input.GetAxis("Horizontal");
+            verticalInput = Input.GetAxis("Vertical");
+            dir = camera.transform.forward + camera.transform.right;
+            dir.Normalize();
+
+            //animator.SetFloat("Speed", Mathf.Abs(horizontalInput) + Mathf.Abs(verticalInput));
+
+            Vector3 tmp = camera.transform.right * horizontalInput + camera.transform.forward * verticalInput;
+            rigidbody.velocity = velocity * new Vector3(tmp.x, 0, tmp.z);
         }
-
-        horizontalInput = Input.GetAxis("Horizontal");
-        verticalInput = Input.GetAxis("Vertical");
-        dir = camera.transform.forward + camera.transform.right;
-        dir.Normalize();
-
-        //animator.SetFloat("Speed", Mathf.Abs(horizontalInput) + Mathf.Abs(verticalInput));
-
-        Vector3 tmp = camera.transform.right * horizontalInput + camera.transform.forward * verticalInput;
-        rigidbody.velocity = velocity * new Vector3(tmp.x, 0, tmp.z);
     }
 
     public void FixedUpdate()
