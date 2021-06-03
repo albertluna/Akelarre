@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
 
-public class Moviment : MonoBehaviourPun
+public class Moviment : MonoBehaviourPunCallbacks
 {
     private Rigidbody rigidbody;
-    public PhotonView photonView;
+    public PhotonView PV;
     private bool controllable = true;
 
     public float MaxSpeed = 0.2f;
@@ -22,12 +22,20 @@ public class Moviment : MonoBehaviourPun
     void Start()
     {
         rigidbody = GetComponent<Rigidbody>();
+        PV = GetComponent<PhotonView>();
+        camera = GameObject.Find("camera").GetComponent<camera>();
     }
+
+    public override void OnEnable()
+    {
+        Start();
+    }
+
 
     // Update is called once per frame
     void Update()
     {
-        if (!photonView.IsMine || !controllable)
+        if (!PV.IsMine || !controllable)
         {
             return;
         }
@@ -45,7 +53,7 @@ public class Moviment : MonoBehaviourPun
 
     public void FixedUpdate()
     {
-        if (!photonView.IsMine)
+        if (!PV.IsMine)
         {
             return;
         }

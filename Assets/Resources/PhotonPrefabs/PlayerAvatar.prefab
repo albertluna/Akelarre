@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 367838826098454302}
   - component: {fileID: 9143408349507332321}
   - component: {fileID: 7488162796950587039}
+  - component: {fileID: 5656621935596023289}
   m_Layer: 0
   m_Name: PlayerAvatar
   m_TagString: Untagged
@@ -117,3 +118,19 @@ MonoBehaviour:
   sceneViewId: 1
   InstantiationId: 0
   isRuntimeInstantiated: 0
+--- !u!114 &5656621935596023289
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3800794584934393199}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfa55fba696394332b5c5373c539a9b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  photonView: {fileID: 0}
+  MaxSpeed: 0.2
+  velocity: 10
+  camera: {fileID: 0}
