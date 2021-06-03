@@ -26,8 +26,7 @@ public class PhotonPlayer : MonoBehaviour
         GameSetUp GS = FindObjectOfType<GameSetUp>();
         int spawnPicker = 0;
         Debug.Log("spawnpicker = " + spawnPicker);
-        if (PV.IsMine)
-        {
+        //if (PV.IsMine) {
             switch (Rol) {
                 case DEFENSOR:
                     spawnPicker = 0;//0
@@ -40,7 +39,7 @@ public class PhotonPlayer : MonoBehaviour
                     GS.spawnPoints[spawnPicker].position, GS.spawnPoints[spawnPicker].rotation, 0);
                     break;
             }
-        }
+        //}
     }
     
 }
