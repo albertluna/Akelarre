@@ -46,7 +46,7 @@ public class RoomController : MonoBehaviourPunCallbacks, IInRoomCallbacks {
                 RoomController.room = this;
             }
         }
-        DontDestroyOnLoad(this.gameObject);
+        //DontDestroyOnLoad(this.gameObject);
     }
 
     public override void OnEnable()
@@ -120,6 +120,7 @@ public class RoomController : MonoBehaviourPunCallbacks, IInRoomCallbacks {
         if (currentScene.Equals(ScenesManager.GetScene(ScenesManager.Scene.Prototip)))
         {
             Debug.Log("Nem a instanciar jugador");
+            PV = null;
             photonPlayer.Instantiate();
         }
     }
