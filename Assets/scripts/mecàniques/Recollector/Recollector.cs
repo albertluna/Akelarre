@@ -9,6 +9,8 @@ public class Recollector : MonoBehaviour
     Collider colider;
     public int vides;
     public PhotonView PV;
+    public ConnexioConsRec connexio;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -16,6 +18,7 @@ public class Recollector : MonoBehaviour
         colider = GetComponent<CapsuleCollider>();
         vides = 3;
         PV = GetComponent<PhotonView>();
+        connexio = GetComponent<ConnexioConsRec>();
     }
 
     public void OnCollisionEnter(Collision collision)
@@ -25,8 +28,7 @@ public class Recollector : MonoBehaviour
             Debug.Log("Transportar colleccionable a constructor");
 
             Colleccionable colleccionable = collision.gameObject.GetComponent<Colleccionable>();
-            PV.RPC("RPC_sendColleccionable", RpcTarget.All, colleccionable.color);
-
+            connexio.enviarInfo(colleccionable.color);
             colleccionable.parent.estaOcupat = false;
             Destroy(collision.gameObject);
 
@@ -37,11 +39,6 @@ public class Recollector : MonoBehaviour
         }
     }
 
-    [PunRPC]
-    private void RPC_sendColleccionable(string colleccionable)
-    {
-        Debug.Log("ENVIA YEAHHH");
-        ConstructorController.CrearColleccionable(colleccionable);
-    }
+    
 
 }

@@ -11,12 +11,14 @@ public class ConstructorController : MonoBehaviour
     public Pocio pocio;
     public HUD_Constructor hud;
     public GameObject[] llistaColleccionables;
+    public ConnexioConsRec connexio;
 
     // Start is called before the first frame update
     void Start()
     {
         pocio.Comencar();
         constructorController = this;
+        connexio = GetComponent<ConnexioConsRec>();
     }
 
     // Update is called once per frame
@@ -37,7 +39,7 @@ public class ConstructorController : MonoBehaviour
         colleccionable = Instantiate(colleccionablesExterns, creadorColleccionables.transform);
     }
 
-    public static void CrearColleccionable(string nouColleccionable)
+    public void CrearColleccionable(string nouColleccionable)
     {
         Debug.Log("NOVA COLLECIONABLE");
         constructorController.NouColleccionable(recollectorController.escollirColleccionable(nouColleccionable));
