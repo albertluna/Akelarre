@@ -6,16 +6,7 @@ public class Colleccionable : MonoBehaviour
 {
     public int percentatge;
     public string color;
+    public ColleccionableCreators parent;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    
 }

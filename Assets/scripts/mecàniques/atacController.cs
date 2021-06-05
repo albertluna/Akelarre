@@ -30,7 +30,6 @@ public class atacController : MonoBehaviour
         else
         {
             int posicio = Random.Range(1, creators.Length);
-            Debug.Log(timer);
             GameObject instancia = Instantiate(bullet, creators[posicio].position, Quaternion.identity);
             timer = Random.Range(minEspera, maxEspera);
         }
