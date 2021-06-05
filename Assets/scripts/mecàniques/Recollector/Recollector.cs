@@ -25,7 +25,7 @@ public class Recollector : MonoBehaviour
             Debug.Log("Transportar colleccionable a constructor");
 
             Colleccionable colleccionable = collision.gameObject.GetComponent<Colleccionable>();
-            PV.RPC("RPC_sendColleccionable", RpcTarget.All, colleccionable);
+            PV.RPC("RPC_sendColleccionable", RpcTarget.All, colleccionable.color);
 
             colleccionable.parent.estaOcupat = false;
             Destroy(collision.gameObject);
@@ -38,10 +38,10 @@ public class Recollector : MonoBehaviour
     }
 
     [PunRPC]
-    private void RPC_sendColleccionable(Colleccionable colleccionable)
+    private void RPC_sendColleccionable(string colleccionable)
     {
         Debug.Log("ENVIA YEAHHH");
-        //ConstructorController.CrearColleccionable(colleccionable.color);
+        ConstructorController.CrearColleccionable(colleccionable);
     }
 
 }
