@@ -10,13 +10,7 @@ public class ConnexioConsRec : MonoBehaviour
     public string colleccionable;
     public PhotonView PV;
     public ConstructorController constructor;
-
-    void Start()
-    {
-        PV = GetComponent<PhotonView>();
-        constructor = GetComponent<ConstructorController>();
-    }
-
+     
 
     public void enviarInfo(string colleccionable)
     {
