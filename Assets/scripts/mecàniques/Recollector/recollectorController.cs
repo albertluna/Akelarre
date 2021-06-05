@@ -9,10 +9,13 @@ public class recollectorController : MonoBehaviour
     public float minEspera;
 
     public Colleccionable[] colleccionables;
+    public static Colleccionable[] llistaColleccionables;
+
     void Start()
     {
         creators = GetComponentsInChildren<ColleccionableCreators>();
         colleccionables = GetComponentsInChildren<Colleccionable>();
+        llistaColleccionables = colleccionables;
         float percentatgeTotal = 0;
         foreach(Colleccionable col in colleccionables)
         {
@@ -52,5 +55,14 @@ public class recollectorController : MonoBehaviour
             }
             timer = Random.Range(minEspera, maxEspera);
         }
+    }
+
+    public static Colleccionable escollirColleccionable(string color)
+    {
+        foreach (Colleccionable col in llistaColleccionables)
+        {
+            if (col.color.Equals(color)) { Debug.Log(col.color); return col; }
+        }
+        return null;
     }
 }

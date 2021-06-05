@@ -41,7 +41,7 @@ public class Recollector : MonoBehaviour
     private void RPC_sendColleccionable(Colleccionable colleccionable)
     {
         Debug.Log("ENVIA YEAHHH");
-        ConstructorController.CrearColleccionable(colleccionable);
+        //ConstructorController.CrearColleccionable(colleccionable.color);
     }
 
 }
