@@ -26,7 +26,7 @@ public class ConnexioConsRec : MonoBehaviour
     [PunRPC]
     private void RPC_sendColleccionable(string colleccionable)
     {
-        Debug.Log("ENVIA YEAHHH");
+        Debug.Log("ENVIA YEAHHH " + constructor.name);
         constructor.CrearColleccionable(colleccionable);
     }
 }
