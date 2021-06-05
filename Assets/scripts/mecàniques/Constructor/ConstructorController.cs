@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ConstructorController : MonoBehaviour
 {
-
+    public static ConstructorController constructorController;
     public GameObject creadorColleccionables;
     public GameObject colleccionable;
     public GameObject colleccionablesExterns;
@@ -15,6 +15,7 @@ public class ConstructorController : MonoBehaviour
     void Start()
     {
         pocio.Comencar();
+        constructorController = this;
     }
 
     // Update is called once per frame
@@ -33,6 +34,12 @@ public class ConstructorController : MonoBehaviour
             Destroy(colleccionable);
         }
         colleccionable = Instantiate(colleccionablesExterns, creadorColleccionables.transform);
+    }
+
+    public static void CrearColleccionable(Colleccionable nouColleccionable)
+    {
+        Debug.Log("NOVA COLLECIONABLE");
+        constructorController.NouColleccionable(nouColleccionable);
     }
 
     public void NouColleccionable(Colleccionable nouColleccionable)

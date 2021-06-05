@@ -153,7 +153,6 @@ public class RoomController : MonoBehaviourPunCallbacks, IInRoomCallbacks {
             PV.RPC("RPC_setInteractableButton", RpcTarget.All, photonPlayer.Rol, true);
         }
 
-        
         //Des-seleccionar
         if (rol.Equals(photonPlayer.Rol))
         {

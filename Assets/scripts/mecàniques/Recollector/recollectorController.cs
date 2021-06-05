@@ -34,20 +34,18 @@ public class recollectorController : MonoBehaviour
             int percentatgeAnterior = 0;
             int posicio = Random.Range(0, creators.Length-1);
 
-
+            //comprovar que la nova posicio no estigui ocupada
             while(creators[posicio].estaOcupat)
             {
-                Debug.Log("OCUPAT " + posicio);
                 posicio = Random.Range(0, creators.Length-1);
             }
-            Debug.Log("Posicio = " + posicio + " amb percentatge resultat de " + resultat);
 
+            //escollir quin dels diferents tipus de colleccionables es crearà
             foreach (Colleccionable col in colleccionables)
             {
                 Debug.Log("percentatge " + percentatgeAnterior + " i col.per = " + col.percentatge);
                 if(resultat >= percentatgeAnterior && resultat < (col.percentatge+percentatgeAnterior))
                 {
-                    Debug.Log("Instenciem del tipus " + col.color);
                     creators[posicio].Instantiate(col);
                 }
                 percentatgeAnterior += col.percentatge;

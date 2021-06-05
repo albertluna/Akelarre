@@ -23,7 +23,10 @@ public class Recollector : MonoBehaviour
         if (collision.gameObject.CompareTag("Colleccionable"))
         {
             Debug.Log("Transportar colleccionable a constructor");
+
             Colleccionable colleccionable = collision.gameObject.GetComponent<Colleccionable>();
+            PV.RPC("RPC_sendColleccionable", RpcTarget.All, colleccionable);
+
             colleccionable.parent.estaOcupat = false;
             Destroy(collision.gameObject);
 
@@ -35,9 +38,10 @@ public class Recollector : MonoBehaviour
     }
 
     [PunRPC]
-    private void sendColleccionable()
+    private void RPC_sendColleccionable(Colleccionable colleccionable)
     {
-
+        Debug.Log("ENVIA YEAHHH");
+        ConstructorController.CrearColleccionable(colleccionable);
     }
 
 }
