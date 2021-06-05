@@ -19,6 +19,7 @@ public class Recollector : MonoBehaviour
         vides = 3;
         PV = GetComponent<PhotonView>();
         connexio = FindObjectOfType<ConnexioConsRec>();
+        connexio.PV = PV;
             //GameObject.Find("ConnectionController").GetComponent<ConnexioConsRec>();
     }
 
