@@ -38,7 +38,7 @@ public class Moviment : MonoBehaviourPunCallbacks
     // Update is called once per frame
     void Update()
     {
-        if (true){//PV.IsMine) {
+        if (PV.IsMine) {
             horizontalInput = Input.GetAxis("Horizontal");
             verticalInput = Input.GetAxis("Vertical");
             dir = camera.transform.forward + camera.transform.right;
@@ -53,7 +53,7 @@ public class Moviment : MonoBehaviourPunCallbacks
 
     public void FixedUpdate()
     {
-        /*if (!PV.IsMine)
+        if (!PV.IsMine)
         {
             return;
         }
@@ -61,7 +61,7 @@ public class Moviment : MonoBehaviourPunCallbacks
         if (!controllable)
         {
             return;
-        }*/
+        }
 
         Quaternion rot = rigidbody.rotation * Quaternion.Euler(0, horizontalInput * MaxSpeed * Time.fixedDeltaTime, 0);
         GetComponent<Rigidbody>().MoveRotation(rot);
