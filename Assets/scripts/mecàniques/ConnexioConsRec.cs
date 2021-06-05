@@ -26,6 +26,8 @@ public class ConnexioConsRec : MonoBehaviour
     [PunRPC]
     private void RPC_sendColleccionable(string colleccionable)
     {
+
+        Debug.Log("ESTEM enviant merda. Quina? dOncs aquesta + " + colleccionable + ". Des de " + this.gameObject.name);
         if (constructor != null)
         {
             Debug.Log("ENVIA YEAHHH " + constructor.name);
