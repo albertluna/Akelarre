@@ -122,6 +122,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerRecollectorVariant
       objectReference: {fileID: 0}
+    - target: {fileID: 8367320434267191822, guid: 25667044bcc3f7944b5727c0157aff8e,
+        type: 3}
+      propertyPath: m_Constraints
+      value: 84
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 25667044bcc3f7944b5727c0157aff8e, type: 3}
 --- !u!1 &8036859239653682954 stripped
