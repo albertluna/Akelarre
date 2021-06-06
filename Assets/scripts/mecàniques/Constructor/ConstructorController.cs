@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class ConstructorController : MonoBehaviour
 {
-    public static ConstructorController constructorController;
     public GameObject creadorColleccionables;
     public GameObject colleccionable;
     public GameObject colleccionablesExterns;
@@ -17,7 +16,6 @@ public class ConstructorController : MonoBehaviour
     void Start()
     {
         pocio.Comencar();
-        constructorController = this;
         connexio = GetComponent<ConnexioConsRec>();
     }
 
@@ -42,7 +40,7 @@ public class ConstructorController : MonoBehaviour
     public void CrearColleccionable(string nouColleccionable)
     {
         Debug.Log("NOVA COLLECIONABLE");
-        constructorController.NouColleccionable(recollectorController.escollirColleccionable(nouColleccionable));
+        NouColleccionable(recollectorController.escollirColleccionable(nouColleccionable));
     }
 
     public void NouColleccionable(Colleccionable nouColleccionable)

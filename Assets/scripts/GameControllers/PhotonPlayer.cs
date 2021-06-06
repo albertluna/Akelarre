@@ -34,7 +34,9 @@ public class PhotonPlayer : MonoBehaviour
                     GS.spawnPoints[spawnPicker].position, GS.spawnPoints[spawnPicker].rotation, 0);
                     break;
                 case RECOLLECTOR: //1
-                    spawnPicker = 1;
+                Debug.Log("Instanciem recollector");
+
+                spawnPicker = 1;
                     myAvatar = PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "PlayerRecollectorVariant"),
                     GS.spawnPoints[spawnPicker].position, GS.spawnPoints[spawnPicker].rotation, 0);
                     break;
