@@ -71,6 +71,7 @@ public class ConstructorController : MonoBehaviour
 
     public void ClicarMaterial()
     {
+        Debug.Log("HE CLICATMATERIAL. EL colleccionable es "+ colleccionable.name);
         if (colleccionable != null)
         {
             Debug.Log("MAterial CLicat - desplaçar a la pocio i seguir camí");

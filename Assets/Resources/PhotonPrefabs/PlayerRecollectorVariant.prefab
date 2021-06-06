@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   vides: 3
   PV: {fileID: 0}
-  connexio: {fileID: 0}
+  GS: {fileID: 0}
 --- !u!1001 &6572874378208447077
 PrefabInstance:
   m_ObjectHideFlags: 0
