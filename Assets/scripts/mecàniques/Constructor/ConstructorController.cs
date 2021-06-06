@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
 public class ConstructorController : MonoBehaviour
 {
@@ -10,13 +11,19 @@ public class ConstructorController : MonoBehaviour
     public Pocio pocio;
     public HUD_Constructor hud;
     public GameObject[] llistaColleccionables;
-    public ConnexioConsRec connexio;
+    public PhotonView PV;
+    public camera camera;
 
     // Start is called before the first frame update
     void Start()
     {
         pocio.Comencar();
-        connexio = GetComponent<ConnexioConsRec>();
+        PV = GetComponent<PhotonView>();
+        if(!PV.IsMine)
+        {
+            Destroy(hud.gameObject);
+            Destroy(camera.gameObject);
+        }
     }
 
     // Update is called once per frame

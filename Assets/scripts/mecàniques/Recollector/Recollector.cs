@@ -34,13 +34,11 @@ public class Recollector : MonoBehaviour
             colleccionable.parent.estaOcupat = false;
             Destroy(collision.gameObject);
 
-        } else if(collision.gameObject.CompareTag("Bullet") && vides > 0)
+        }
+        else if (collision.gameObject.CompareTag("Bullet") && vides > 0)
         {
             vides--;
-            Destroy(collision.gameObject);            
+            Destroy(collision.gameObject);
         }
     }
-
-    
-
 }

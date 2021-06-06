@@ -18,7 +18,6 @@ public class PhotonPlayer : MonoBehaviour
     void Start()
     {
         PV = GetComponent<PhotonView>();
-        
     }
 
     public void Instantiate()
@@ -26,7 +25,7 @@ public class PhotonPlayer : MonoBehaviour
         GameSetUp GS = FindObjectOfType<GameSetUp>();
         int spawnPicker = 0;
         Debug.Log("spawnpicker = " + spawnPicker);
-        //if (PV.IsMine) {
+        if (PV.IsMine) {
             switch (Rol) {
                 case DEFENSOR:
                     spawnPicker = 0;//0
@@ -40,8 +39,12 @@ public class PhotonPlayer : MonoBehaviour
                     myAvatar = PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "PlayerRecollectorVariant"),
                     GS.spawnPoints[spawnPicker].position, GS.spawnPoints[spawnPicker].rotation, 0);
                     break;
+                case CONSTRUCTOR:
+                    spawnPicker = 2;
+                    myAvatar = PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "PlayerConstructorVariant"),
+                    GS.spawnPoints[spawnPicker].position, GS.spawnPoints[spawnPicker].rotation, 0);
+                    break;
             }
-        //}
+        }
     }
-    
 }
