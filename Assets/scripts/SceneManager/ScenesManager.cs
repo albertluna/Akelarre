@@ -7,11 +7,9 @@ public static class ScenesManager {
 
     public enum Scene
     {
-        Constructor,
         Prototip,
         MenuMultijugador,
         MapaNivells
-        
     }
 
     public static void Load(Scene scene)

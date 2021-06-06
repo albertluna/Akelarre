@@ -28,7 +28,7 @@ public class RoomController : MonoBehaviourPunCallbacks, IInRoomCallbacks {
     void Start()
     {
         PV = GetComponent<PhotonView>();
-        PhotonNetwork.AutomaticallySyncScene = false;
+        PhotonNetwork.AutomaticallySyncScene = true;
         photonPlayer = this.GetComponent<PhotonPlayer>();
 
     }
@@ -79,7 +79,9 @@ public class RoomController : MonoBehaviourPunCallbacks, IInRoomCallbacks {
         {
             if (PhotonNetwork.IsMasterClient && PV.IsMine)
             {
-                PV.RPC("RPC_LoadGameScene", RpcTarget.All);
+                PhotonNetwork.AutomaticallySyncScene = true;
+                PhotonNetwork.LoadLevel(ScenesManager.GetScene(ScenesManager.Scene.Prototip));
+                //PV.RPC("RPC_LoadGameScene", RpcTarget.All);
                 //RPC_LoadGameScene();
             }
         } else
@@ -89,7 +91,7 @@ public class RoomController : MonoBehaviourPunCallbacks, IInRoomCallbacks {
         
     }
     
-    [PunRPC]
+    /*[PunRPC]
     private void RPC_LoadGameScene()
     {
         Debug.Log("Nou nivell pel rol" + photonPlayer.Rol);
@@ -101,7 +103,7 @@ public class RoomController : MonoBehaviourPunCallbacks, IInRoomCallbacks {
         {
             PhotonNetwork.LoadLevel(ScenesManager.GetScene(ScenesManager.Scene.Prototip));
         }
-    }
+    }*/
 
     /*void OnSceneFinishedLoading(Scene scene, LoadSceneMode mode)
     {
