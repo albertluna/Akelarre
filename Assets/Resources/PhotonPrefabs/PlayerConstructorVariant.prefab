@@ -474,9 +474,10 @@ MonoBehaviour:
   colleccionable: {fileID: 0}
   colleccionablesExterns: {fileID: 0}
   pocio: {fileID: 1509903060455888206}
-  hud: {fileID: 0}
+  hud: {fileID: 5025687358769053586}
   llistaColleccionables: []
-  connexio: {fileID: 0}
+  PV: {fileID: 0}
+  camera: {fileID: 0}
 --- !u!1 &4584613577725122276
 GameObject:
   m_ObjectHideFlags: 0
@@ -592,7 +593,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   llista: {fileID: 6586172271901102024}
-  pocio: {fileID: 0}
+  pocio: {fileID: 1509903060455888206}
 --- !u!1 &4794553670564606890
 GameObject:
   m_ObjectHideFlags: 0
@@ -1032,7 +1033,7 @@ PrefabInstance:
     - target: {fileID: 3800794584934393199, guid: 25667044bcc3f7944b5727c0157aff8e,
         type: 3}
       propertyPath: m_Name
-      value: PlayerConstrcutor Variant
+      value: PlayerConstructorVariant
       objectReference: {fileID: 0}
     - target: {fileID: 7488162796950587039, guid: 25667044bcc3f7944b5727c0157aff8e,
         type: 3}
