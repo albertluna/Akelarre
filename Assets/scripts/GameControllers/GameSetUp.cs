@@ -35,6 +35,13 @@ public class GameSetUp : MonoBehaviour
         return spawnPoints.Length;
     }
 
+    public void getRols()
+    {
+        constructor = FindObjectOfType<ConstructorController>();
+        defensor = FindObjectOfType<Defensor>();
+        recollector = FindObjectOfType<Recollector>();
+    }
+
     public void getConstructor(GameObject nouConstructor)
     {
         constructor = nouConstructor.GetComponent<ConstructorController>();

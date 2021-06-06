@@ -30,7 +30,8 @@ public class Recollector : MonoBehaviour
 
             Colleccionable colleccionable = collision.gameObject.GetComponent<Colleccionable>();
             colleccionable.parent.estaOcupat = false;
-            GS.constructor.EnviarColleccionable(colleccionable.color);
+            ConstructorController constructor = FindObjectOfType<ConstructorController>();
+            constructor.EnviarColleccionable(colleccionable.color);
             Destroy(collision.gameObject);
 
         }
