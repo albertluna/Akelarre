@@ -476,8 +476,8 @@ MonoBehaviour:
   pocio: {fileID: 1509903060455888206}
   hud: {fileID: 5025687358769053586}
   llistaColleccionables: []
-  PV: {fileID: 0}
-  camera: {fileID: 0}
+  PV: {fileID: 6546861209418122729}
+  camera: {fileID: 4409116353844612294}
 --- !u!1 &4584613577725122276
 GameObject:
   m_ObjectHideFlags: 0
@@ -1045,6 +1045,24 @@ PrefabInstance:
     - {fileID: 8367320434267191822, guid: 25667044bcc3f7944b5727c0157aff8e, type: 3}
     - {fileID: 501862322, guid: 25667044bcc3f7944b5727c0157aff8e, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 25667044bcc3f7944b5727c0157aff8e, type: 3}
+--- !u!20 &4409116353844612294 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 501862320, guid: 25667044bcc3f7944b5727c0157aff8e,
+    type: 3}
+  m_PrefabInstance: {fileID: 4409116353398555510}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &6546861209418122729 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7488162796950587039, guid: 25667044bcc3f7944b5727c0157aff8e,
+    type: 3}
+  m_PrefabInstance: {fileID: 4409116353398555510}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 688894058731529753}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &4213553665108516107 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 525196355173965437, guid: 25667044bcc3f7944b5727c0157aff8e,

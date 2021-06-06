@@ -24,7 +24,7 @@ public class PhotonPlayer : MonoBehaviour
     {
         GameSetUp GS = FindObjectOfType<GameSetUp>();
         int spawnPicker = 0;
-        Debug.Log("spawnpicker = " + spawnPicker);
+        Debug.Log("spawnpicker = " + Rol);
         if (PV.IsMine) {
             switch (Rol) {
                 case DEFENSOR:

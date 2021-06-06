@@ -12,7 +12,7 @@ public class ConstructorController : MonoBehaviour
     public HUD_Constructor hud;
     public GameObject[] llistaColleccionables;
     public PhotonView PV;
-    public camera camera;
+    public Camera camera;
 
     // Start is called before the first frame update
     void Start()
