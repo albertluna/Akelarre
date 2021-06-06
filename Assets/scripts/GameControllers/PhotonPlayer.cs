@@ -29,20 +29,20 @@ public class PhotonPlayer : MonoBehaviour
                 case DEFENSOR:
                     spawnPicker = 0;//0
                     PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "PlayerDefensorVariant"),
-                    GS.spawnPoints[spawnPicker].position, GS.spawnPoints[spawnPicker].rotation, 0));
+                    GS.spawnPoints[spawnPicker].position, GS.spawnPoints[spawnPicker].rotation, 0);
                     break;
                 case RECOLLECTOR: //1
                 Debug.Log("Instanciem recollector");
 
                 spawnPicker = 1;
                     PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "PlayerRecollectorVariant"),
-                    GS.spawnPoints[spawnPicker].position, GS.spawnPoints[spawnPicker].rotation, 0));
+                    GS.spawnPoints[spawnPicker].position, GS.spawnPoints[spawnPicker].rotation, 0);
                     Debug.Log("Estic instanciant bé? " + myAvatar.gameObject.name);
                     break;
                 case CONSTRUCTOR:
                     spawnPicker = 2;
                     PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "PlayerConstructorVariant"),
-                    GS.spawnPoints[spawnPicker].position, GS.spawnPoints[spawnPicker].rotation, 0));
+                    GS.spawnPoints[spawnPicker].position, GS.spawnPoints[spawnPicker].rotation, 0);
                     break;
         }
         GS.getRols();
