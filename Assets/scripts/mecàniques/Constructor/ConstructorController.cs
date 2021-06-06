@@ -13,13 +13,16 @@ public class ConstructorController : MonoBehaviour
     public GameObject[] llistaColleccionables;
     public PhotonView PV;
     public Camera camera;
+    public GameSetUp GS;
 
     // Start is called before the first frame update
     void Start()
     {
         pocio.Comencar();
         PV = GetComponent<PhotonView>();
-        if(!PV.IsMine)
+        GS = FindObjectOfType<GameSetUp>();
+
+        if (!PV.IsMine)
         {
             Destroy(hud.gameObject);
             Destroy(camera.gameObject);
@@ -44,7 +47,13 @@ public class ConstructorController : MonoBehaviour
         colleccionable = Instantiate(colleccionablesExterns, creadorColleccionables.transform);
     }
 
-    public void CrearColleccionable(string nouColleccionable)
+    public void EnviarColleccionable(string colleccionable)
+    {
+        PV.RPC("RPC_CrearColleccionable", RpcTarget.All, colleccionable);
+    }
+
+    [PunRPC]
+    private void RPC_CrearColleccionable(string nouColleccionable)
     {
         Debug.Log("NOVA COLLECIONABLE");
         NouColleccionable(recollectorController.escollirColleccionable(nouColleccionable));
@@ -52,6 +61,7 @@ public class ConstructorController : MonoBehaviour
 
     public void NouColleccionable(Colleccionable nouColleccionable)
     {
+        Debug.Log("PUTA VIDA " + nouColleccionable.color);
         if (colleccionable != null)
         {
             Destroy(colleccionable);

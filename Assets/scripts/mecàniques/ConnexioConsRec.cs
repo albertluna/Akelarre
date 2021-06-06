@@ -7,7 +7,7 @@ using Photon.Pun;
 public class ConnexioConsRec : MonoBehaviour
 {
 
-    public string colleccionable;
+    /*public string colleccionable;
     public PhotonView PV;
     public ConstructorController constructor;
      
@@ -27,5 +27,5 @@ public class ConnexioConsRec : MonoBehaviour
             Debug.Log("ENVIA YEAHHH " + constructor.name);
             constructor.CrearColleccionable(colleccionable);
         }
-    }
+    }*/
 }
