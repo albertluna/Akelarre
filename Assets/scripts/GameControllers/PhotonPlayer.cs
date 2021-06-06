@@ -38,6 +38,7 @@ public class PhotonPlayer : MonoBehaviour
                 spawnPicker = 1;
                     myAvatar = PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "PlayerRecollectorVariant"),
                     GS.spawnPoints[spawnPicker].position, GS.spawnPoints[spawnPicker].rotation, 0);
+                    Debug.Log("Estic instanciant bé? " + myAvatar.gameObject.name);
                     break;
                 case CONSTRUCTOR:
                     spawnPicker = 2;

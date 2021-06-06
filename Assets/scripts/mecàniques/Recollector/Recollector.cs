@@ -9,7 +9,6 @@ public class Recollector : MonoBehaviour
     Collider colider;
     public int vides;
     public PhotonView PV;
-    public ConnexioConsRec connexio;
 
     // Start is called before the first frame update
     void Start()
@@ -18,8 +17,6 @@ public class Recollector : MonoBehaviour
         colider = GetComponent<CapsuleCollider>();
         vides = 3;
         PV = GetComponent<PhotonView>();
-        connexio = FindObjectOfType<ConnexioConsRec>();
-        connexio.PV = PV;
             //GameObject.Find("ConnectionController").GetComponent<ConnexioConsRec>();
     }
 
@@ -30,7 +27,6 @@ public class Recollector : MonoBehaviour
             Debug.Log("Transportar colleccionable a constructor");
 
             Colleccionable colleccionable = collision.gameObject.GetComponent<Colleccionable>();
-            connexio.enviarInfo(colleccionable.color);
             colleccionable.parent.estaOcupat = false;
             Destroy(collision.gameObject);
 
