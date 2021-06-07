@@ -2,7 +2,7 @@
 using System.Collections;
 using Photon.Pun;
 
-public class recollectorController : MonoBehaviourPunCallbacks , IPunObservable
+public class recollectorController : MonoBehaviourPunCallbacks// , IPunObservable
 {
     public GameObject RC;
     public ColleccionableCreators[] creators;
@@ -31,32 +31,35 @@ public class recollectorController : MonoBehaviourPunCallbacks , IPunObservable
     // Update is called once per frame
     void Update()
     {
-        if (timer >= 0)
+        if (PV.IsMine)
         {
-            timer -= Time.deltaTime;
-        }
-        else
-        {
-            int resultat = Random.Range(0, 99);
-            int percentatgeAnterior = 0;
-            int posicio = Random.Range(0, creators.Length-1);
-
-            //comprovar que la nova posicio no estigui ocupada
-            while(creators[posicio].estaOcupat)
+            if (timer >= 0)
             {
-                posicio = Random.Range(0, creators.Length-1);
+                timer -= Time.deltaTime;
             }
-
-            //escollir quin dels diferents tipus de colleccionables es crearà
-            foreach (Colleccionable col in colleccionables)
+            else
             {
-                if(resultat >= percentatgeAnterior && resultat < (col.percentatge+percentatgeAnterior))
+                int resultat = Random.Range(0, 99);
+                int percentatgeAnterior = 0;
+                int posicio = Random.Range(0, creators.Length - 1);
+
+                //comprovar que la nova posicio no estigui ocupada
+                while (creators[posicio].estaOcupat)
                 {
-                    PV.RPC("RPC_crearColleccionable", RpcTarget.All, posicio, col.color);
+                    posicio = Random.Range(0, creators.Length - 1);
                 }
-                percentatgeAnterior += col.percentatge;
+
+                //escollir quin dels diferents tipus de colleccionables es crearà
+                foreach (Colleccionable col in colleccionables)
+                {
+                    if (resultat >= percentatgeAnterior && resultat < (col.percentatge + percentatgeAnterior))
+                    {
+                        PV.RPC("RPC_crearColleccionable", RpcTarget.All, posicio, col.color);
+                    }
+                    percentatgeAnterior += col.percentatge;
+                }
+                timer = Random.Range(minEspera, maxEspera);
             }
-            timer = Random.Range(minEspera, maxEspera);
         }
     }
 
@@ -72,10 +75,10 @@ public class recollectorController : MonoBehaviourPunCallbacks , IPunObservable
     [PunRPC]
     private void RPC_crearColleccionable(int posicio, string color)
     {
-        creators[posicio].Instantiate(escollirColleccionable(color));
+        this.creators[posicio].Instantiate(escollirColleccionable(color));
     }
 
-    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+    /*public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
     {
         if(stream.IsWriting)
         {
@@ -84,6 +87,6 @@ public class recollectorController : MonoBehaviourPunCallbacks , IPunObservable
         {
 
         }
-    }
+    }*/
 
 }
