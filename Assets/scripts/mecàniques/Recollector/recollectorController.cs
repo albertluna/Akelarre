@@ -48,7 +48,6 @@ public class recollectorController : MonoBehaviour
             //escollir quin dels diferents tipus de colleccionables es crearà
             foreach (Colleccionable col in colleccionables)
             {
-                Debug.Log("percentatge " + percentatgeAnterior + " i col.per = " + col.percentatge);
                 if(resultat >= percentatgeAnterior && resultat < (col.percentatge+percentatgeAnterior))
                 {
                     PV.RPC("RPC_crearColleccionable", RpcTarget.All, posicio, col.color);
