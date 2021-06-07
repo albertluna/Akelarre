@@ -10,6 +10,8 @@ public class MovimentAtac : MonoBehaviour
     private Vector2 objectiu;
     [SerializeField]
     private float velocitat;
+
+    public GameObject parent;
     // Start is called before the first frame update
     void Start()
     {

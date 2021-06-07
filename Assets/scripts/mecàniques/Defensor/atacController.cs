@@ -31,6 +31,7 @@ public class atacController : MonoBehaviour
         {
             int posicio = Random.Range(1, creators.Length);
             GameObject instancia = Instantiate(bullet, creators[posicio].position, Quaternion.identity);
+            instancia.GetComponent<MovimentAtac>().parent = this.gameObject;
             timer = Random.Range(minEspera, maxEspera);
         }
     }
