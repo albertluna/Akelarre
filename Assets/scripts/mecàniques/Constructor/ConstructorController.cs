@@ -55,13 +55,11 @@ public class ConstructorController : MonoBehaviour
     [PunRPC]
     private void RPC_CrearColleccionable(string nouColleccionable)
     {
-        Debug.Log("NOVA COLLECIONABLE");
         NouColleccionable(recollectorController.escollirColleccionable(nouColleccionable));
     }
 
     public void NouColleccionable(Colleccionable nouColleccionable)
     {
-        Debug.Log("PUTA VIDA " + nouColleccionable.color);
         if (colleccionable != null)
         {
             Destroy(colleccionable);

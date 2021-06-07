@@ -67,7 +67,7 @@ public class recollectorController : MonoBehaviourPunCallbacks// , IPunObservabl
     {
         foreach (Colleccionable col in llistaColleccionables)
         {
-            if (col.color.Equals(color)) { Debug.Log(col.color); return col; }
+            if (col.color.Equals(color)) { return col; }
         }
         return null;
     }
@@ -75,6 +75,7 @@ public class recollectorController : MonoBehaviourPunCallbacks// , IPunObservabl
     [PunRPC]
     private void RPC_crearColleccionable(int posicio, string color)
     {
+        Debug.Log("L'index es " + posicio);
         this.creators[posicio].Instantiate(escollirColleccionable(color));
     }
 
@@ -86,6 +87,7 @@ public class recollectorController : MonoBehaviourPunCallbacks// , IPunObservabl
             GameObject fill = index.GetComponentInChildren<Colleccionable>().gameObject;
             if(fill == colleccionable)
             {
+                Debug.Log("index es " + i);
                 return i;
             }
             i++;
@@ -95,12 +97,14 @@ public class recollectorController : MonoBehaviourPunCallbacks// , IPunObservabl
 
     public void deleteColleccionable(int index)
     {
-        PV.RPC("RPC_crearColleccionable", RpcTarget.All, index);
+        Debug.Log("DELMINANT");
+        PV.RPC("RPC_deleteColleccionable", RpcTarget.All, index);
 
     }
 
     private void RPC_deleteColleccionable(int index)
     {
+        Debug.Log("AQUISTEM");
         Destroy(creators[index].GetComponentInChildren<Colleccionable>().gameObject);
     }
 
