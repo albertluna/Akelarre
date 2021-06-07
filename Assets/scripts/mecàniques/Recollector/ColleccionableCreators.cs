@@ -6,6 +6,7 @@ public class ColleccionableCreators : MonoBehaviour
 {
     public Transform transform;
     public bool estaOcupat;
+    public int index;
 
     // Start is called before the first frame update
     void Start()

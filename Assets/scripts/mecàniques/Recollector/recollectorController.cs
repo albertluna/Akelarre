@@ -26,6 +26,11 @@ public class recollectorController : MonoBehaviourPunCallbacks// , IPunObservabl
             percentatgeTotal += col.percentatge;
         }
         if (percentatgeTotal != 100) Debug.LogError("El percentatge total dels colleccionables no suma 100, suma" + percentatgeTotal);
+        //set index de cada creator
+        for (int i = 0; i < creators.Length; i++)
+        {
+            creators[i].index = i;
+        }
     }
 
     // Update is called once per frame
@@ -82,13 +87,14 @@ public class recollectorController : MonoBehaviourPunCallbacks// , IPunObservabl
     public int indexColleccionable(GameObject colleccionable)
     {
         int i = 0;
+        Colleccionable c = colleccionable.GetComponent<Colleccionable>();
+
         foreach(ColleccionableCreators index in creators)
         {
             Debug.Log("index = " + index.gameObject.name);
-            GameObject fill = index.gameObject.GetComponentInChildren<Colleccionable>().gameObject;
-            if(fill != null && fill == colleccionable)
+            //GameObject fill = index.gameObject.GetComponentInChildren<Colleccionable>().gameObject;
+            if(index == c.parent)
             {
-                Debug.Log("index es " + i);
                 return i;
             }
             i++;
