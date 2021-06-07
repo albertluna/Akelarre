@@ -78,6 +78,32 @@ public class recollectorController : MonoBehaviourPunCallbacks// , IPunObservabl
         this.creators[posicio].Instantiate(escollirColleccionable(color));
     }
 
+    public int indexColleccionable(GameObject colleccionable)
+    {
+        int i = 0;
+        foreach(ColleccionableCreators index in creators)
+        {
+            GameObject fill = index.GetComponentInChildren<Colleccionable>().gameObject;
+            if(fill == colleccionable)
+            {
+                return i;
+            }
+            i++;
+        }
+        return -1;
+    }
+
+    public void deleteColleccionable(int index)
+    {
+        PV.RPC("RPC_crearColleccionable", RpcTarget.All, index);
+
+    }
+
+    private void RPC_deleteColleccionable(int index)
+    {
+        Destroy(creators[index].GetComponentInChildren<Colleccionable>().gameObject);
+    }
+
     /*public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
     {
         if(stream.IsWriting)
