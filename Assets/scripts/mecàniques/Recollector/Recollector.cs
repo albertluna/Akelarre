@@ -32,6 +32,8 @@ public class Recollector : MonoBehaviour
             colleccionable.parent.estaOcupat = false;
             ConstructorController constructor = FindObjectOfType<ConstructorController>();
             constructor.EnviarColleccionable(colleccionable.color);
+            PV.RPC("RPC_destroyColleccionable", RpcTarget.All, collision.gameObject);
+
             Destroy(collision.gameObject);
 
         }
@@ -40,6 +42,12 @@ public class Recollector : MonoBehaviour
             vides--;
             Destroy(collision.gameObject);
         }
+    }
+
+    [PunRPC]
+    private void RPC_destroyColleccionable(GameObject gameObject)
+    {
+        Destroy(gameObject);
     }
 
 }

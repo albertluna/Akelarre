@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using Photon.Pun;
 
 public class recollectorController : MonoBehaviour
 {
@@ -7,6 +8,7 @@ public class recollectorController : MonoBehaviour
     public float timer;
     public float maxEspera;
     public float minEspera;
+    public PhotonView PV;
 
     public Colleccionable[] colleccionables;
     public static Colleccionable[] llistaColleccionables;
@@ -49,7 +51,7 @@ public class recollectorController : MonoBehaviour
                 Debug.Log("percentatge " + percentatgeAnterior + " i col.per = " + col.percentatge);
                 if(resultat >= percentatgeAnterior && resultat < (col.percentatge+percentatgeAnterior))
                 {
-                    creators[posicio].Instantiate(col);
+                    PV.RPC("RPC_crearColleccionable", RpcTarget.All, posicio, col.color);
                 }
                 percentatgeAnterior += col.percentatge;
             }
@@ -64,5 +66,11 @@ public class recollectorController : MonoBehaviour
             if (col.color.Equals(color)) { Debug.Log(col.color); return col; }
         }
         return null;
+    }
+
+    [PunRPC]
+    private void RPC_crearColleccionable(int posicio, string color)
+    {
+        creators[posicio].Instantiate(escollirColleccionable(color));
     }
 }
