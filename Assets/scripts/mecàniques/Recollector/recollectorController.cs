@@ -85,7 +85,7 @@ public class recollectorController : MonoBehaviourPunCallbacks// , IPunObservabl
         foreach(ColleccionableCreators index in creators)
         {
             GameObject fill = index.GetComponentInChildren<Colleccionable>().gameObject;
-            if(fill == colleccionable)
+            if(fill != null && fill == colleccionable)
             {
                 Debug.Log("index es " + i);
                 return i;
