@@ -2,8 +2,9 @@
 using System.Collections;
 using Photon.Pun;
 
-public class recollectorController : MonoBehaviour
+public class recollectorController : MonoBehaviourPunCallbacks , IPunObservable
 {
+    public GameObject RC;
     public ColleccionableCreators[] creators;
     public float timer;
     public float maxEspera;
@@ -15,8 +16,9 @@ public class recollectorController : MonoBehaviour
 
     void Start()
     {
-        creators = GetComponentsInChildren<ColleccionableCreators>();
-        colleccionables = GetComponentsInChildren<Colleccionable>();
+        RC = GameObject.Find("RecollectorController");
+        creators = RC.GetComponentsInChildren<ColleccionableCreators>();
+        colleccionables = RC.GetComponentsInChildren<Colleccionable>();
         llistaColleccionables = colleccionables;
         float percentatgeTotal = 0;
         foreach(Colleccionable col in colleccionables)
@@ -72,4 +74,16 @@ public class recollectorController : MonoBehaviour
     {
         creators[posicio].Instantiate(escollirColleccionable(color));
     }
+
+    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+    {
+        if(stream.IsWriting)
+        {
+
+        } else
+        {
+
+        }
+    }
+
 }

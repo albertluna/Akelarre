@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
 
-public class Moviment : MonoBehaviourPunCallbacks
+public class Moviment : MonoBehaviourPunCallbacks, IPunObservable
 {
     private Rigidbody rigidbody;
     public PhotonView PV;
@@ -75,4 +75,14 @@ public class Moviment : MonoBehaviourPunCallbacks
         }
     }
 
+    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+    {
+        if (stream.IsWriting)
+        {
+            stream.SendNext(this.transform.position);
+        } else
+        {
+            this.transform.position = (Vector3)stream.ReceiveNext();
+        }
+    }
 }
