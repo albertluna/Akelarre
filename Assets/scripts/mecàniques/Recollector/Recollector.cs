@@ -39,7 +39,7 @@ public class Recollector : MonoBehaviour
             if (index == -1) Debug.LogError("Fail");
             rc.deleteColleccionable(index);
 
-            Destroy(collision.gameObject);
+            //Destroy(collision.gameObject);
 
         }
         else if (collision.gameObject.CompareTag("Bullet") && vides > 0)

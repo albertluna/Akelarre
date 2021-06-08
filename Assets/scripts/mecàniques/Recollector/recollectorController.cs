@@ -16,6 +16,7 @@ public class recollectorController : MonoBehaviourPunCallbacks// , IPunObservabl
 
     void Start()
     {
+        PV = GetComponent<PhotonView>();
         RC = GameObject.Find("RecollectorController");
         creators = RC.GetComponentsInChildren<ColleccionableCreators>();
         colleccionables = RC.GetComponentsInChildren<Colleccionable>();
@@ -80,7 +81,7 @@ public class recollectorController : MonoBehaviourPunCallbacks// , IPunObservabl
     [PunRPC]
     private void RPC_crearColleccionable(int posicio, string color)
     {
-        Debug.Log("L'index es " + posicio);
+        //Debug.Log("L'index es " + posicio);
         this.creators[posicio].Instantiate(escollirColleccionable(color));
     }
 
@@ -89,12 +90,15 @@ public class recollectorController : MonoBehaviourPunCallbacks// , IPunObservabl
         int i = 0;
         Colleccionable c = colleccionable.GetComponent<Colleccionable>();
 
-        foreach(ColleccionableCreators index in creators)
+        foreach (ColleccionableCreators index in creators)
         {
-            Debug.Log("index = " + index.gameObject.name);
+            
             //GameObject fill = index.gameObject.GetComponentInChildren<Colleccionable>().gameObject;
             if(index == c.parent)
             {
+                Debug.Log("L'index es " + i);
+
+                Debug.Log("index = " + index.gameObject.name);
                 return i;
             }
             i++;
@@ -109,6 +113,7 @@ public class recollectorController : MonoBehaviourPunCallbacks// , IPunObservabl
 
     }
 
+    [PunRPC]
     private void RPC_deleteColleccionable(int index)
     {
         Debug.Log("AQUISTEM");
