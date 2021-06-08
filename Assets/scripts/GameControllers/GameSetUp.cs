@@ -11,15 +11,11 @@ public class GameSetUp : MonoBehaviour
     public Defensor defensor;
     public Recollector recollector;
 
+    public int vides;
+
 
     public Transform[] spawnPoints;
 
-    void Start()
-    {
-        Debug.Log("get photon player");
-        //player = GameObject.Find("RoomController").GetComponent<RoomController>().photonPlayer;
-        //player.Instantiate();
-    }
 
     private void OnEnable()
     {
@@ -30,10 +26,7 @@ public class GameSetUp : MonoBehaviour
         }
     }
 
-    public int getSpawnpointLength()
-    {
-        return spawnPoints.Length;
-    }
+    public int getSpawnpointLength() { return spawnPoints.Length; }
 
     public void getRols()
     {
@@ -42,18 +35,12 @@ public class GameSetUp : MonoBehaviour
         recollector = FindObjectOfType<Recollector>();
     }
 
-    public void getConstructor(GameObject nouConstructor)
+    public void restaVida()
     {
-        constructor = nouConstructor.GetComponent<ConstructorController>();
-    }
-
-    public void getDefensor(GameObject nouDefensor)
-    {
-        defensor = nouDefensor.GetComponent<Defensor>();
-    }
-
-    public void getRecollector(GameObject nouRecollector)
-    {
-        recollector = nouRecollector.GetComponent<Recollector>();
+        vides--;
+        if (vides == 0)
+        {
+            Debug.Log("GAME OVER");
+        }
     }
 }

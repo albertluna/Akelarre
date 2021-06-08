@@ -10,8 +10,9 @@ public class MovimentAtac : MonoBehaviour
     private Vector2 objectiu;
     [SerializeField]
     private float velocitat;
+    
 
-    public GameObject parent;
+    public Defensor defensor;
     // Start is called before the first frame update
     void Start()
     {
@@ -31,6 +32,7 @@ public class MovimentAtac : MonoBehaviour
         {
             Debug.Log("Una vida menys");
             Destroy(this.gameObject);
+            defensor.UnaVidaMenys();
         } else if(collision.gameObject.CompareTag("Colleccionable"))
         {
             Destroy(collision.gameObject);

@@ -16,6 +16,7 @@ public class atacController : MonoBehaviour
     public GameObject instanciador;
     [SerializeField]
     private PhotonView PV;
+    public Defensor defensor;
 
     /// <summary> array de gameobjects
     /// https://stuartspixelgames.com/2017/08/02/make-all-of-objects-children-into-an-array-unity-c/
@@ -27,6 +28,7 @@ public class atacController : MonoBehaviour
         instanciador = GameObject.Find("instanciador");
         creators = AC.GetComponentsInChildren<Transform>();
         PV = GetComponent<PhotonView>();
+        defensor = GetComponent<Defensor>();
     }
 
     // Update is called once per frame
@@ -51,7 +53,7 @@ public class atacController : MonoBehaviour
     private void RPC_instanciarAtac(int posicio)
     {
         GameObject instancia = Instantiate(bullet, creators[posicio].position, Quaternion.identity, instanciador.transform);
-        instancia.GetComponent<MovimentAtac>().parent = this.gameObject;
+        instancia.GetComponent<MovimentAtac>().defensor = defensor;
         Debug.Log("INSTANCIAT");
     }
 }
