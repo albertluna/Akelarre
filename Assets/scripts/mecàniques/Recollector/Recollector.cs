@@ -25,7 +25,7 @@ public class Recollector : MonoBehaviour
 
     public void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Colleccionable"))
+        if (collision.gameObject.CompareTag("Colleccionable") && PV.IsMine)
         {
             Debug.Log("Transportar colleccionable a constructor");
 
