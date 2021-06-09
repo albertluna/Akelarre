@@ -1309,7 +1309,7 @@ PrefabInstance:
     - target: {fileID: 5810669214599791384, guid: 22d2088d20d63464bb9b1319938406bd,
         type: 3}
       propertyPath: percentatge
-      value: 10
+      value: 20
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 22d2088d20d63464bb9b1319938406bd, type: 3}
