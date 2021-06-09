@@ -64,7 +64,8 @@ public class ConstructorController : MonoBehaviour
         {
             Destroy(colleccionable);
         }
-        colleccionable = Instantiate(nouColleccionable.gameObject, creadorColleccionables.transform);
+        colleccionable = Instantiate(nouColleccionable.gameObject,
+            creadorColleccionables.transform.position, Quaternion.identity, creadorColleccionables.transform); ;
     }
 
     public void ClicarMaterial()
@@ -74,6 +75,7 @@ public class ConstructorController : MonoBehaviour
             Debug.Log("MAterial CLicat - desplaçar a la pocio i seguir camí");
             if (pocio.esCollecicionableCorrecte(colleccionable.GetComponent<Colleccionable>()))
             {
+                Debug.Log("Seguent amb " + colleccionable.GetComponent<Colleccionable>().color);
                 pocio.Seguent();
             }
             else

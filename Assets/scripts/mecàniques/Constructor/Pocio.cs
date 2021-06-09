@@ -15,6 +15,7 @@ public class Pocio : MonoBehaviour
 
     public bool esCollecicionableCorrecte(Colleccionable colleccionable)
     {
+        Debug.Log("real=" + colleccionable.color + ". Hauria + " + llista[index].color);
         return colleccionable.color.Equals(llista[index].color);
     }
 
