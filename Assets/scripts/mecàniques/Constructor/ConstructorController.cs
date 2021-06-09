@@ -86,4 +86,10 @@ public class ConstructorController : MonoBehaviour
             Destroy(colleccionable);
         }
     }
+
+    /*[PunRPC]
+    private void RPC_Victoria()
+    {
+        ScenesManager.Load(ScenesManager.Scene.MenuMultijugador);
+    }*/
 }

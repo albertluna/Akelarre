@@ -1,10 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
 public class GameSetUp : MonoBehaviour
 {
-    public static GameSetUp GS;
     public PhotonPlayer player;
 
     public ConstructorController constructor;
@@ -13,18 +13,18 @@ public class GameSetUp : MonoBehaviour
 
     public int vides;
 
+    public GameObject GameOver;
+    public GameObject Victory;
+
 
     public Transform[] spawnPoints;
 
-
-    private void OnEnable()
+    void Start()
     {
-        Debug.Log("Enabelitzar");
-        if(GameSetUp.GS = null)
-        {
-            GameSetUp.GS = this;
-        }
+        GameOver.SetActive(false);
+        Victory.SetActive(false);
     }
+
 
     public int getSpawnpointLength() { return spawnPoints.Length; }
 
@@ -40,7 +40,27 @@ public class GameSetUp : MonoBehaviour
         vides--;
         if (vides == 0)
         {
-            Debug.Log("GAME OVER");
+            PartidaPerduda();
         }
+    }
+
+    public void PartidaPerduda()
+    {
+        Debug.Log("GAME OVER");
+        Time.timeScale = 0;
+        GameOver.SetActive(true);
+    }
+
+    public void PartidaGuanyada()
+    {
+        Debug.Log("Victoria");
+        Time.timeScale = 0;
+        Victory.SetActive(true);
+    }
+
+    public void OnBotoVictoria()
+    {
+        PhotonNetwork.LoadLevel(ScenesManager.GetScene(ScenesManager.Scene.MapaNivells));
+
     }
 }

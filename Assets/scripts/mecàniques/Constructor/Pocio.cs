@@ -22,11 +22,6 @@ public class Pocio : MonoBehaviour
     public void Seguent()
     {
         index++;
-        if(esUltim())
-        {
-            final = true;
-            Debug.Log("FINAL");
-        }
     }
 
     public bool esUltim()
