@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44383803, g: 0.49319953, b: 0.57270694, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -851,7 +851,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 560210212}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 32, y: 3571, z: -1619}
+  m_LocalPosition: {x: 5534, y: 280, z: -1168}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1644108939}
@@ -1620,7 +1620,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1194986371}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -397, y: 2.7, z: 3982}
+  m_LocalPosition: {x: 84, y: 2834, z: 6012}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1644108939}
@@ -1867,6 +1867,26 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1ee69aeb8236fa748999609d1b71868e, type: 3}
+--- !u!1 &1506755350 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2463706537061040287, guid: 1ee69aeb8236fa748999609d1b71868e,
+    type: 3}
+  m_PrefabInstance: {fileID: 1506755349}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &1506755351
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1506755350}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 7450741763379908841, guid: 1ee69aeb8236fa748999609d1b71868e, type: 3}
 --- !u!1 &1588071278
 GameObject:
   m_ObjectHideFlags: 0
@@ -2025,6 +2045,8 @@ MonoBehaviour:
   defensor: {fileID: 0}
   recollector: {fileID: 0}
   vides: 0
+  GameOver: {fileID: 0}
+  Victory: {fileID: 0}
   spawnPoints:
   - {fileID: 1672981814}
   - {fileID: 1194986372}
