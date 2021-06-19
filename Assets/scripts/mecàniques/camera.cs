@@ -27,7 +27,7 @@ public class camera : MonoBehaviour
         Vector3 dir = jugador.transform.position.normalized;
         float distanciaAlCentre = Vector3.Distance(jugador.transform.position, new Vector3(0, 0, 0));
         radi = distanciaAlCentre + offset;
-        Vector3 posicioDesitjada = new Vector3(dir.x*radi, distanciaAlCentre/4, dir.z*radi);
+        Vector3 posicioDesitjada = new Vector3(dir.x*radi, distanciaAlCentre, dir.z*radi);
         Vector3 posicioIntermitja = Vector3.Lerp(this.transform.position, posicioDesitjada, movimentSuau);
         transform.position = posicioIntermitja;
         transform.LookAt(jugador.transform);

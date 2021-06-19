@@ -53,25 +53,20 @@ public class Moviment : MonoBehaviourPunCallbacks, IPunObservable
 
     public void FixedUpdate()
     {
-        if (!PV.IsMine)
+        if (!PV.IsMine || !controllable)
         {
             return;
         }
 
-        if (!controllable)
-        {
-            return;
-        }
-
-        Quaternion rot = rigidbody.rotation * Quaternion.Euler(0, horizontalInput * MaxSpeed * Time.fixedDeltaTime, 0);
+        Quaternion rot = rigidbody.rotation * Quaternion.Euler(0, horizontalInput * MaxSpeed/100 * Time.fixedDeltaTime, 0);
         GetComponent<Rigidbody>().MoveRotation(rot);
 
-        Vector3 force = (rot * Vector3.forward) * verticalInput * 1000.0f * MaxSpeed * Time.fixedDeltaTime;
+        Vector3 force = (rot * Vector3.forward) * verticalInput * 10000.0f * MaxSpeed * Time.fixedDeltaTime;
         GetComponent<Rigidbody>().AddForce(force);
 
-        if (GetComponent<Rigidbody>().velocity.magnitude > (MaxSpeed * 1000.0f))
+        if (GetComponent<Rigidbody>().velocity.magnitude > MaxSpeed)
         {
-            GetComponent<Rigidbody>().velocity = GetComponent<Rigidbody>().velocity.normalized * MaxSpeed * 1000.0f;
+            GetComponent<Rigidbody>().velocity = GetComponent<Rigidbody>().velocity.normalized * MaxSpeed;
         }
     }
 

@@ -275,12 +275,12 @@ PrefabInstance:
     - target: {fileID: 5656621935596023289, guid: 25667044bcc3f7944b5727c0157aff8e,
         type: 3}
       propertyPath: MaxSpeed
-      value: 100
+      value: 10000
       objectReference: {fileID: 0}
     - target: {fileID: 5656621935596023289, guid: 25667044bcc3f7944b5727c0157aff8e,
         type: 3}
       propertyPath: velocity
-      value: 50
+      value: 1000
       objectReference: {fileID: 0}
     - target: {fileID: 7488162796950587039, guid: 25667044bcc3f7944b5727c0157aff8e,
         type: 3}
@@ -300,7 +300,7 @@ PrefabInstance:
     - target: {fileID: 8367320434267191822, guid: 25667044bcc3f7944b5727c0157aff8e,
         type: 3}
       propertyPath: m_Constraints
-      value: 84
+      value: 80
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 25667044bcc3f7944b5727c0157aff8e, type: 3}
