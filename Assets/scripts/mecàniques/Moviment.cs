@@ -14,7 +14,7 @@ public class Moviment : MonoBehaviourPunCallbacks, IPunObservable
     private float horizontalInput;
     private float verticalInput;
 
-    public float velocity = 10;
+    public float velocity;
     public camera camera;
     Vector3 dir;
 
