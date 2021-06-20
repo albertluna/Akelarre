@@ -876,6 +876,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1564950026848020380, guid: c71007804a61f45b4924b4484d50ba42,
+        type: 3}
+      propertyPath: suavitatGir
+      value: 0.2
+      objectReference: {fileID: 0}
     - target: {fileID: 3398313323660144747, guid: c71007804a61f45b4924b4484d50ba42,
         type: 3}
       propertyPath: m_Constraints
@@ -884,7 +889,17 @@ PrefabInstance:
     - target: {fileID: 6572874378697524692, guid: c71007804a61f45b4924b4484d50ba42,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2602
+      value: 3791
+      objectReference: {fileID: 0}
+    - target: {fileID: 6572874378697524692, guid: c71007804a61f45b4924b4484d50ba42,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -6815
+      objectReference: {fileID: 0}
+    - target: {fileID: 6572874378697524695, guid: c71007804a61f45b4924b4484d50ba42,
+        type: 3}
+      propertyPath: movimentSuau
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 6664858100003558424, guid: c71007804a61f45b4924b4484d50ba42,
         type: 3}

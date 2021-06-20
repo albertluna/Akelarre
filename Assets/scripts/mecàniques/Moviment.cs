@@ -17,12 +17,15 @@ public class Moviment : MonoBehaviourPunCallbacks, IPunObservable
     public float velocity;
     public camera camera;
     Vector3 dir;
+    public Vector3 intermig;
+    public float suavitatGir;
 
 
     void Start()
     {
         rigidbody = GetComponent<Rigidbody>();
         PV = GetComponent<PhotonView>();
+        intermig = new Vector3(0, 0, 0);
         if (!PV.IsMine)
         {
             Destroy(camera.gameObject);
@@ -83,19 +86,23 @@ public class Moviment : MonoBehaviourPunCallbacks, IPunObservable
         right.Normalize();
 
         //this is the direction in the world space we want to move:
-        var desiredMoveDirection = right * verticalInput  - forward * horizontalInput;
-        Debug.Log("Moviment " + desiredMoveDirection);
+        Vector3 desiredMoveDirection = right * verticalInput  - forward * horizontalInput;
+
+
 
         //now we can apply the movement:
         //transform.Translate(desiredMoveDirection * velocity * Time.deltaTime);
-
-        //Quaternion.Lo
-        if (desiredMoveDirection.magnitude > 0.1)
+        /*Debug.Log("Intermig = " + intermig + ". Desired = " + desiredMoveDirection);
+        if(Vector3.Dot(intermig.normalized, desiredMoveDirection.normalized) == -1)
         {
-            GetComponent<Rigidbody>().MoveRotation(Quaternion.LookRotation(-desiredMoveDirection, Vector3.up));
+            desiredMoveDirection += right;
+        }*/
+        if (desiredMoveDirection.normalized.magnitude > 0.1)
+        {
+            //Debug.Log("intermig " + intermig);
+            intermig = Vector3.Lerp(intermig, desiredMoveDirection, suavitatGir);
+            GetComponent<Rigidbody>().MoveRotation(Quaternion.LookRotation(-intermig, Vector3.up));
         }
-        //this.transform.LookAt(tmp);
-
 
         if (GetComponent<Rigidbody>().velocity.magnitude > MaxSpeed)
         {
