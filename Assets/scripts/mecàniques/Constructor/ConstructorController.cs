@@ -18,9 +18,11 @@ public class ConstructorController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        pocio = FindObjectOfType<Pocio>();
         pocio.Comencar();
         PV = GetComponent<PhotonView>();
         GS = FindObjectOfType<GameSetUp>();
+
 
         if (!PV.IsMine)
         {

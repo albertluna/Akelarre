@@ -8,6 +8,8 @@ public class Defensor : MonoBehaviour
     public GameSetUp GS;
     [SerializeField]
     private PhotonView PV;
+    [SerializeField]
+    private CapsuleCollider collider;
     // Start is called before the first frame update
     void Start()
     {
@@ -15,7 +17,7 @@ public class Defensor : MonoBehaviour
         PV = GetComponent<PhotonView>();
     }
 
-    public void OnCollisionEnter(Collision collision)
+    public void OnTriggerEnter(Collider collision)
     {
         if ((collision.gameObject.CompareTag("Bullet") || collision.gameObject.CompareTag("Colleccionable"))&&PV.IsMine)
         {

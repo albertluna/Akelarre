@@ -16,7 +16,7 @@ public class Moviment : MonoBehaviourPunCallbacks, IPunObservable
 
     public float velocity;
     public camera camera;
-    Vector3 dir;
+    public Vector3 dir;
     public Vector3 intermig;
     public float suavitatGir;
 
@@ -44,19 +44,21 @@ public class Moviment : MonoBehaviourPunCallbacks, IPunObservable
         if (PV.IsMine) {
             horizontalInput = Input.GetAxis("Horizontal");
             verticalInput = Input.GetAxis("Vertical");
-            dir = camera.transform.forward + camera.transform.right;
-            dir.Normalize();
+            //dir = camera.transform.forward + camera.transform.right;
+            //dir.Normalize();
+            
+                dir = camera.transform.right * horizontalInput + camera.transform.forward * verticalInput;
+                rigidbody.velocity = velocity * new Vector3(dir.x, 0, dir.z);
 
+            
             //animator.SetFloat("Speed", Mathf.Abs(horizontalInput) + Mathf.Abs(verticalInput));
 
-            Vector3 tmp = camera.transform.right * horizontalInput + camera.transform.forward * verticalInput;
-            rigidbody.velocity = velocity * new Vector3(tmp.x, 0, tmp.z);
         }
     }
 
     public void FixedUpdate()
     {
-        if (!PV.IsMine || !controllable)
+        /*if (!PV.IsMine || !controllable)
         {
             return;
         }
@@ -74,7 +76,7 @@ public class Moviment : MonoBehaviourPunCallbacks, IPunObservable
         Debug.Log("PROJECCIO = " + projeccio.normalized);
         Vector3 dir = new Vector3(horizontalInput, 0, verticalInput);
 
-        float dif = Vector3.Angle(projeccio, new Vector3(1,0,0));*/
+        float dif = Vector3.Angle(projeccio, new Vector3(1,0,0));*//*
 
         var forward = camera.transform.forward;
         var right = camera.transform.right;
@@ -92,22 +94,25 @@ public class Moviment : MonoBehaviourPunCallbacks, IPunObservable
 
         //now we can apply the movement:
         //transform.Translate(desiredMoveDirection * velocity * Time.deltaTime);
-        /*Debug.Log("Intermig = " + intermig + ". Desired = " + desiredMoveDirection);
-        if(Vector3.Dot(intermig.normalized, desiredMoveDirection.normalized) == -1)
+        Debug.Log("Intermig = " + intermig + ". Desired = " + desiredMoveDirection);
+        /*if(Vector3.Dot(intermig.normalized, desiredMoveDirection.normalized) == -1)
         {
             desiredMoveDirection += right;
         }*/
+        /*
+        
         if (desiredMoveDirection.normalized.magnitude > 0.1)
         {
-            //Debug.Log("intermig " + intermig);
-            intermig = Vector3.Lerp(intermig, desiredMoveDirection, suavitatGir);
-            GetComponent<Rigidbody>().MoveRotation(Quaternion.LookRotation(-intermig, Vector3.up));
+            //Debug.Log("distancia " + Vector3.Distance(intermig, desiredMoveDirection));
+            //intermig = Vector3.Lerp(intermig, desiredMoveDirection, suavitatGir);
+            GetComponent<Rigidbody>().MoveRotation(Quaternion.LookRotation(-desiredMoveDirection, Vector3.up));
         }
 
         if (GetComponent<Rigidbody>().velocity.magnitude > MaxSpeed)
         {
             GetComponent<Rigidbody>().velocity = GetComponent<Rigidbody>().velocity.normalized * MaxSpeed;
-        }
+        }*/
+
     }
 
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
