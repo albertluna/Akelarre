@@ -24,7 +24,6 @@ public class Moviment : MonoBehaviourPunCallbacks, IPunObservable
     void Start()
     {
         rigidbody = GetComponent<Rigidbody>();
-        PV = GetComponent<PhotonView>();
         intermig = new Vector3(0, 0, 0);
         if (!PV.IsMine)
         {
@@ -58,62 +57,67 @@ public class Moviment : MonoBehaviourPunCallbacks, IPunObservable
 
     public void FixedUpdate()
     {
-        /*if (!PV.IsMine || !controllable)
+        if (dir != Vector3.zero)
         {
-            return;
+            GetComponent<Transform>().forward = rigidbody.velocity;
+            GetComponent<Transform>().Rotate(new Vector3(0, -90, 0));
         }
-
-        //Quaternion rot = rigidbody.rotation * Quaternion.Euler(0, horizontalInput * MaxSpeed/100 * Time.fixedDeltaTime, 0);
-        //GetComponent<Rigidbody>().MoveRotation(rot);
-
-        //Vector3 force = (rot * Vector3.forward) * verticalInput * 10000.0f * MaxSpeed * Time.fixedDeltaTime;
-        //GetComponent<Rigidbody>().AddForce(force);
-
-
-        /*Vector3 projeccio = new Vector3();
-        projeccio = (camera.transform.position - this.transform.position);
-        projeccio.y = 0;
-        Debug.Log("PROJECCIO = " + projeccio.normalized);
-        Vector3 dir = new Vector3(horizontalInput, 0, verticalInput);
-
-        float dif = Vector3.Angle(projeccio, new Vector3(1,0,0));*//*
-
-        var forward = camera.transform.forward;
-        var right = camera.transform.right;
-
-        //project forward and right vectors on the horizontal plane (y = 0)
-        forward.y = 0f;
-        right.y = 0f;
-        forward.Normalize();
-        right.Normalize();
-
-        //this is the direction in the world space we want to move:
-        Vector3 desiredMoveDirection = right * verticalInput  - forward * horizontalInput;
-
-
-
-        //now we can apply the movement:
-        //transform.Translate(desiredMoveDirection * velocity * Time.deltaTime);
-        Debug.Log("Intermig = " + intermig + ". Desired = " + desiredMoveDirection);
-        /*if(Vector3.Dot(intermig.normalized, desiredMoveDirection.normalized) == -1)
-        {
-            desiredMoveDirection += right;
-        }*/
-        /*
-        
-        if (desiredMoveDirection.normalized.magnitude > 0.1)
-        {
-            //Debug.Log("distancia " + Vector3.Distance(intermig, desiredMoveDirection));
-            //intermig = Vector3.Lerp(intermig, desiredMoveDirection, suavitatGir);
-            GetComponent<Rigidbody>().MoveRotation(Quaternion.LookRotation(-desiredMoveDirection, Vector3.up));
-        }
-
-        if (GetComponent<Rigidbody>().velocity.magnitude > MaxSpeed)
-        {
-            GetComponent<Rigidbody>().velocity = GetComponent<Rigidbody>().velocity.normalized * MaxSpeed;
-        }*/
-
+    /*if (!PV.IsMine || !controllable)
+    {
+        return;
     }
+
+    //Quaternion rot = rigidbody.rotation * Quaternion.Euler(0, horizontalInput * MaxSpeed/100 * Time.fixedDeltaTime, 0);
+    //GetComponent<Rigidbody>().MoveRotation(rot);
+
+    //Vector3 force = (rot * Vector3.forward) * verticalInput * 10000.0f * MaxSpeed * Time.fixedDeltaTime;
+    //GetComponent<Rigidbody>().AddForce(force);
+
+
+    /*Vector3 projeccio = new Vector3();
+    projeccio = (camera.transform.position - this.transform.position);
+    projeccio.y = 0;
+    Debug.Log("PROJECCIO = " + projeccio.normalized);
+    Vector3 dir = new Vector3(horizontalInput, 0, verticalInput);
+
+    float dif = Vector3.Angle(projeccio, new Vector3(1,0,0));*//*
+
+    var forward = camera.transform.forward;
+    var right = camera.transform.right;
+
+    //project forward and right vectors on the horizontal plane (y = 0)
+    forward.y = 0f;
+    right.y = 0f;
+    forward.Normalize();
+    right.Normalize();
+
+    //this is the direction in the world space we want to move:
+    Vector3 desiredMoveDirection = right * verticalInput  - forward * horizontalInput;
+
+
+
+    //now we can apply the movement:
+    //transform.Translate(desiredMoveDirection * velocity * Time.deltaTime);
+    Debug.Log("Intermig = " + intermig + ". Desired = " + desiredMoveDirection);
+    /*if(Vector3.Dot(intermig.normalized, desiredMoveDirection.normalized) == -1)
+    {
+        desiredMoveDirection += right;
+    }*/
+    /*
+
+    if (desiredMoveDirection.normalized.magnitude > 0.1)
+    {
+        //Debug.Log("distancia " + Vector3.Distance(intermig, desiredMoveDirection));
+        //intermig = Vector3.Lerp(intermig, desiredMoveDirection, suavitatGir);
+        GetComponent<Rigidbody>().MoveRotation(Quaternion.LookRotation(-desiredMoveDirection, Vector3.up));
+    }
+
+    if (GetComponent<Rigidbody>().velocity.magnitude > MaxSpeed)
+    {
+        GetComponent<Rigidbody>().velocity = GetComponent<Rigidbody>().velocity.normalized * MaxSpeed;
+    }*/
+
+}
 
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
     {
