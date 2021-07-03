@@ -12,6 +12,7 @@ public class HUD_Constructor : MonoBehaviour
     void Start()
     {
         llista.maxValue = pocio.llista.Length;
+        pocio = FindObjectOfType<Pocio>();
     }
 
     public void actualitzarProgres()
