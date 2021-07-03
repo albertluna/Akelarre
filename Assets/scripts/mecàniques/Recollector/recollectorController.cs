@@ -32,6 +32,8 @@ public class recollectorController : MonoBehaviourPunCallbacks// , IPunObservabl
         {
             creators[i].index = i;
         }
+
+
     }
 
     // Update is called once per frame

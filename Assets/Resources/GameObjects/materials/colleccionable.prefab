@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2677859967802468855}
   - component: {fileID: 5919874429324945620}
-  - component: {fileID: 3557630109559833218}
   m_Layer: 0
   m_Name: colleccionable
   m_TagString: Colleccionable
@@ -48,19 +47,6 @@ MonoBehaviour:
   percentatge: 0
   color: 
   parent: {fileID: 0}
---- !u!135 &3557630109559833218
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1960286398181783450}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &5966916352288989233
 GameObject:
   m_ObjectHideFlags: 0
@@ -75,7 +61,7 @@ GameObject:
   - component: {fileID: 6708229382730719709}
   m_Layer: 0
   m_Name: Sphere
-  m_TagString: Untagged
+  m_TagString: Colleccionable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

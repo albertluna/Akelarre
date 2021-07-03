@@ -77,5 +77,15 @@ PrefabInstance:
       propertyPath: color
       value: BLAU
       objectReference: {fileID: 0}
+    - target: {fileID: 5919874429324945620, guid: 0ee65a385caa54bef940f2a3415af7ad,
+        type: 3}
+      propertyPath: minTimer
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 5919874429324945620, guid: 0ee65a385caa54bef940f2a3415af7ad,
+        type: 3}
+      propertyPath: maxTimer
+      value: 60
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0ee65a385caa54bef940f2a3415af7ad, type: 3}

@@ -7,6 +7,27 @@ public class Colleccionable : MonoBehaviour
     public int percentatge;
     public string color;
     public ColleccionableCreators parent;
+    public float timer;
+    public float minTimer;
+    public float maxTimer;
+        
 
-    
+    private void Awake()
+    {
+        timer = Random.Range(minTimer, maxTimer);
+    }
+
+    private void Update()
+    {
+        if (timer >= 0)
+        {
+            timer -= Time.deltaTime;
+        }
+        else
+        {
+            Destroy(this.gameObject);
+        }
+    }
+
+
 }

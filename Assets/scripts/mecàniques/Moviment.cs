@@ -46,9 +46,8 @@ public class Moviment : MonoBehaviourPunCallbacks, IPunObservable
             //dir = camera.transform.forward + camera.transform.right;
             //dir.Normalize();
             
-                dir = camera.transform.right * horizontalInput + camera.transform.forward * verticalInput;
+                dir = camera.transform.right * horizontalInput + camera.transform.forward * verticalInput*3;
                 rigidbody.velocity = velocity * new Vector3(dir.x, 0, dir.z);
-
             
             //animator.SetFloat("Speed", Mathf.Abs(horizontalInput) + Mathf.Abs(verticalInput));
 
