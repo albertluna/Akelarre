@@ -28,7 +28,7 @@ public class atacController : MonoBehaviour
         instanciador = GameObject.Find("instanciador");
         creators = AC.GetComponentsInChildren<Transform>();
         PV = GetComponent<PhotonView>();
-        defensor = GetComponent<Defensor>();
+        //defensor = GetComponent<Defensor>();
     }
 
     // Update is called once per frame
@@ -53,7 +53,7 @@ public class atacController : MonoBehaviour
     private void RPC_instanciarAtac(int posicio)
     {
         GameObject instancia = Instantiate(bullet, creators[posicio].position, Quaternion.identity, instanciador.transform);
-        instancia.GetComponentInChildren<MovimentAtac>().defensor = defensor;
+        instancia.GetComponent<MovimentAtac>().defensor = defensor;
         Debug.Log("INSTANCIAT");
     }
 }
