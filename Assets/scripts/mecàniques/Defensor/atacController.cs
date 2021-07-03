@@ -53,7 +53,7 @@ public class atacController : MonoBehaviour
     private void RPC_instanciarAtac(int posicio)
     {
         GameObject instancia = Instantiate(bullet, creators[posicio].position, Quaternion.identity, instanciador.transform);
-        instancia.GetComponent<MovimentAtac>().defensor = defensor;
+        instancia.GetComponentInChildren<MovimentAtac>().defensor = defensor;
         Debug.Log("INSTANCIAT");
     }
 }

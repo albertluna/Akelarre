@@ -19,7 +19,7 @@ public class Defensor : MonoBehaviour
 
     public void OnTriggerEnter(Collider collision)
     {
-        if ((collision.gameObject.CompareTag("Bullet") || collision.gameObject.CompareTag("Colleccionable"))&&PV.IsMine)
+        if ((collision.gameObject.CompareTag("Bullet") || collision.gameObject.CompareTag("Colleccionable")))//&&PV.IsMine)
         {
             Destroy(collision.gameObject);
         }        
