@@ -330,7 +330,7 @@ PrefabInstance:
     - target: {fileID: 7488162796950587039, guid: 25667044bcc3f7944b5727c0157aff8e,
         type: 3}
       propertyPath: ObservedComponents.Array.size
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7488162796950587039, guid: 25667044bcc3f7944b5727c0157aff8e,
         type: 3}
@@ -341,7 +341,17 @@ PrefabInstance:
         type: 3}
       propertyPath: ObservedComponents.Array.data[0]
       value: 
-      objectReference: {fileID: 1564950026848020380}
+      objectReference: {fileID: 0}
+    - target: {fileID: 7488162796950587039, guid: 25667044bcc3f7944b5727c0157aff8e,
+        type: 3}
+      propertyPath: ObservedComponents.Array.data[1]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7488162796950587039, guid: 25667044bcc3f7944b5727c0157aff8e,
+        type: 3}
+      propertyPath: ObservedComponents.Array.data[2]
+      value: 
+      objectReference: {fileID: 8049576159415692359}
     - target: {fileID: 7960744767762583944, guid: 25667044bcc3f7944b5727c0157aff8e,
         type: 3}
       propertyPath: m_RootOrder
@@ -397,18 +407,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1564950026848020380 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5656621935596023289, guid: 25667044bcc3f7944b5727c0157aff8e,
-    type: 3}
-  m_PrefabInstance: {fileID: 6572874378208447077}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8036859239653682954}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cfa55fba696394332b5c5373c539a9b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &6572874378697524695 stripped
