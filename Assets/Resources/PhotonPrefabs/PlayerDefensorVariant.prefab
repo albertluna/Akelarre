@@ -194,7 +194,7 @@ MonoBehaviour:
   minEspera: 3
   instanciador: {fileID: 0}
   PV: {fileID: 4385597908887047418}
-  defensor: {fileID: 0}
+  defensor: {fileID: 166391367113845950}
 --- !u!114 &4063200994728601592
 MonoBehaviour:
   m_ObjectHideFlags: 0
