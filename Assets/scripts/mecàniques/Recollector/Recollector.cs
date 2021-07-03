@@ -18,7 +18,6 @@ public class Recollector : MonoBehaviour
         rb = this.GetComponent<Rigidbody>();
         colider = GetComponent<CapsuleCollider>();
         vides = 3;
-        PV = GetComponent<PhotonView>();
         GS = FindObjectOfType<GameSetUp>();
             //GameObject.Find("ConnectionController").GetComponent<ConnexioConsRec>();
     }
