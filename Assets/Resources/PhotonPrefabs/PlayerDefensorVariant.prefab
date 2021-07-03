@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5850907052692721844}
   - component: {fileID: 5319197720418723971}
   - component: {fileID: 3643662377646392118}
+  - component: {fileID: 166391367113845950}
   m_Layer: 0
   m_Name: proteccio
   m_TagString: Untagged
@@ -93,6 +94,21 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &166391367113845950
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3680523482378488798}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe27b82ff670e4e6789f6f1241f705f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GS: {fileID: 0}
+  PV: {fileID: 4385597908887047418}
+  collider: {fileID: 3643662377646392118}
 --- !u!54 &1946115607523049211
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -186,7 +202,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8036859239653682954}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe27b82ff670e4e6789f6f1241f705f6, type: 3}
   m_Name: 

@@ -9,7 +9,7 @@ public class Defensor : MonoBehaviour
     [SerializeField]
     private PhotonView PV;
     [SerializeField]
-    private CapsuleCollider collider;
+    private SphereCollider collider;
     // Start is called before the first frame update
     void Start()
     {
