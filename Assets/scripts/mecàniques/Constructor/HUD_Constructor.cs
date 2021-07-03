@@ -11,8 +11,9 @@ public class HUD_Constructor : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        llista.maxValue = pocio.llista.Length;
         pocio = FindObjectOfType<Pocio>();
+
+        llista.maxValue = pocio.llista.Length;
     }
 
     public void actualitzarProgres()
