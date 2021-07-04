@@ -28,7 +28,7 @@ public class Recollector : MonoBehaviour
         {
             Debug.Log("Transportar colleccionable a constructor");
 
-            Colleccionable colleccionable = collision.gameObject.GetComponent<Colleccionable>();
+            Colleccionable colleccionable = collision.gameObject.GetComponentInParent<Colleccionable>();
             colleccionable.parent.estaOcupat = false;
             ConstructorController constructor = FindObjectOfType<ConstructorController>();
             constructor.EnviarColleccionable(colleccionable.color);

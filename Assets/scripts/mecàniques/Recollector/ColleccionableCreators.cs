@@ -14,8 +14,9 @@ public class ColleccionableCreators : MonoBehaviour
         transform = GetComponent<Transform>();
     }
 
-    public void Instantiate(Colleccionable col)
+    public void Instantiate(Colleccionable col, bool enable)
     {
+        col.enabled = enable;
         col.parent = this;
         Instantiate(col, transform.position, Quaternion.identity, transform);
         estaOcupat = true;
@@ -23,4 +24,10 @@ public class ColleccionableCreators : MonoBehaviour
 
     //TODO: sistema per esborrar colleccionables quan ha passat X temps i que
     //aquest temps vagi en proprcio al percentatge del colleccionable
+    public void destruirColleccionable(Colleccionable col)
+    {
+        recollectorController rc = FindObjectOfType<recollectorController>();
+        int index = rc.indexColleccionable(col.gameObject);
+        rc.deleteColleccionable(index);
+    }
 }

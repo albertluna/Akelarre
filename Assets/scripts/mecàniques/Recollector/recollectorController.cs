@@ -20,6 +20,7 @@ public class recollectorController : MonoBehaviourPunCallbacks// , IPunObservabl
         RC = GameObject.Find("RecollectorController");
         creators = RC.GetComponentsInChildren<ColleccionableCreators>();
         colleccionables = RC.GetComponentsInChildren<Colleccionable>();
+        
         llistaColleccionables = colleccionables;
         float percentatgeTotal = 0;
         foreach(Colleccionable col in colleccionables)
@@ -84,7 +85,7 @@ public class recollectorController : MonoBehaviourPunCallbacks// , IPunObservabl
     private void RPC_crearColleccionable(int posicio, string color)
     {
         //Debug.Log("L'index es " + posicio);
-        this.creators[posicio].Instantiate(escollirColleccionable(color));
+        this.creators[posicio].Instantiate(escollirColleccionable(color), PV.IsMine);
     }
 
     public int indexColleccionable(GameObject colleccionable)
@@ -112,6 +113,7 @@ public class recollectorController : MonoBehaviourPunCallbacks// , IPunObservabl
     [PunRPC]
     private void RPC_deleteColleccionable(int index)
     {
+        creators[index].GetComponentInChildren<Colleccionable>().parent.estaOcupat = false;
         Destroy(creators[index].GetComponentInChildren<Colleccionable>().gameObject);
     }
 

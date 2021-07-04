@@ -19,6 +19,8 @@ public class GameSetUp : MonoBehaviour
 
     public Transform[] spawnPoints;
 
+    public Colleccionable[] llistaColleccionables;
+
     void Start()
     {
         GameOver.SetActive(false);

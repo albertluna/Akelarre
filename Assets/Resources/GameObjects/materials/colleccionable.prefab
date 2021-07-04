@@ -47,6 +47,9 @@ MonoBehaviour:
   percentatge: 0
   color: 
   parent: {fileID: 0}
+  timer: 0
+  minTimer: 10
+  maxTimer: 90
 --- !u!1 &5966916352288989233
 GameObject:
   m_ObjectHideFlags: 0
