@@ -25,8 +25,9 @@ public class Colleccionable : MonoBehaviour
         }
         else
         {
-            parent.estaOcupat = false;
-            Destroy(this.gameObject);
+            parent.destruirColleccionable(this);
+            /*parent.estaOcupat = false;
+            Destroy(this.gameObject);*/
         }
     }
 
