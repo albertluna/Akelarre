@@ -9,17 +9,12 @@ public class Defensor : MonoBehaviour
     [SerializeField]
     private PhotonView PV;
     [SerializeField]
-    private SphereCollider collider;
-    [SerializeField]
-    private Casa casa;
-    [SerializeField]
     private int vides;
 
     // Start is called before the first frame update
     void Start()
     {
         GS = FindObjectOfType<GameSetUp>();
-        PV = GetComponent<PhotonView>();
         vides = GS.videsPartida;
     }
 
