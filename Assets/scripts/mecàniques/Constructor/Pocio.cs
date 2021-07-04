@@ -24,7 +24,7 @@ public class Pocio : MonoBehaviour
         index++;
     }
 
-    public bool esUltim()
+    public bool EsUltim()
     {
         return index == llista.Length;
     }

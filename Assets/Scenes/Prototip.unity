@@ -1427,7 +1427,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 442252668}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1644108938}
+        m_MethodName: OnBotoVictoria
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &442252668
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2270,7 +2281,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 805059747}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1644108938}
+        m_MethodName: OnBotoVictoria
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &805059747
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2505,6 +2527,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 7433.6235, y: 6042.626, z: 7150.9106}
   m_Center: {x: -1470.1453, y: 2979.0986, z: -3435.861}
+--- !u!114 &849980571
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 849980568}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c540aeaeb56b4dbb9d14acaa1324a9d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &857230713
 GameObject:
   m_ObjectHideFlags: 0
@@ -3948,9 +3982,9 @@ MonoBehaviour:
   constructor: {fileID: 0}
   defensor: {fileID: 0}
   recollector: {fileID: 0}
-  vides: 3
   GameOver: {fileID: 920039313}
   Victory: {fileID: 21399006}
+  videsPartida: 4
   spawnPoints:
   - {fileID: 1672981814}
   - {fileID: 1194986372}

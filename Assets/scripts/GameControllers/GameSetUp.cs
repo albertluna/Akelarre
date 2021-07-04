@@ -11,10 +11,11 @@ public class GameSetUp : MonoBehaviour
     public Defensor defensor;
     public Recollector recollector;
 
-    public int vides;
 
     public GameObject GameOver;
     public GameObject Victory;
+
+    public int videsPartida;
 
 
     public Transform[] spawnPoints;
@@ -37,32 +38,42 @@ public class GameSetUp : MonoBehaviour
         recollector = FindObjectOfType<Recollector>();
     }
 
-    public void restaVida()
-    {
-        vides--;
-        if (vides == 0)
-        {
-            PartidaPerduda();
-        }
-    }
-
-    public void PartidaPerduda()
+    public void PartidaPerduda(PhotonView PV)
     {
         Debug.Log("GAME OVER");
-        Time.timeScale = 0;
-        GameOver.SetActive(true);
+        PV.RPC("RPC_FiPartida", RpcTarget.All, false);
+
     }
 
-    public void PartidaGuanyada()
+    public void PartidaGuanyada(PhotonView PV)
     {
         Debug.Log("Victoria");
-        Time.timeScale = 0;
-        Victory.SetActive(true);
+        PV.RPC("RPC_FiPartida", RpcTarget.All, true);
     }
 
     public void OnBotoVictoria()
     {
-        PhotonNetwork.LoadLevel(ScenesManager.GetScene(ScenesManager.Scene.MapaNivells));
+        if (PhotonNetwork.IsMasterClient)
+        {
+            PhotonNetwork.LoadLevel(ScenesManager.GetScene(ScenesManager.Scene.MapaNivells));
+        }
+    }
 
+    /// <summary>
+    /// funcio per indicar que s'ha acabat la partida per a tots els jugadors
+    /// </summary>
+    /// <param name="estat">si es true es guanya la partida, si es false es perd</param>
+    [PunRPC]
+    private void RPC_FiPartida(bool estat)
+    {
+        Time.timeScale = 0;
+        if (estat)
+        {
+            Victory.SetActive(true);
+        }
+        else
+        {
+            GameOver.SetActive(true);
+        }
     }
 }

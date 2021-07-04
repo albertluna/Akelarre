@@ -10,11 +10,17 @@ public class Defensor : MonoBehaviour
     private PhotonView PV;
     [SerializeField]
     private SphereCollider collider;
+    [SerializeField]
+    private Casa casa;
+    [SerializeField]
+    private int vides;
+
     // Start is called before the first frame update
     void Start()
     {
         GS = FindObjectOfType<GameSetUp>();
         PV = GetComponent<PhotonView>();
+        vides = GS.videsPartida;
     }
 
     public void OnTriggerEnter(Collider collision)
@@ -27,12 +33,10 @@ public class Defensor : MonoBehaviour
 
     public void UnaVidaMenys()
     {
-        if (PV.IsMine) { PV.RPC("RPC_unaVidaMenys", RpcTarget.All); Debug.Log("RESTA VIDA"); }
-    }
-
-    [PunRPC]
-    private void RPC_unaVidaMenys()
-    {
-        GS.restaVida();
+        vides--;
+        if (vides == 0)
+        {
+            GS.PartidaPerduda(PV);
+        }
     }
 }

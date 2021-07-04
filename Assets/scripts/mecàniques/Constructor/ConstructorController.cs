@@ -64,21 +64,23 @@ public class ConstructorController : MonoBehaviour
     {
         if (colleccionable != null)
         {
-            Destroy(colleccionable);
+            Destroy(colleccionable.gameObject);
         }
         colleccionable = Instantiate(nouColleccionable.gameObject,
-            creadorColleccionables.transform.position, Quaternion.identity, creadorColleccionables.transform); ;
+            creadorColleccionables.transform.position, Quaternion.identity, creadorColleccionables.transform);
     }
 
     public void ClicarMaterial()
     {
         if (colleccionable != null)
         {
-            Debug.Log("MAterial CLicat - desplaçar a la pocio i seguir camí");
             if (pocio.esCollecicionableCorrecte(colleccionable.GetComponent<Colleccionable>()))
             {
-                Debug.Log("Seguent amb " + colleccionable.GetComponent<Colleccionable>().color);
                 pocio.Seguent();
+                if(pocio.EsUltim())
+                {
+                    GS.PartidaGuanyada(PV);
+                }
             }
             else
             {
@@ -88,10 +90,5 @@ public class ConstructorController : MonoBehaviour
             Destroy(colleccionable);
         }
     }
-
-    /*[PunRPC]
-    private void RPC_Victoria()
-    {
-        ScenesManager.Load(ScenesManager.Scene.MenuMultijugador);
-    }*/
+    
 }
