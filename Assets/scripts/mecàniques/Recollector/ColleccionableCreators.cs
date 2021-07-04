@@ -16,9 +16,9 @@ public class ColleccionableCreators : MonoBehaviour
 
     public void Instantiate(Colleccionable col, bool enable)
     {
-        col.enabled = enable;
-        col.parent = this;
-        Instantiate(col, transform.position, Quaternion.identity, transform);
+        Colleccionable nouColleccionable = Instantiate(col, transform.position, Quaternion.identity, transform);
+        nouColleccionable.parent = this;
+        nouColleccionable.enabled = enable;
         estaOcupat = true;
     }
 

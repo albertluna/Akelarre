@@ -29,13 +29,14 @@ public class Recollector : MonoBehaviour
             Debug.Log("Transportar colleccionable a constructor");
 
             Colleccionable colleccionable = collision.gameObject.GetComponentInParent<Colleccionable>();
-            colleccionable.parent.estaOcupat = false;
+            
             ConstructorController constructor = FindObjectOfType<ConstructorController>();
             constructor.EnviarColleccionable(colleccionable.color);
             //PV.RPC("RPC_destroyColleccionable", RpcTarget.All, collision.gameObject as Object);
 
-            int index = rc.indexColleccionable(collision.gameObject);
+            int index = rc.indexColleccionable(colleccionable.gameObject);
             if (index == -1) Debug.LogError("Fail");
+
             rc.deleteColleccionable(index);
 
             //Destroy(collision.gameObject);
