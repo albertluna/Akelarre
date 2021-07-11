@@ -29,9 +29,14 @@ public class Defensor : MonoBehaviour
     public void UnaVidaMenys()
     {
         vides--;
-        if (vides == 0)
+        if (vides == 0 && PV.IsMine)
         {
-            GS.PartidaPerduda(PV);
+            PV.RPC("RPC_PartidaPerduda", RpcTarget.All);
         }
+    }
+
+    [PunRPC]
+    private void RPC_PartidaPerduda() {
+        GS.FiPartida(false);
     }
 }

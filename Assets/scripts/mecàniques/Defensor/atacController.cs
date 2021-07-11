@@ -17,6 +17,7 @@ public class atacController : MonoBehaviour
     [SerializeField]
     private PhotonView PV;
     public Defensor defensor;
+    public GameSetUp GS;
 
     /// <summary> array de gameobjects
     /// https://stuartspixelgames.com/2017/08/02/make-all-of-objects-children-into-an-array-unity-c/
@@ -28,6 +29,7 @@ public class atacController : MonoBehaviour
         instanciador = GameObject.Find("instanciador");
         creators = AC.GetComponentsInChildren<Transform>();
         PV = GetComponent<PhotonView>();
+        GS = FindObjectOfType<GameSetUp>();
         //defensor = GetComponent<Defensor>();
     }
 
@@ -55,5 +57,16 @@ public class atacController : MonoBehaviour
         //GameObject instancia =
             Instantiate(bullet, creators[posicio].position, Quaternion.identity, instanciador.transform);
         //instancia.GetComponent<MovimentAtac>().defensor = defensor;
+    }
+
+
+    public void PartidaPerduda()
+    {
+        PV.RPC("RPC_PartidaPerduda", RpcTarget.All);
+    }
+    [PunRPC]
+    private void RPC_PartidaPerduda()
+    {
+        GS.FiPartida(false);
     }
 }

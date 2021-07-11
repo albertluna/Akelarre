@@ -77,9 +77,9 @@ public class ConstructorController : MonoBehaviour
             if (pocio.esCollecicionableCorrecte(colleccionable.GetComponent<Colleccionable>()))
             {
                 pocio.Seguent();
-                if(pocio.EsUltim())
+                if(pocio.EsUltim() && PV.IsMine)
                 {
-                    GS.PartidaGuanyada(PV);
+                    PV.RPC("RPC_PartidaGuanyada", RpcTarget.All);
                 }
             }
             else
@@ -89,6 +89,12 @@ public class ConstructorController : MonoBehaviour
             hud.actualitzarProgres();
             Destroy(colleccionable);
         }
+    }
+
+    [PunRPC]
+    private void RPC_PartidaGuanyada()
+    {
+        GS.FiPartida(true);
     }
     
 }
