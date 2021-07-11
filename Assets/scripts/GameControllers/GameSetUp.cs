@@ -38,7 +38,7 @@ public class GameSetUp : MonoBehaviour
         recollector = FindObjectOfType<Recollector>();
     }
 
-    public void PartidaPerduda(PhotonView PV)
+    /*public void PartidaPerduda(PhotonView PV)
     {
         Debug.Log("GAME OVER");
         PV.RPC("RPC_FiPartida", RpcTarget.All, false);
@@ -49,7 +49,7 @@ public class GameSetUp : MonoBehaviour
     {
         Debug.Log("Victoria");
         PV.RPC("RPC_FiPartida", RpcTarget.All, true);
-    }
+    }*/
 
     public void OnBotoVictoria()
     {
@@ -63,9 +63,9 @@ public class GameSetUp : MonoBehaviour
     /// funcio per indicar que s'ha acabat la partida per a tots els jugadors
     /// </summary>
     /// <param name="estat">si es true es guanya la partida, si es false es perd</param>
-    [PunRPC]
-    private void RPC_FiPartida(bool estat)
+    public void FiPartida(bool estat)
     {
+        Debug.Log("FI PARTIDA");
         Time.timeScale = 0;
         if (estat)
         {
