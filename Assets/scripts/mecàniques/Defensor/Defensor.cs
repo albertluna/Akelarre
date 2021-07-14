@@ -10,6 +10,8 @@ public class Defensor : MonoBehaviour
     private PhotonView PV;
     [SerializeField]
     private int vides;
+    [SerializeField]
+    private atacController controller;
 
     // Start is called before the first frame update
     void Start()
@@ -31,12 +33,9 @@ public class Defensor : MonoBehaviour
         vides--;
         if (vides == 0 && PV.IsMine)
         {
-            PV.RPC("RPC_PartidaPerduda", RpcTarget.All);
+            controller.PartidaPerduda();
         }
     }
 
-    [PunRPC]
-    private void RPC_PartidaPerduda() {
-        GS.FiPartida(false);
-    }
+    
 }
