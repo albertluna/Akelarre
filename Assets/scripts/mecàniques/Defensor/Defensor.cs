@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
+using UnityEngine.UI;
 
 public class Defensor : MonoBehaviour
 {
@@ -12,10 +13,14 @@ public class Defensor : MonoBehaviour
     private int vides;
     [SerializeField]
     private atacController controller;
+    [SerializeField]
+    private Slider HUDvides;
+    public int NombreVides;
 
     // Start is called before the first frame update
     void Start()
     {
+        HUDvides.maxValue = NombreVides;
         GS = FindObjectOfType<GameSetUp>();
         vides = GS.videsPartida;
     }
@@ -31,9 +36,13 @@ public class Defensor : MonoBehaviour
     public void UnaVidaMenys()
     {
         vides--;
-        if (vides == 0 && PV.IsMine)
+        if (PV.IsMine)
         {
-            controller.PartidaPerduda();
+            HUDvides.value = vides;
+            if (vides == 0)
+            {
+                controller.PartidaPerduda();
+            }
         }
     }
 
