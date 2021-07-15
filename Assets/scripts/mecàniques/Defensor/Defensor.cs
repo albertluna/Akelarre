@@ -23,6 +23,10 @@ public class Defensor : MonoBehaviour
         HUDvides.maxValue = NombreVides;
         GS = FindObjectOfType<GameSetUp>();
         vides = GS.videsPartida;
+        if (!PV.IsMine)
+        {
+            Destroy(HUDvides.gameObject);
+        }
     }
 
     public void OnTriggerEnter(Collider collision)
