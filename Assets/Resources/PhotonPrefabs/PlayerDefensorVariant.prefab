@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2695755412211926645}
   - component: {fileID: 8845356979257148242}
   m_Layer: 8
-  m_Name: Cube
+  m_Name: Minimapa
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -177,8 +177,8 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1289925680193154745}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 4}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 366791293593869680}
@@ -187,11 +187,11 @@ RectTransform:
   m_Father: {fileID: 8653679735973429901}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -322.55, y: -93.01999}
-  m_SizeDelta: {x: 67.9, y: 140}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 30, y: 9.6}
+  m_SizeDelta: {x: 83.5, y: 215.96}
+  m_Pivot: {x: 0, y: 0}
 --- !u!114 &4551476445274505740
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -379,9 +379,9 @@ CapsuleCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 58.361507
-  m_Height: 465.60117
+  m_Height: 448.93195
   m_Direction: 2
-  m_Center: {x: 1.6471425, y: 1.7837982, z: 155.30054}
+  m_Center: {x: 1.6472334, y: 1.7837999, z: 163.63516}
 --- !u!75 &3701319115899198948
 ConstantForce:
   m_ObjectHideFlags: 0
@@ -950,8 +950,8 @@ Light:
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 1, g: 0, b: 0, a: 1}
-  m_Intensity: 1
-  m_Range: 500
+  m_Intensity: 2
+  m_Range: 1000
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
@@ -1044,27 +1044,27 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 58ea7ed053fffc944a345ab256bb2383,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.6832748
+      value: 0.706676
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 58ea7ed053fffc944a345ab256bb2383,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.6832748
+      value: -0.70667607
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 58ea7ed053fffc944a345ab256bb2383,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.18203184
+      value: 0.024677575
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 58ea7ed053fffc944a345ab256bb2383,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.18203187
+      value: -0.024677873
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 58ea7ed053fffc944a345ab256bb2383,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: -119.83499
+      value: -94
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 58ea7ed053fffc944a345ab256bb2383,
         type: 3}
@@ -1113,15 +1113,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 501862321, guid: 25667044bcc3f7944b5727c0157aff8e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 110
+      value: -122
       objectReference: {fileID: 0}
     - target: {fileID: 501862321, guid: 25667044bcc3f7944b5727c0157aff8e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1119
+      value: 1503
       objectReference: {fileID: 0}
     - target: {fileID: 501862321, guid: 25667044bcc3f7944b5727c0157aff8e, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -846
+      value: -1906
       objectReference: {fileID: 0}
     - target: {fileID: 501862321, guid: 25667044bcc3f7944b5727c0157aff8e, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1279,12 +1279,12 @@ PrefabInstance:
         type: 3}
       propertyPath: ObservedComponents.Array.data[0]
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1812394190972517448}
     - target: {fileID: 7488162796950587039, guid: 25667044bcc3f7944b5727c0157aff8e,
         type: 3}
       propertyPath: ObservedComponents.Array.data[1]
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 2013024833801249921}
     - target: {fileID: 7488162796950587039, guid: 25667044bcc3f7944b5727c0157aff8e,
         type: 3}
       propertyPath: ObservedComponents.Array.data[2]

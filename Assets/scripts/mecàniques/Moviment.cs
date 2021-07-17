@@ -59,7 +59,7 @@ public class Moviment : MonoBehaviourPunCallbacks, IPunObservable
         if (dir != Vector3.zero)
         {
             GetComponent<Transform>().forward = rigidbody.velocity;
-            GetComponent<Transform>().Rotate(new Vector3(0, -90, 0));
+            GetComponent<Transform>().Rotate(new Vector3(-90, -90, 0));
         }
     /*if (!PV.IsMine || !controllable)
     {
