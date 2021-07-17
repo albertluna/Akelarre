@@ -235,7 +235,7 @@ GameObject:
   - component: {fileID: 8590532303050176488}
   - component: {fileID: 119254972560185196}
   m_Layer: 0
-  m_Name: Point Light
+  m_Name: LlumCollecionable
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -268,7 +268,7 @@ Light:
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Intensity: 2
-  m_Range: 1500
+  m_Range: 5000
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
