@@ -1,5 +1,6 @@
 ﻿using ExitGames.Client.Photon;
 using Photon.Realtime;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -137,7 +138,7 @@ namespace Photon.Pun.Demo.Asteroids
 
             StartGameButton.gameObject.SetActive(CheckPlayersReady());
 
-            Hashtable props = new Hashtable
+            ExitGames.Client.Photon.Hashtable props = new ExitGames.Client.Photon.Hashtable
             {
                 {AsteroidsGame.PLAYER_LOADED_LEVEL, false}
             };
@@ -185,7 +186,7 @@ namespace Photon.Pun.Demo.Asteroids
             }
         }
 
-        public override void OnPlayerPropertiesUpdate(Player targetPlayer, Hashtable changedProps)
+        public override void OnPlayerPropertiesUpdate(Player targetPlayer, ExitGames.Client.Photon.Hashtable changedProps)
         {
             if (playerListEntries == null)
             {
@@ -277,10 +278,7 @@ namespace Photon.Pun.Demo.Asteroids
             PhotonNetwork.CurrentRoom.IsOpen = false;
             PhotonNetwork.CurrentRoom.IsVisible = false;
             PhotonNetwork.AutomaticallySyncScene = true;
-            //PhotonNetwork.LoadLevel(ScenesManager.GetScene(ScenesManager.Scene.MapaNivells));
-            InsideRoomPanel.SetActive(false);
-            PanelCinematica.SetActive(true);
-            PanelCinematica.GetComponent<AudioSource>().Play();
+            PhotonNetwork.LoadLevel(ScenesManager.GetScene(ScenesManager.Scene.MapaNivells));
         }
 
         #endregion

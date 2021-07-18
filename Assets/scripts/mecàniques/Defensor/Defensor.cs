@@ -10,22 +10,23 @@ public class Defensor : MonoBehaviour
     [SerializeField]
     private PhotonView PV;
     [SerializeField]
-    private int vides;
+    public int vides;
     [SerializeField]
     private atacController controller;
     [SerializeField]
-    private Slider HUDvides;
-    public int NombreVides;
+    private Slider HUDVides;
+    //public int NombreVides;
 
     // Start is called before the first frame update
     void Start()
     {
-        HUDvides.maxValue = NombreVides;
         GS = FindObjectOfType<GameSetUp>();
+        HUDVides.maxValue = GS.videsPartida;
+
         vides = GS.videsPartida;
         if (!PV.IsMine)
         {
-            Destroy(HUDvides.gameObject);
+            Destroy(HUDVides.gameObject);
         }
     }
 
@@ -42,8 +43,8 @@ public class Defensor : MonoBehaviour
         vides--;
         if (PV.IsMine)
         {
-            HUDvides.value = vides;
-            if (vides == 0)
+            HUDVides.value = vides;
+            if (vides <= 0)
             {
                 controller.PartidaPerduda();
             }
