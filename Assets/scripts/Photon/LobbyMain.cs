@@ -34,6 +34,9 @@ namespace Photon.Pun.Demo.Asteroids
         [Header("Inside Room Panel")]
         public GameObject InsideRoomPanel;
 
+        [Header("cinematica inicial")]
+        public GameObject PanelCinematica;
+
         public Button StartGameButton;
         public GameObject PlayerListEntryPrefab;
 
@@ -274,7 +277,10 @@ namespace Photon.Pun.Demo.Asteroids
             PhotonNetwork.CurrentRoom.IsOpen = false;
             PhotonNetwork.CurrentRoom.IsVisible = false;
             PhotonNetwork.AutomaticallySyncScene = true;
-            PhotonNetwork.LoadLevel(ScenesManager.GetScene(ScenesManager.Scene.MapaNivells));
+            //PhotonNetwork.LoadLevel(ScenesManager.GetScene(ScenesManager.Scene.MapaNivells));
+            InsideRoomPanel.SetActive(false);
+            PanelCinematica.SetActive(true);
+            PanelCinematica.GetComponent<AudioSource>().Play();
         }
 
         #endregion
