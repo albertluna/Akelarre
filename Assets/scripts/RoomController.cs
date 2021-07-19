@@ -75,7 +75,7 @@ public class RoomController : MonoBehaviourPunCallbacks, IInRoomCallbacks {
         PhotonNetwork.Nickname = myNumberInRoom.ToString();*/
     }
 
-    public void OnTutorialButtonClicked()
+    public void OnNivellButtonClicked(int nivell)
     {
         if(constructor.isSelected && defensor.isSelected && recollector.isSelected)
         {
@@ -83,17 +83,22 @@ public class RoomController : MonoBehaviourPunCallbacks, IInRoomCallbacks {
             {
 
                 PhotonNetwork.AutomaticallySyncScene = true;
-                //PhotonNetwork.LoadLevel(ScenesManager.GetScene(ScenesManager.Scene.Prototip));
-                //PV.RPC("RPC_LoadGameScene", RpcTarget.All);
-                //RPC_LoadGameScene();
-                PanelMapa.SetActive(false);
-                PanelCinematica.SetActive(true);
-                PanelCinematica.GetComponent<AudioSource>().Play();
-                Debug.Log("1" + PanelCinematica.GetComponent<AudioSource>().isPlaying);
-                StartCoroutine(EsperarCinematica(PanelCinematica.GetComponent<AudioSource>()));
-
+                switch(nivell)
+                {
+                    case 0:
+                        OnTutorial();
+                        break;
+                    case 1:
+                        OnNivell1();
+                        break;
+                    case 2:
+                        OnNivell2();
+                        break;
+                    case 3:
+                        OnNivell3();
+                        break;
+                }
             }
-        
         } else
         {
             Debug.Log("NO ESTAN TOTS ELS ROLS SELECCIONATS");
@@ -105,37 +110,61 @@ public class RoomController : MonoBehaviourPunCallbacks, IInRoomCallbacks {
 IEnumerator EsperarCinematica(AudioSource audio)
 {
     yield return new WaitWhile(() => audio.isPlaying == true);
-    Debug.Log("2" + PanelCinematica.GetComponent<AudioSource>().isPlaying);
     PhotonNetwork.LoadLevel(ScenesManager.GetScene(ScenesManager.Scene.Prototip));
-
-
 }
 
-/*[PunRPC]
-private void RPC_LoadGameScene()
-{
-    Debug.Log("Nou nivell pel rol" + photonPlayer.Rol);
-    if (photonPlayer.Rol.Equals(PhotonPlayer.CONSTRUCTOR))
+    public void OnTutorial()
     {
-        PhotonNetwork.LoadLevel(ScenesManager.GetScene(ScenesManager.Scene.Constructor));
+        //PhotonNetwork.LoadLevel(ScenesManager.GetScene(ScenesManager.Scene.Prototip));
+        //PV.RPC("RPC_LoadGameScene", RpcTarget.All);
+        //RPC_LoadGameScene();
+        PanelMapa.SetActive(false);
+        PanelCinematica.SetActive(true);
+        PanelCinematica.GetComponent<AudioSource>().Play();
+        StartCoroutine(EsperarCinematica(PanelCinematica.GetComponent<AudioSource>()));
     }
-    else
-    {
-        PhotonNetwork.LoadLevel(ScenesManager.GetScene(ScenesManager.Scene.Prototip));
-    }
-}*/
 
-/*void OnSceneFinishedLoading(Scene scene, LoadSceneMode mode)
-{
-    currentScene = scene.name;
-    Debug.Log("current scene = " + currentScene);
-    if (currentScene.Equals(ScenesManager.GetScene(ScenesManager.Scene.MapaNivells)))
+    public void OnNivell1()
     {
-        CreatePlayer();
+        PhotonNetwork.LoadLevel(ScenesManager.GetScene(ScenesManager.Scene.Nivell1));
     }
-}*/
 
-void OnSceneFinishedLoading(Scene scene, LoadSceneMode mode)
+    public void OnNivell2()
+    {
+        PhotonNetwork.LoadLevel(ScenesManager.GetScene(ScenesManager.Scene.Nivell2));
+    }
+
+    public void OnNivell3()
+    {
+        PhotonNetwork.LoadLevel(ScenesManager.GetScene(ScenesManager.Scene.Nivell3));
+    }
+
+
+    /*[PunRPC]
+    private void RPC_LoadGameScene()
+    {
+        Debug.Log("Nou nivell pel rol" + photonPlayer.Rol);
+        if (photonPlayer.Rol.Equals(PhotonPlayer.CONSTRUCTOR))
+        {
+            PhotonNetwork.LoadLevel(ScenesManager.GetScene(ScenesManager.Scene.Constructor));
+        }
+        else
+        {
+            PhotonNetwork.LoadLevel(ScenesManager.GetScene(ScenesManager.Scene.Prototip));
+        }
+    }*/
+
+    /*void OnSceneFinishedLoading(Scene scene, LoadSceneMode mode)
+    {
+        currentScene = scene.name;
+        Debug.Log("current scene = " + currentScene);
+        if (currentScene.Equals(ScenesManager.GetScene(ScenesManager.Scene.MapaNivells)))
+        {
+            CreatePlayer();
+        }
+    }*/
+
+    void OnSceneFinishedLoading(Scene scene, LoadSceneMode mode)
     {
         currentScene = scene.name;
         Debug.Log("current scene = " + currentScene);
@@ -190,7 +219,7 @@ void OnSceneFinishedLoading(Scene scene, LoadSceneMode mode)
             PV.RPC("RPC_setInteractableButton", RpcTarget.All, rol, false);
             botoNou.boto.interactable = true;
             botoNou.isSelected = true;
-            text.text = rol;
+            text.text = botoNou.nom;
             photonPlayer.Rol = rol;
         }
 
@@ -226,5 +255,10 @@ void OnSceneFinishedLoading(Scene scene, LoadSceneMode mode)
                 return recollector;
         }
         return null;
+    }
+
+    public void OnTancar()
+    {
+        Application.Quit();
     }
 }

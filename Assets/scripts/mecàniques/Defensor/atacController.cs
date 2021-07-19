@@ -14,8 +14,7 @@ public class atacController : MonoBehaviour
     public float minEspera;
     //public GameObject llistaCreators;
     public GameObject instanciador;
-    [SerializeField]
-    private PhotonView PV;
+    public PhotonView PV;
     public Defensor defensor;
     public GameSetUp GS;
 

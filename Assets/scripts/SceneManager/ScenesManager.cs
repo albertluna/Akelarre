@@ -9,7 +9,10 @@ public static class ScenesManager {
     {
         Prototip,
         MenuMultijugador,
-        MapaNivells
+        MapaNivells,
+        Nivell1,
+        Nivell2,
+        Nivell3
     }
 
     public static void Load(Scene scene)

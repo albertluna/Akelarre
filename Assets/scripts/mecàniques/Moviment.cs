@@ -19,6 +19,8 @@ public class Moviment : MonoBehaviourPunCallbacks, IPunObservable
     public Vector3 dir;
     public Vector3 intermig;
     public float suavitatGir;
+    [SerializeField]
+    private JoystickVirtual joystick;
 
 
     void Start()
@@ -43,6 +45,9 @@ public class Moviment : MonoBehaviourPunCallbacks, IPunObservable
         if (PV.IsMine) {
             horizontalInput = Input.GetAxis("Horizontal");
             verticalInput = Input.GetAxis("Vertical");
+
+            horizontalInput += joystick.InputDirection.x;
+            verticalInput += joystick.InputDirection.y;
             //dir = camera.transform.forward + camera.transform.right;
             //dir.Normalize();
             
