@@ -55,6 +55,7 @@ public class GameSetUp : MonoBehaviour
     {
         if (PhotonNetwork.IsMasterClient)
         {
+            PhotonNetwork.AutomaticallySyncScene = true;
             PhotonNetwork.LoadLevel(ScenesManager.GetScene(ScenesManager.Scene.MapaNivells));
         }
     }
@@ -65,7 +66,6 @@ public class GameSetUp : MonoBehaviour
     /// <param name="estat">si es true es guanya la partida, si es false es perd</param>
     public void FiPartida(bool estat)
     {
-        Debug.Log("FI PARTIDA");
         Time.timeScale = 0;
         if (estat)
         {

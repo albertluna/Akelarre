@@ -10,6 +10,7 @@ public class ConstructorController : MonoBehaviour
     public GameObject colleccionablesExterns;
     public Pocio pocio;
     public HUD_Constructor hud;
+    public GameObject botoClicarColleccionable;
     public GameObject[] llistaColleccionables;
     public PhotonView PV;
     public Camera camera;
@@ -22,22 +23,24 @@ public class ConstructorController : MonoBehaviour
         pocio.Comencar();
         PV = GetComponent<PhotonView>();
         GS = FindObjectOfType<GameSetUp>();
+        hud = FindObjectOfType<HUD_Constructor>();
 
 
         if (!PV.IsMine)
         {
             Destroy(hud.gameObject);
             Destroy(camera.gameObject);
+            Destroy(botoClicarColleccionable);
         }
     }
-
-    // Update is called once per frame
-    void Update()
+    private void Awake()
     {
-        if(Input.GetKey(KeyCode.F))
+        hud = FindObjectOfType<HUD_Constructor>();
+        if (!PV.IsMine)
         {
-            NouColleccionable();
+            Destroy(hud.gameObject);
         }
+
     }
 
     public void NouColleccionable()

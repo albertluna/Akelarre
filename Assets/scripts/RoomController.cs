@@ -261,4 +261,12 @@ IEnumerator EsperarCinematica(AudioSource audio)
     {
         Application.Quit();
     }
+
+    public void OnComencar()
+    {
+        if (PhotonNetwork.IsMasterClient)
+        {
+            PhotonNetwork.LoadLevel(ScenesManager.GetScene(ScenesManager.Scene.Prototip));
+        }
+    }
 }

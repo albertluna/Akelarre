@@ -716,6 +716,7 @@ MonoBehaviour:
   vides: 3
   controller: {fileID: 2625093685106254652}
   HUDVides: {fileID: 4551476445274505740}
+  HUD: {fileID: 2838033224674865249}
 --- !u!1 &4546391434862655580
 GameObject:
   m_ObjectHideFlags: 0
@@ -1357,7 +1358,7 @@ PrefabInstance:
     - target: {fileID: 2329551910871752470, guid: 25667044bcc3f7944b5727c0157aff8e,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2966775323380685993, guid: 25667044bcc3f7944b5727c0157aff8e,
         type: 3}
@@ -1433,6 +1434,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Constraints
       value: 80
+      objectReference: {fileID: 0}
+    - target: {fileID: 8465400565524848694, guid: 25667044bcc3f7944b5727c0157aff8e,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 367838826098454302, guid: 25667044bcc3f7944b5727c0157aff8e, type: 3}

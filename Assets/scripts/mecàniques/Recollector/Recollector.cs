@@ -24,7 +24,7 @@ public class Recollector : MonoBehaviour
             //GameObject.Find("ConnectionController").GetComponent<ConnexioConsRec>();
     }
 
-    public void OnCollisionEnter(Collision collision)
+    public void OnTriggerEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Colleccionable") && PV.IsMine)
         {
@@ -51,6 +51,7 @@ public class Recollector : MonoBehaviour
             Destroy(collision.gameObject);
         }
     }
+
     /*[PunRPC]
     private void RPC_destroyColleccionable(Object gameObject)
     {

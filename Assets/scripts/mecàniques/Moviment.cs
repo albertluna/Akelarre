@@ -7,7 +7,6 @@ public class Moviment : MonoBehaviourPunCallbacks, IPunObservable
 {
     private Rigidbody rigidbody;
     public PhotonView PV;
-    private bool controllable = true;
 
     public float MaxSpeed;
 
