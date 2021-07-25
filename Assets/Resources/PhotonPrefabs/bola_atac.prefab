@@ -63,7 +63,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   posicio: {x: 0, y: 0}
   objectiu: {x: 0, y: 0}
-  velocitat: 0.1
+  velocitat: 0.2
 --- !u!54 &6284246136318194922
 Rigidbody:
   m_ObjectHideFlags: 0
