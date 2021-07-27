@@ -168,7 +168,10 @@ IEnumerator EsperarCinematica(AudioSource audio)
     {
         currentScene = scene.name;
         Debug.Log("current scene = " + currentScene);
-        if (currentScene.Equals(ScenesManager.GetScene(ScenesManager.Scene.Prototip)))
+        if (currentScene.Equals(ScenesManager.GetScene(ScenesManager.Scene.Prototip))
+            || currentScene.Equals(ScenesManager.GetScene(ScenesManager.Scene.Nivell1))
+            || currentScene.Equals(ScenesManager.GetScene(ScenesManager.Scene.Nivell2))
+            || currentScene.Equals(ScenesManager.GetScene(ScenesManager.Scene.Nivell3)))
         {
             Debug.Log("Nem a instanciar jugador");
             photonPlayer.Instantiate();

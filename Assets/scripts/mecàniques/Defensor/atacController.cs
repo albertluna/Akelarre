@@ -17,6 +17,7 @@ public class atacController : MonoBehaviour
     public PhotonView PV;
     public Defensor defensor;
     public GameSetUp GS;
+    public bool isVisible;
 
     /// <summary> array de gameobjects
     /// https://stuartspixelgames.com/2017/08/02/make-all-of-objects-children-into-an-array-unity-c/
@@ -53,8 +54,10 @@ public class atacController : MonoBehaviour
     [PunRPC]
     private void RPC_instanciarAtac(int posicio)
     {
-        //GameObject instancia =
+        GameObject instancia =
             Instantiate(bullet, creators[posicio].position, Quaternion.identity, instanciador.transform);
+        //Condicional per saber sifer invisible o no les boles d'atac
+        if (!isVisible && PV.IsMine) instancia.GetComponent<MovimentAtac>().EliminarBola();
         //instancia.GetComponent<MovimentAtac>().defensor = defensor;
     }
 
@@ -67,5 +70,9 @@ public class atacController : MonoBehaviour
     private void RPC_PartidaPerduda()
     {
         GS.FiPartida(false);
+    }
+
+    public void SetVisibility(bool visible) { isVisible = visible;
+        Debug.Log("Visibilitat = " + visible);
     }
 }

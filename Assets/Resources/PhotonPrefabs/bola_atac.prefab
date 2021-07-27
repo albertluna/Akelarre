@@ -64,6 +64,8 @@ MonoBehaviour:
   posicio: {x: 0, y: 0}
   objectiu: {x: 0, y: 0}
   velocitat: 0.2
+  bola: {fileID: 3352401208843363222}
+  isVisible: 1
 --- !u!54 &6284246136318194922
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -104,7 +106,7 @@ GameObject:
   - component: {fileID: 3482582343177192821}
   - component: {fileID: 8950429265737427653}
   m_Layer: 0
-  m_Name: Sphere001
+  m_Name: Bola
   m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

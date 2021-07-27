@@ -11036,6 +11036,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  atacVisible: 1
 --- !u!4 &1644108939
 Transform:
   m_ObjectHideFlags: 0
@@ -11653,6 +11654,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b9a305e18de0c04dbd257a21cd47087, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sharedProfile: {fileID: 11400000, guid: 66520668d72eb41b4bb3519c62c2d39e, type: 2}
+  isGlobal: 1
+  blendDistance: 0
+  weight: 1
+  priority: 0
 --- !u!4 &1744559821
 Transform:
   m_ObjectHideFlags: 0

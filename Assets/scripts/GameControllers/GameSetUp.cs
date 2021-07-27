@@ -21,6 +21,10 @@ public class GameSetUp : MonoBehaviour
     public Transform[] spawnPoints;
 
     public Colleccionable[] llistaColleccionables;
+    /// <summary>
+    /// Varaible per indicar si el defensor pot veure les boles d'atac
+    /// </summary>
+    public bool atacVisible;
 
     void Start()
     {
@@ -36,6 +40,9 @@ public class GameSetUp : MonoBehaviour
         constructor = FindObjectOfType<ConstructorController>();
         defensor = FindObjectOfType<Defensor>();
         recollector = FindObjectOfType<Recollector>();
+
+        //s'indica si el defensor pot veure les boles o no
+        if(defensor!= null) defensor.setVisibility(atacVisible);
     }
 
     /*public void PartidaPerduda(PhotonView PV)
@@ -55,6 +62,8 @@ public class GameSetUp : MonoBehaviour
     {
         if (PhotonNetwork.IsMasterClient)
         {
+
+            Debug.Log("Torna");
             PhotonNetwork.AutomaticallySyncScene = true;
             PhotonNetwork.LoadLevel(ScenesManager.GetScene(ScenesManager.Scene.MapaNivells));
         }

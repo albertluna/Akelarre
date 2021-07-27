@@ -99,13 +99,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1180242539496118674}
-  m_LocalRotation: {x: 0.6832748, y: -0.18203184, z: 0.18203187, w: 0.6832748}
-  m_LocalPosition: {x: 608.19684, y: 0.00016276042, z: -949.22845}
-  m_LocalScale: {x: 833.3334, y: 666.66656, z: 666.6665}
+  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 109, y: 0, z: -984}
+  m_LocalScale: {x: 885.50006, y: 666.66656, z: 624.99316}
   m_Children: []
   m_Father: {fileID: 1839569991575610151}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!33 &2695755412211926645
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -257,14 +257,15 @@ RectTransform:
   m_Children:
   - {fileID: 366791293593869680}
   - {fileID: 8920322193553470284}
+  - {fileID: 13131756158190720}
   - {fileID: 173731084584484245}
   m_Father: {fileID: 8653679735973429901}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 30, y: 9.6}
-  m_SizeDelta: {x: 83.5, y: 215.96}
+  m_AnchorMin: {x: 0.05, y: 0.05}
+  m_AnchorMax: {x: 0.15, y: 0.4}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &4551476445274505740
 MonoBehaviour:
@@ -429,7 +430,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 10}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3770818224019335522
 CanvasRenderer:
@@ -497,7 +498,7 @@ RectTransform:
   m_Children:
   - {fileID: 8957234107244073919}
   m_Father: {fileID: 5274176209516505705}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -535,7 +536,6 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 5274176209516505705}
-  - {fileID: 13131756158190720}
   - {fileID: 3891883696622008549}
   m_Father: {fileID: 6664858100003558424}
   m_RootOrder: 3
@@ -634,7 +634,7 @@ Transform:
   m_GameObject: {fileID: 3680523482378488798}
   m_LocalRotation: {x: 0.6832748, y: -0.18203184, z: 0.18203187, w: 0.6832748}
   m_LocalPosition: {x: 25.279652, y: 0, z: 67.14285}
-  m_LocalScale: {x: 1000, y: 999.9999, z: 709.8}
+  m_LocalScale: {x: 1000, y: 1000, z: 656.93005}
   m_Children: []
   m_Father: {fileID: 1839569991575610151}
   m_RootOrder: 0
@@ -748,10 +748,10 @@ RectTransform:
   m_Father: {fileID: 5274176209516505705}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.25, y: 0}
+  m_AnchorMin: {x: 0.25, y: 0.2}
   m_AnchorMax: {x: 0.75, y: 1}
-  m_AnchoredPosition: {x: 0, y: 2.4999948}
-  m_SizeDelta: {x: 0, y: -4.9999895}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &5171264132823819620
 GameObject:
@@ -785,7 +785,7 @@ RectTransform:
   m_Children:
   - {fileID: 4834961002788398650}
   m_Father: {fileID: 8653679735973429901}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
@@ -867,18 +867,18 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6913705741108609648}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 8653679735973429901}
-  m_RootOrder: 1
+  m_Father: {fileID: 5274176209516505705}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 30, y: 14}
-  m_SizeDelta: {x: 83.5, y: 215.96}
-  m_Pivot: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8177734406808891968
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -938,6 +938,7 @@ MonoBehaviour:
   PV: {fileID: 4385597908887047418}
   defensor: {fileID: 166391367113845950}
   GS: {fileID: 0}
+  isVisible: 0
 --- !u!1 &8084326642648909995
 GameObject:
   m_ObjectHideFlags: 0

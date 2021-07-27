@@ -10,11 +10,16 @@ public class MovimentAtac : MonoBehaviour
     private Vector2 objectiu;
     [SerializeField]
     private float velocitat;
+    [SerializeField]
+    GameObject bola;
+    [SerializeField]
+    bool isVisible;
     
     // Start is called before the first frame update
     void Start()
     {
         posicio = new Vector2(transform.position.x, transform.position.z);
+        if (!isVisible) EliminarBola();
     }
 
     // Update is called once per frame
@@ -22,6 +27,11 @@ public class MovimentAtac : MonoBehaviour
     {
         posicio = Vector2.Lerp(posicio, objectiu, Time.deltaTime*velocitat);
         transform.position += new Vector3(posicio.x-transform.position.x, 0, posicio.y-transform.position.z);
+    }
+
+    public void EliminarBola()
+    {
+        Destroy(bola);
     }
 
 }

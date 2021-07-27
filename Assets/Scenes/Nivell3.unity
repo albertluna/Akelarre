@@ -11231,6 +11231,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  atacVisible: 0
 --- !u!4 &1644108939
 Transform:
   m_ObjectHideFlags: 0

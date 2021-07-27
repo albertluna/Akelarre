@@ -53,5 +53,11 @@ public class Defensor : MonoBehaviour
         }
     }
 
+    public void setVisibility(bool visiblity)
+    {
+        if(PV.IsMine)
+            controller.SetVisibility(visiblity);
+    }
+
     
 }
