@@ -7,16 +7,17 @@ using UnityEngine.UI;
 public class JoystickVirtual : MonoBehaviour, IDragHandler, IPointerUpHandler, IPointerDownHandler
 {
     //http://www.theappguruz.com/blog/beginners-guide-learn-to-make-simple-virtual-joystick-in-unity
-    private Image jsContainer;
-    private Image joystick;
+    public Image jsContainer;
+    public Image joystick;
+
 
     public Vector3 InputDirection;
 
     void Start()
     {
 
-        jsContainer = GetComponent<Image>();
-        joystick = transform.GetChild(0).GetComponent<Image>(); //this command is used because there is only one child in hierarchy
+        //jsContainer = GetComponent<Image>();
+        //joystick = transform.GetChild(0).GetComponent<Image>(); //this command is used because there is only one child in hierarchy
         InputDirection = Vector3.zero;
     }
 

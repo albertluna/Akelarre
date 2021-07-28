@@ -42,8 +42,13 @@ public class Moviment : MonoBehaviourPunCallbacks, IPunObservable
     void Update()
     {
         if (PV.IsMine) {
-            horizontalInput = Input.GetAxis("Horizontal");
-            verticalInput = Input.GetAxis("Vertical");
+            horizontalInput = 0;
+            verticalInput = 0;
+            if (Input.GetAxis("Horizontal") != null)
+            {
+                horizontalInput += Input.GetAxis("Horizontal");
+                verticalInput += Input.GetAxis("Vertical");
+            }
 
             horizontalInput += joystick.InputDirection.x;
             verticalInput += joystick.InputDirection.y;
