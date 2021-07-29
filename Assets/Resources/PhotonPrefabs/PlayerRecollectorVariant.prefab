@@ -322,58 +322,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &1116078609593516531
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8036859239653682954}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_SynchronizePosition: 1
-  m_SynchronizeRotation: 1
-  m_SynchronizeScale: 0
-  m_UseLocal: 1
---- !u!114 &4639230696370207840
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8036859239653682954}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f6039f497f60949238bd0f7d2e604743, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  RC: {fileID: 0}
-  creators: []
-  timer: 2
-  maxEspera: 3
-  minEspera: 15
-  PV: {fileID: 4385597908887047418}
-  colleccionables: []
---- !u!114 &5349862757896044068
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8036859239653682954}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 92c56c83ef2724f24988962424913f5f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  vides: 3
-  PV: {fileID: 4385597908887047418}
-  GS: {fileID: 0}
-  HUD: {fileID: 0}
-  rc: {fileID: 4639230696370207840}
 --- !u!114 &7337924587308704117
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -625,6 +573,58 @@ MonoBehaviour:
   - {fileID: 6712119402394625149}
   - {fileID: 5968628871304879744}
   - {fileID: 3541070334209072560}
+--- !u!114 &1116078609593516531
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8036859239653682954}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizePosition: 1
+  m_SynchronizeRotation: 1
+  m_SynchronizeScale: 0
+  m_UseLocal: 1
+--- !u!114 &4639230696370207840
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8036859239653682954}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6039f497f60949238bd0f7d2e604743, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  RC: {fileID: 0}
+  creators: []
+  timer: 2
+  maxEspera: 3
+  minEspera: 15
+  PV: {fileID: 4385597908887047418}
+  colleccionables: []
+--- !u!114 &5349862757896044068
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8036859239653682954}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92c56c83ef2724f24988962424913f5f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  vides: 3
+  PV: {fileID: 4385597908887047418}
+  GS: {fileID: 0}
+  HUD: {fileID: 0}
+  rc: {fileID: 4639230696370207840}
 --- !u!1 &8436655085113850923
 GameObject:
   m_ObjectHideFlags: 0
