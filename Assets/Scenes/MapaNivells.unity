@@ -1479,7 +1479,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Selecciona personatge
+  m_Text: Selecciona el personatge
 --- !u!222 &885931288
 CanvasRenderer:
   m_ObjectHideFlags: 0
