@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Audio;
 
 namespace Photon.Pun.Demo.Asteroids
 {
@@ -16,6 +17,10 @@ namespace Photon.Pun.Demo.Asteroids
 
         [Header("Selection Panel")]
         public GameObject SelectionPanel;
+
+        [Header("Configuracio Panel")]
+        public GameObject ConfigPanel;
+        public AudioMixer mixer;
 
         [Header("Create Room Panel")]
         public GameObject CreateRoomPanel;
@@ -54,7 +59,7 @@ namespace Photon.Pun.Demo.Asteroids
             cachedRoomList = new Dictionary<string, RoomInfo>();
             roomListEntries = new Dictionary<string, GameObject>();
             
-            PlayerNameInput.text = "Player " + Random.Range(1000, 10000);
+            PlayerNameInput.text = "Jugador " + Random.Range(1000, 10000);
         }
 
         #endregion
@@ -100,7 +105,7 @@ namespace Photon.Pun.Demo.Asteroids
 
         public override void OnJoinRandomFailed(short returnCode, string message)
         {
-            string roomName = "Room " + Random.Range(1000, 10000);
+            string roomName = "Sala " + Random.Range(1000, 10000);
 
             RoomOptions options = new RoomOptions {MaxPlayers = 8};
 
@@ -132,7 +137,6 @@ namespace Photon.Pun.Demo.Asteroids
                 {
                     entry.GetComponent<PlayerListEntry>().SetPlayerReady((bool) isPlayerReady);
                 }
-                Debug.Log("ActorNumber = " + p.ActorNumber);
                 playerListEntries.Add(p.ActorNumber, entry);
             }
 
@@ -223,7 +227,7 @@ namespace Photon.Pun.Demo.Asteroids
         public void OnCreateRoomButtonClicked()
         {
             string roomName = RoomNameInputField.text;
-            roomName = (roomName.Equals(string.Empty)) ? "Room " + Random.Range(1000, 10000) : roomName;
+            roomName = (roomName.Equals(string.Empty)) ? "Sala " + Random.Range(1000, 10000) : roomName;
 
             //byte maxPlayers;
             //byte.TryParse(MaxPlayersInputField.text, out maxPlayers);
@@ -231,7 +235,6 @@ namespace Photon.Pun.Demo.Asteroids
 
             //sales de 3 persones
             RoomOptions options = new RoomOptions {MaxPlayers = (byte)3, PlayerTtl = 10000 };
-            Debug.Log("Sala de " + options.MaxPlayers);
             PhotonNetwork.CreateRoom(roomName, options, null);
         }
 
@@ -245,6 +248,11 @@ namespace Photon.Pun.Demo.Asteroids
         public void OnLeaveGameButtonClicked()
         {
             PhotonNetwork.LeaveRoom();
+        }
+
+        public void OnSortirButtonClicked()
+        {
+            Application.Quit();
         }
 
         public void OnLoginButtonClicked()
@@ -279,6 +287,16 @@ namespace Photon.Pun.Demo.Asteroids
             PhotonNetwork.CurrentRoom.IsVisible = false;
             PhotonNetwork.AutomaticallySyncScene = true;
             PhotonNetwork.LoadLevel(ScenesManager.GetScene(ScenesManager.Scene.MapaNivells));
+        }
+
+        public void onVolumUpdated(Slider slider)
+        {
+            mixer.SetFloat(slider.gameObject.name, slider.value);
+        }
+
+        public void OnConfigButtonClicked()
+        {
+            SetActivePanel(ConfigPanel.name);
         }
 
         #endregion
@@ -332,6 +350,7 @@ namespace Photon.Pun.Demo.Asteroids
             JoinRandomRoomPanel.SetActive(activePanel.Equals(JoinRandomRoomPanel.name));
             RoomListPanel.SetActive(activePanel.Equals(RoomListPanel.name));    // UI should call OnRoomListButtonClicked() to activate this
             InsideRoomPanel.SetActive(activePanel.Equals(InsideRoomPanel.name));
+            ConfigPanel.SetActive(activePanel.Equals(ConfigPanel.name));
         }
 
         private void UpdateCachedRoomList(List<RoomInfo> roomList)
@@ -374,12 +393,5 @@ namespace Photon.Pun.Demo.Asteroids
                 roomListEntries.Add(info.Name, entry);
             }
         }
-
-        public void UpdateRoomRols()
-        {
-            //roomListEntries.
-        }
-
-
     }
 }

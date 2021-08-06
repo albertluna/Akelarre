@@ -15,8 +15,7 @@ public class Defensor : MonoBehaviour
     private atacController controller;
     [SerializeField]
     private Slider HUDVides;
-    [SerializeField]
-    private GameObject HUD;
+    
     //public int NombreVides;
 
     // Start is called before the first frame update
@@ -26,10 +25,6 @@ public class Defensor : MonoBehaviour
         HUDVides.maxValue = GS.videsPartida;
 
         vides = GS.videsPartida;
-        if (!PV.IsMine)
-        {
-            Destroy(HUD);
-        }
     }
 
     public void OnTriggerEnter(Collider collision)

@@ -75,6 +75,7 @@ public class RoomController : MonoBehaviourPunCallbacks, IInRoomCallbacks {
         PhotonNetwork.Nickname = myNumberInRoom.ToString();*/
     }
 
+
     public void OnNivellButtonClicked(int nivell)
     {
         if(constructor.isSelected && defensor.isSelected && recollector.isSelected)
@@ -86,7 +87,7 @@ public class RoomController : MonoBehaviourPunCallbacks, IInRoomCallbacks {
                 switch(nivell)
                 {
                     case 0:
-                        OnTutorial();
+                        OnNivell0();
                         break;
                     case 1:
                         OnNivell1();
@@ -110,31 +111,41 @@ public class RoomController : MonoBehaviourPunCallbacks, IInRoomCallbacks {
 IEnumerator EsperarCinematica(AudioSource audio)
 {
     yield return new WaitWhile(() => audio.isPlaying == true);
-    PhotonNetwork.LoadLevel(ScenesManager.GetScene(ScenesManager.Scene.Prototip));
+    PhotonNetwork.LoadLevel(ScenesManager.GetScene(ScenesManager.Scene.Nivell0));
 }
 
-    public void OnTutorial()
+    private void OnNivell0()
     {
         //PhotonNetwork.LoadLevel(ScenesManager.GetScene(ScenesManager.Scene.Prototip));
         //PV.RPC("RPC_LoadGameScene", RpcTarget.All);
         //RPC_LoadGameScene();
         PanelMapa.SetActive(false);
         PanelCinematica.SetActive(true);
-        PanelCinematica.GetComponent<AudioSource>().Play();
-        StartCoroutine(EsperarCinematica(PanelCinematica.GetComponent<AudioSource>()));
+        AudioSource explicacio = PanelCinematica.GetComponent<AudioSource>();
+        if (!explicacio.isPlaying)
+        {
+            explicacio.Play();
+            StartCoroutine(EsperarCinematica(PanelCinematica.GetComponent<AudioSource>()));
+
+        }
+        else
+        {
+            StopAllCoroutines();
+            PhotonNetwork.LoadLevel(ScenesManager.GetScene(ScenesManager.Scene.Nivell0));
+        }
     }
 
-    public void OnNivell1()
+    private void OnNivell1()
     {
         PhotonNetwork.LoadLevel(ScenesManager.GetScene(ScenesManager.Scene.Nivell1));
     }
 
-    public void OnNivell2()
+    private void OnNivell2()
     {
         PhotonNetwork.LoadLevel(ScenesManager.GetScene(ScenesManager.Scene.Nivell2));
     }
 
-    public void OnNivell3()
+    private void OnNivell3()
     {
         PhotonNetwork.LoadLevel(ScenesManager.GetScene(ScenesManager.Scene.Nivell3));
     }
@@ -168,7 +179,7 @@ IEnumerator EsperarCinematica(AudioSource audio)
     {
         currentScene = scene.name;
         Debug.Log("current scene = " + currentScene);
-        if (currentScene.Equals(ScenesManager.GetScene(ScenesManager.Scene.Prototip))
+        if (currentScene.Equals(ScenesManager.GetScene(ScenesManager.Scene.Nivell0))
             || currentScene.Equals(ScenesManager.GetScene(ScenesManager.Scene.Nivell1))
             || currentScene.Equals(ScenesManager.GetScene(ScenesManager.Scene.Nivell2))
             || currentScene.Equals(ScenesManager.GetScene(ScenesManager.Scene.Nivell3)))
@@ -262,14 +273,9 @@ IEnumerator EsperarCinematica(AudioSource audio)
 
     public void OnTancar()
     {
-        Application.Quit();
-    }
-
-    public void OnComencar()
-    {
-        if (PhotonNetwork.IsMasterClient)
-        {
-            PhotonNetwork.LoadLevel(ScenesManager.GetScene(ScenesManager.Scene.Prototip));
-        }
+        PhotonNetwork.LeaveRoom();
+        Destroy(RoomController.room.gameObject);
+        PhotonNetwork.AutomaticallySyncScene = true;
+        PhotonNetwork.LoadLevel(ScenesManager.GetScene(ScenesManager.Scene.MenuMultijugador));
     }
 }

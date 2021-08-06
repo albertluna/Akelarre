@@ -14,6 +14,9 @@ public class recollectorController : MonoBehaviourPunCallbacks// , IPunObservabl
     public Colleccionable[] colleccionables;
     public static Colleccionable[] llistaColleccionables;
 
+    [SerializeField]
+    private GameObject[] eliminar;
+
     void Start()
     {
         PV = GetComponent<PhotonView>();
@@ -33,7 +36,10 @@ public class recollectorController : MonoBehaviourPunCallbacks// , IPunObservabl
         {
             creators[i].index = i;
         }
-
+        if (!PV.IsMine)
+        {
+            foreach (GameObject go in eliminar) Destroy(go);
+        }
 
     }
 

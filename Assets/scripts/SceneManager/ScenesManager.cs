@@ -10,6 +10,7 @@ public static class ScenesManager {
         Prototip,
         MenuMultijugador,
         MapaNivells,
+        Nivell0,
         Nivell1,
         Nivell2,
         Nivell3

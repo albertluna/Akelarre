@@ -21,6 +21,8 @@ public class GameSetUp : MonoBehaviour
     public Transform[] spawnPoints;
 
     public Colleccionable[] llistaColleccionables;
+
+    public GameObject HUD;
     /// <summary>
     /// Varaible per indicar si el defensor pot veure les boles d'atac
     /// </summary>
@@ -42,28 +44,14 @@ public class GameSetUp : MonoBehaviour
         recollector = FindObjectOfType<Recollector>();
 
         //s'indica si el defensor pot veure les boles o no
-        if(defensor!= null) defensor.setVisibility(atacVisible);
+        if (defensor != null) defensor.setVisibility(atacVisible);
+        if (constructor == null || !constructor.PV.IsMine) Destroy(HUD);
     }
-
-    /*public void PartidaPerduda(PhotonView PV)
-    {
-        Debug.Log("GAME OVER");
-        PV.RPC("RPC_FiPartida", RpcTarget.All, false);
-
-    }
-
-    public void PartidaGuanyada(PhotonView PV)
-    {
-        Debug.Log("Victoria");
-        PV.RPC("RPC_FiPartida", RpcTarget.All, true);
-    }*/
 
     public void OnBotoVictoria()
     {
         if (PhotonNetwork.IsMasterClient)
         {
-
-            Debug.Log("Torna");
             PhotonNetwork.AutomaticallySyncScene = true;
             PhotonNetwork.LoadLevel(ScenesManager.GetScene(ScenesManager.Scene.MapaNivells));
         }

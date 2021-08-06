@@ -10,11 +10,12 @@ public class ConstructorController : MonoBehaviour
     public GameObject colleccionablesExterns;
     public Pocio pocio;
     public HUD_Constructor hud;
-    public GameObject botoClicarColleccionable;
     public GameObject[] llistaColleccionables;
     public PhotonView PV;
-    public Camera camera;
     public GameSetUp GS;
+    public AudioSource audioConstructor;
+    [SerializeField]
+    private GameObject[] eliminar;
 
     // Start is called before the first frame update
     void Start()
@@ -25,22 +26,10 @@ public class ConstructorController : MonoBehaviour
         GS = FindObjectOfType<GameSetUp>();
         hud = FindObjectOfType<HUD_Constructor>();
 
-
         if (!PV.IsMine)
         {
-            Destroy(hud.gameObject);
-            Destroy(camera.gameObject);
-            Destroy(botoClicarColleccionable);
+            foreach (GameObject go in eliminar) Destroy(go);
         }
-    }
-    private void Awake()
-    {
-        hud = FindObjectOfType<HUD_Constructor>();
-        if (!PV.IsMine)
-        {
-            Destroy(hud.gameObject);
-        }
-
     }
 
     public void NouColleccionable()
@@ -63,6 +52,10 @@ public class ConstructorController : MonoBehaviour
         NouColleccionable(recollectorController.escollirColleccionable(nouColleccionable));
     }
 
+    /// <summary>
+    /// Funcio que introdueix el colleccionable agafat pel recollector i el posa a la pantalla del constructor
+    /// </summary>
+    /// <param name="nouColleccionable">el tipus del nou colleccionable</param>
     public void NouColleccionable(Colleccionable nouColleccionable)
     {
         if (colleccionable != null)
@@ -71,6 +64,8 @@ public class ConstructorController : MonoBehaviour
         }
         colleccionable = Instantiate(nouColleccionable.gameObject,
             creadorColleccionables.transform.position, Quaternion.identity, creadorColleccionables.transform);
+        //Es reprodueix l'audio d'aparicio de colleccionable
+        if(PV.IsMine) audioConstructor.PlayOneShot(audioConstructor.clip, 1f);
     }
 
     public void ClicarMaterial()

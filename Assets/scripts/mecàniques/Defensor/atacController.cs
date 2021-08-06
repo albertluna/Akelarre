@@ -17,7 +17,11 @@ public class atacController : MonoBehaviour
     public PhotonView PV;
     public Defensor defensor;
     public GameSetUp GS;
+    //Bool per saber si les boles son visibles o no
     public bool isVisible;
+
+    [SerializeField]
+    private GameObject[] eliminar;
 
     /// <summary> array de gameobjects
     /// https://stuartspixelgames.com/2017/08/02/make-all-of-objects-children-into-an-array-unity-c/
@@ -31,6 +35,10 @@ public class atacController : MonoBehaviour
         PV = GetComponent<PhotonView>();
         GS = FindObjectOfType<GameSetUp>();
         //defensor = GetComponent<Defensor>();
+        if (!PV.IsMine)
+        {
+            foreach (GameObject go in eliminar) Destroy(go);
+        }
     }
 
     // Update is called once per frame
@@ -72,7 +80,7 @@ public class atacController : MonoBehaviour
         GS.FiPartida(false);
     }
 
-    public void SetVisibility(bool visible) { isVisible = visible;
-        Debug.Log("Visibilitat = " + visible);
+    public void SetVisibility(bool visible) {
+        isVisible = visible;
     }
 }

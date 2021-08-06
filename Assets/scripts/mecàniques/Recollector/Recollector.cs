@@ -5,26 +5,26 @@ using Photon.Pun;
 
 public class Recollector : MonoBehaviour
 {
-    Rigidbody rb;
-    Collider colider;
     public int vides;
     public PhotonView PV;
     public GameSetUp GS;
     public HUD_Recollector HUD;
     public recollectorController rc;
+    [SerializeField]
+    private GameObject[] eliminar;
 
     // Start is called before the first frame update
     void Start()
     {
-        rb = this.GetComponent<Rigidbody>();
-        colider = GetComponent<CapsuleCollider>();
         vides = HUD.NombreVides();
         GS = FindObjectOfType<GameSetUp>();
-        if (!PV.IsMine) Destroy(HUD.gameObject);
-            //GameObject.Find("ConnectionController").GetComponent<ConnexioConsRec>();
+        if (!PV.IsMine)
+        {
+            foreach (GameObject go in eliminar) Destroy(go);
+        }
     }
 
-    public void OnTriggerEnter(Collision collision)
+    public void OnTriggerEnter(Collider collision)
     {
         if (collision.gameObject.CompareTag("Colleccionable") && PV.IsMine)
         {
@@ -51,11 +51,4 @@ public class Recollector : MonoBehaviour
             Destroy(collision.gameObject);
         }
     }
-
-    /*[PunRPC]
-    private void RPC_destroyColleccionable(Object gameObject)
-    {
-        Destroy((GameObject)gameObject);
-    }*/
-
 }

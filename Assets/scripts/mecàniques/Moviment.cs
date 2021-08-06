@@ -26,10 +26,6 @@ public class Moviment : MonoBehaviourPunCallbacks, IPunObservable
     {
         rigidbody = GetComponent<Rigidbody>();
         intermig = new Vector3(0, 0, 0);
-        if (!PV.IsMine)
-        {
-            Destroy(camera.gameObject);
-        }
     }
 
     public override void OnEnable()
