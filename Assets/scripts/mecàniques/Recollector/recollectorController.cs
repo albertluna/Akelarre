@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using Photon.Pun;
+using UnityEngine.Rendering.PostProcessing;
 
 public class recollectorController : MonoBehaviourPunCallbacks// , IPunObservable
 {
@@ -56,12 +57,12 @@ public class recollectorController : MonoBehaviourPunCallbacks// , IPunObservabl
             {
                 int resultat = Random.Range(0, 99);
                 int percentatgeAnterior = 0;
-                int posicio = Random.Range(0, creators.Length - 1);
+                int posicio = Random.Range(0, this.creators.Length - 1);
 
                 //comprovar que la nova posicio no estigui ocupada
                 while (creators[posicio].estaOcupat)
                 {
-                    posicio = Random.Range(0, creators.Length - 1);
+                    posicio = Random.Range(0, this.creators.Length - 1);
                 }
 
                 //escollir quin dels diferents tipus de colleccionables es crearà
@@ -90,7 +91,7 @@ public class recollectorController : MonoBehaviourPunCallbacks// , IPunObservabl
     [PunRPC]
     private void RPC_crearColleccionable(int posicio, string color)
     {
-        //Debug.Log("L'index es " + posicio);
+        Debug.Log("L'index es " + posicio);
         this.creators[posicio].Instantiate(escollirColleccionable(color), PV.IsMine);
     }
 
@@ -121,6 +122,21 @@ public class recollectorController : MonoBehaviourPunCallbacks// , IPunObservabl
     {
         creators[index].GetComponentInChildren<Colleccionable>().parent.estaOcupat = false;
         Destroy(creators[index].GetComponentInChildren<Colleccionable>().gameObject);
+    }
+    /// <summary>
+    /// Funcio per posar la pantalla en blanc i negre
+    /// </summary>
+    public void SetBiN() {
+        if (PV.IsMine)
+        {
+            Debug.Log("Anem a postposejar");
+            PostProcessVolume postpo = FindObjectOfType<PostProcessVolume>();
+            ColorGrading color;
+            if (postpo.profile.TryGetSettings<ColorGrading>(out color))
+            {
+                color.saturation.value = -100;
+            }
+        }
     }
 
 }

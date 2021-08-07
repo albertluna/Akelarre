@@ -294,15 +294,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92c56c83ef2724f24988962424913f5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  vides: 3
   PV: {fileID: 4385597908887047418}
   GS: {fileID: 0}
-  HUD: {fileID: 0}
+  HUD: {fileID: 644789380891764850}
   rc: {fileID: 4639230696370207840}
-  eliminar:
-  - {fileID: 6572874378697524683}
-  - {fileID: 4721438826719436031}
-  - {fileID: 8891145196691412339}
 --- !u!114 &4862692928164743463
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -610,6 +605,22 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &644789380891764850
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8036859239653682954}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e17eaf77e6e58431abff011a6402d3eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  vides:
+  - {fileID: 6712119402394625149}
+  - {fileID: 5968628871304879744}
+  - {fileID: 3541070334209072560}
 --- !u!114 &1116078609593516531
 MonoBehaviour:
   m_ObjectHideFlags: 0

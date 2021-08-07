@@ -5,23 +5,18 @@ using Photon.Pun;
 
 public class Recollector : MonoBehaviour
 {
-    public int vides;
+    private int vides;
     public PhotonView PV;
     public GameSetUp GS;
     public HUD_Recollector HUD;
     public recollectorController rc;
-    [SerializeField]
-    private GameObject[] eliminar;
+    
 
     // Start is called before the first frame update
     void Start()
     {
         vides = HUD.NombreVides();
-        GS = FindObjectOfType<GameSetUp>();
-        if (!PV.IsMine)
-        {
-            foreach (GameObject go in eliminar) Destroy(go);
-        }
+        GS = FindObjectOfType<GameSetUp>();        
     }
 
     public void OnTriggerEnter(Collider collision)
@@ -40,11 +35,13 @@ public class Recollector : MonoBehaviour
             if (index == -1) Debug.LogError("Fail");
 
             rc.deleteColleccionable(index);
-
-            //Destroy(collision.gameObject);
-
         }
-        else if (collision.gameObject.CompareTag("Bullet") && vides > 0)
+        
+    }
+
+    public void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Bullet") && vides > 0)
         {
             vides--;
             HUD.ActualitzarVides(vides);

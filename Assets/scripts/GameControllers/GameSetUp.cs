@@ -9,7 +9,7 @@ public class GameSetUp : MonoBehaviour
 
     public ConstructorController constructor;
     public Defensor defensor;
-    public Recollector recollector;
+    public recollectorController recollector;
 
 
     public GameObject GameOver;
@@ -22,11 +22,17 @@ public class GameSetUp : MonoBehaviour
 
     public Colleccionable[] llistaColleccionables;
 
+    //Variable per borrar la llista de la pocio
     public GameObject HUD;
     /// <summary>
     /// Varaible per indicar si el defensor pot veure les boles d'atac
     /// </summary>
     public bool atacVisible;
+
+    /// <summary>
+    /// Variable per indicar si el recollector veu en blanc i negre
+    /// </summary>
+    public bool grisRecollector;
 
     void Start()
     {
@@ -41,10 +47,11 @@ public class GameSetUp : MonoBehaviour
     {
         constructor = FindObjectOfType<ConstructorController>();
         defensor = FindObjectOfType<Defensor>();
-        recollector = FindObjectOfType<Recollector>();
+        recollector = FindObjectOfType<recollectorController>();
 
         //s'indica si el defensor pot veure les boles o no
         if (defensor != null) defensor.setVisibility(atacVisible);
+        if (grisRecollector) recollector.SetBiN();
         if (constructor == null || !constructor.PV.IsMine) Destroy(HUD);
     }
 
