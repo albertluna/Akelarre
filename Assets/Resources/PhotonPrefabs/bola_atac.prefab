@@ -106,10 +106,10 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: -1283839888546981825, guid: 77e1c957cf47747fe9aa46bdbdb2cb69,
     type: 2}
-  m_audioClip: {fileID: 8300000, guid: 58a653a8f97b04b5c99ef0ac6cb15fb9, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 7bb18d31067f94f2492c6875a8e364b7, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
-  m_Pitch: 1
+  m_Pitch: 0.65
   Loop: 1
   Mute: 0
   Spatialize: 0
@@ -117,7 +117,7 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1500
-  MaxDistance: 5888.218
+  MaxDistance: 5000
   Pan2D: 0
   rolloffMode: 1
   BypassEffects: 0
@@ -250,7 +250,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -3928319594741516796, guid: e1fc20cd2422e684bb1e343dff78b131, type: 3}
+  - {fileID: 2100000, guid: 55370839cd080c547bbe81236436e12b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

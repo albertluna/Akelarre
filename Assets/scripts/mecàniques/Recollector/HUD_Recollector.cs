@@ -12,6 +12,7 @@ public class HUD_Recollector : MonoBehaviour
         {
             if (i < nVides) vides[i].SetActive(true);
             else vides[i].SetActive(false);
+
         } 
     }
 

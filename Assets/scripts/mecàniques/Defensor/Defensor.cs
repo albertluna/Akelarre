@@ -15,6 +15,10 @@ public class Defensor : MonoBehaviour
     private atacController controller;
     [SerializeField]
     private Slider HUDVides;
+    [SerializeField]
+    private AudioClip destrossarBoles;
+    [SerializeField]
+    private AudioClip destrossarColleccionables;
     
     //public int NombreVides;
 
@@ -29,10 +33,16 @@ public class Defensor : MonoBehaviour
 
     public void OnTriggerEnter(Collider collision)
     {
-        if ((collision.gameObject.CompareTag("Bullet") || collision.gameObject.CompareTag("Colleccionable")))//&&PV.IsMine)
+        if (collision.gameObject.CompareTag("Bullet"))//&&PV.IsMine)
         {
+            GetComponent<AudioSource>().PlayOneShot(destrossarBoles, 1f);
             Destroy(collision.gameObject);
-        }        
+        }
+        if (collision.gameObject.CompareTag("Colleccionable"))
+        {
+            GetComponent<AudioSource>().PlayOneShot(destrossarColleccionables, 1f);
+            Destroy(collision.gameObject);
+        }
     }
 
     public void UnaVidaMenys()
@@ -52,7 +62,5 @@ public class Defensor : MonoBehaviour
     {
         if(PV.IsMine)
             controller.SetVisibility(visiblity);
-    }
-
-    
+    } 
 }

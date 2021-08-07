@@ -15,6 +15,10 @@ public class ConstructorController : MonoBehaviour
     public GameSetUp GS;
     public AudioSource audioConstructor;
     [SerializeField]
+    private AudioClip colleccionableCorrecte;
+    [SerializeField]
+    private AudioClip colleccionableErroni;
+    [SerializeField]
     private GameObject[] eliminar;
 
     // Start is called before the first frame update
@@ -74,6 +78,7 @@ public class ConstructorController : MonoBehaviour
         {
             if (pocio.esCollecicionableCorrecte(colleccionable.GetComponent<Colleccionable>()))
             {
+                audioConstructor.PlayOneShot(colleccionableCorrecte, 1f);
                 pocio.Seguent();
                 if(pocio.EsUltim() && PV.IsMine)
                 {
@@ -82,6 +87,7 @@ public class ConstructorController : MonoBehaviour
             }
             else
             {
+                audioConstructor.PlayOneShot(colleccionableErroni, 1f);
                 pocio.Comencar();
             }
             hud.actualitzarProgres();
