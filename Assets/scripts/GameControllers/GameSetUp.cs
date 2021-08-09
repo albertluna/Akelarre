@@ -24,10 +24,15 @@ public class GameSetUp : MonoBehaviour
 
     //Variable per borrar la llista de la pocio
     public GameObject HUD;
+    [Header("Referència a l'atac")]
     /// <summary>
     /// Varaible per indicar si el defensor pot veure les boles d'atac
     /// </summary>
     public bool atacVisible;
+    public float initialOffsetTimer;
+    public float minimTime;
+    public float maximTime;
+    public float velocitatBoles;
 
     /// <summary>
     /// Variable per indicar si el recollector veu en blanc i negre
@@ -70,6 +75,7 @@ public class GameSetUp : MonoBehaviour
     /// <param name="estat">si es true es guanya la partida, si es false es perd</param>
     public void FiPartida(bool estat)
     {
+        PhotonNetwork.MinimalTimeScaleToDispatchInFixedUpdate = 0;
         Time.timeScale = 0;
         if (estat)
         {

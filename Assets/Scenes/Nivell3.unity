@@ -8631,6 +8631,10 @@ MonoBehaviour:
   - {fileID: 0}
   HUD: {fileID: 707875360}
   atacVisible: 0
+  initialOffsetTimer: 17
+  minimTime: 5
+  maximTime: 13
+  velocitatBoles: 0.2
   grisRecollector: 0
 --- !u!4 &1644108939
 Transform:

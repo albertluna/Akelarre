@@ -8,8 +8,7 @@ public class MovimentAtac : MonoBehaviour
     private Vector2 posicio;
     [SerializeField]
     private Vector2 objectiu;
-    [SerializeField]
-    private float velocitat;
+    public float velocitat;
     [SerializeField]
     GameObject bola;
     [SerializeField]

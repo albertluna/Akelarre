@@ -87,7 +87,7 @@ public class RoomController : MonoBehaviourPunCallbacks, IInRoomCallbacks {
                 switch(nivell)
                 {
                     case 0:
-                        OnNivell0();
+                        PV.RPC("RPC_OnNivell0", RpcTarget.All);
                         break;
                     case 1:
                         OnNivell1();
@@ -108,17 +108,16 @@ public class RoomController : MonoBehaviourPunCallbacks, IInRoomCallbacks {
     }
     
 
-IEnumerator EsperarCinematica(AudioSource audio)
-{
-    yield return new WaitWhile(() => audio.isPlaying == true);
-    PhotonNetwork.LoadLevel(ScenesManager.GetScene(ScenesManager.Scene.Nivell0));
-}
-
-    private void OnNivell0()
+    IEnumerator EsperarCinematica(AudioSource audio)
     {
-        //PhotonNetwork.LoadLevel(ScenesManager.GetScene(ScenesManager.Scene.Prototip));
+        yield return new WaitWhile(() => audio.isPlaying == true);
+        if(PhotonNetwork.IsMasterClient) PhotonNetwork.LoadLevel(ScenesManager.GetScene(ScenesManager.Scene.Nivell0));
+    }
+
+    [PunRPC]
+    private void RPC_OnNivell0()
+    {
         //PV.RPC("RPC_LoadGameScene", RpcTarget.All);
-        //RPC_LoadGameScene();
         PanelMapa.SetActive(false);
         PanelCinematica.SetActive(true);
         AudioSource explicacio = PanelCinematica.GetComponent<AudioSource>();
@@ -128,7 +127,7 @@ IEnumerator EsperarCinematica(AudioSource audio)
             StartCoroutine(EsperarCinematica(PanelCinematica.GetComponent<AudioSource>()));
 
         }
-        else
+        else if(PhotonNetwork.IsMasterClient)
         {
             StopAllCoroutines();
             PhotonNetwork.LoadLevel(ScenesManager.GetScene(ScenesManager.Scene.Nivell0));

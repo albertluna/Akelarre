@@ -9,9 +9,10 @@ public class atacController : MonoBehaviour
 
     public Transform[] creators;
     public GameObject bullet;
-    public float timer;
-    public float maxEspera;
-    public float minEspera;
+    private float timer;
+    private float maxEspera;
+    private float minEspera;
+    private float velocitat;
     //public GameObject llistaCreators;
     public GameObject instanciador;
     public PhotonView PV;
@@ -34,6 +35,11 @@ public class atacController : MonoBehaviour
         creators = AC.GetComponentsInChildren<Transform>();
         PV = GetComponent<PhotonView>();
         GS = FindObjectOfType<GameSetUp>();
+        //Es setteja els valors d'instanciar atacs en funcio de la partida
+        timer = GS.initialOffsetTimer;
+        maxEspera = GS.maximTime;
+        minEspera = GS.minimTime;
+        velocitat = GS.velocitatBoles;
         //defensor = GetComponent<Defensor>();
         if (!PV.IsMine)
         {
@@ -64,9 +70,9 @@ public class atacController : MonoBehaviour
     {
         GameObject instancia =
             Instantiate(bullet, creators[posicio].position, Quaternion.identity, instanciador.transform);
+        instancia.GetComponent<MovimentAtac>().velocitat = velocitat;
         //Condicional per saber sifer invisible o no les boles d'atac
         if (!isVisible && PV.IsMine) instancia.GetComponent<MovimentAtac>().EliminarBola();
-        //instancia.GetComponent<MovimentAtac>().defensor = defensor;
     }
 
 
