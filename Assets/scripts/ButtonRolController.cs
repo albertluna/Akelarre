@@ -1,9 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
-using Photon.Pun;
-using Photon.Realtime;
+
 
 public class ButtonRolController : MonoBehaviour
 {
@@ -17,5 +14,11 @@ public class ButtonRolController : MonoBehaviour
     {
         boto = GetComponent<Button>();
         nom = GetComponentInChildren<Text>().text;
+    }
+
+    public void seleccionarBoto(bool estat)
+    {
+        boto.interactable = estat;
+        isSelected = !estat;
     }
 }

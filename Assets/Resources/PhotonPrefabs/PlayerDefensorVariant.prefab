@@ -733,9 +733,6 @@ MonoBehaviour:
   AC: {fileID: 0}
   creators: []
   bullet: {fileID: 2299448995042824429, guid: 693daf6f040b34329ac74b59590e1f8d, type: 3}
-  timer: 5
-  maxEspera: 20
-  minEspera: 3
   instanciador: {fileID: 0}
   PV: {fileID: 4385597908887047418}
   defensor: {fileID: 166391367113845950}
@@ -1289,6 +1286,17 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1338982095747116380, guid: 25667044bcc3f7944b5727c0157aff8e,
+        type: 3}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: 274f563fdcd7b4b89874105e98ff123e,
+        type: 3}
+    - target: {fileID: 1338982095747116380, guid: 25667044bcc3f7944b5727c0157aff8e,
+        type: 3}
+      propertyPath: m_FontData.m_MaxSize
+      value: 67
+      objectReference: {fileID: 0}
     - target: {fileID: 1462909191040716799, guid: 25667044bcc3f7944b5727c0157aff8e,
         type: 3}
       propertyPath: m_RootOrder
@@ -1314,16 +1322,65 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2970607604733220974, guid: 25667044bcc3f7944b5727c0157aff8e,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2970607604733220974, guid: 25667044bcc3f7944b5727c0157aff8e,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 2970607604733220974, guid: 25667044bcc3f7944b5727c0157aff8e,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 300
+      objectReference: {fileID: 0}
+    - target: {fileID: 2970607604733220974, guid: 25667044bcc3f7944b5727c0157aff8e,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 3800794584934393199, guid: 25667044bcc3f7944b5727c0157aff8e,
         type: 3}
       propertyPath: m_Name
       value: PlayerDefensorVariant
       objectReference: {fileID: 0}
+    - target: {fileID: 4800776549414209197, guid: 25667044bcc3f7944b5727c0157aff8e,
+        type: 3}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: 274f563fdcd7b4b89874105e98ff123e,
+        type: 3}
+    - target: {fileID: 5073012080469406929, guid: 25667044bcc3f7944b5727c0157aff8e,
+        type: 3}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: 274f563fdcd7b4b89874105e98ff123e,
+        type: 3}
     - target: {fileID: 5656621935596023289, guid: 25667044bcc3f7944b5727c0157aff8e,
         type: 3}
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6195722757265493558, guid: 25667044bcc3f7944b5727c0157aff8e,
+        type: 3}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: 274f563fdcd7b4b89874105e98ff123e,
+        type: 3}
+    - target: {fileID: 6195722757265493558, guid: 25667044bcc3f7944b5727c0157aff8e,
+        type: 3}
+      propertyPath: m_FontData.m_MaxSize
+      value: 67
+      objectReference: {fileID: 0}
+    - target: {fileID: 6499130891145730437, guid: 25667044bcc3f7944b5727c0157aff8e,
+        type: 3}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: 274f563fdcd7b4b89874105e98ff123e,
+        type: 3}
     - target: {fileID: 6697919141244779032, guid: 25667044bcc3f7944b5727c0157aff8e,
         type: 3}
       propertyPath: m_RootOrder
@@ -1378,6 +1435,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalPosition.y
       value: -2164
+      objectReference: {fileID: 0}
+    - target: {fileID: 8087629837307560844, guid: 25667044bcc3f7944b5727c0157aff8e,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8367320434267191822, guid: 25667044bcc3f7944b5727c0157aff8e,
         type: 3}

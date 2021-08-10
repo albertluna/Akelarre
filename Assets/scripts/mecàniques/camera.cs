@@ -10,13 +10,10 @@ public class camera : MonoBehaviour
     public float movimentSuau;
     public float radi;
     public float offset;
-    //private Animation cinematiques;
-    //private Camera camera;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
-        //cinematiques = GetComponent<Animation>();
         yOriginal = this.transform.position.y;
         offset = Vector3.Distance(this.transform.position, jugador.transform.position);
         Vector3 dir = jugador.transform.position.normalized;

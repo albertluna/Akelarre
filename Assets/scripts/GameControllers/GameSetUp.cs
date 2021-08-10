@@ -5,6 +5,7 @@ using Photon.Pun;
 
 public class GameSetUp : MonoBehaviour
 {
+    #region variables
     public PhotonPlayer player;
 
     public ConstructorController constructor;
@@ -38,11 +39,13 @@ public class GameSetUp : MonoBehaviour
     /// Variable per indicar si el recollector veu en blanc i negre
     /// </summary>
     public bool grisRecollector;
+    #endregion variables
 
     void Start()
     {
         GameOver.SetActive(false);
         Victory.SetActive(false);
+        Time.timeScale = 1;
     }
 
 

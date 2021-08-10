@@ -91,24 +91,8 @@ namespace Photon.Pun.Demo.Asteroids
 
         public void SetPlayerReady(bool playerReady)
         {
-            PlayerReadyButton.GetComponentInChildren<Text>().text = playerReady ? "Preparat!" : "Preparat?";
+            PlayerReadyButton.GetComponentInChildren<Text>().text = playerReady ? "Preparada!" : "Preparada?";
             PlayerReadyImage.enabled = playerReady;
-        }
-
-        public void setButtonRolConstructor()
-        {
-            rol = "CONSTRUCTOR";
-            Debug.Log("Rol = " + rol);
-        }
-        public void setButtonRolDefensor()
-        {
-            rol = "DEFENSOR";
-            Debug.Log("Rol = " + rol);
-        }
-        public void setButtonRolRecollector()
-        {
-            rol = "RECOLLECTOR";
-            Debug.Log("Rol = " + rol);
         }
     }
 }

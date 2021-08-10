@@ -26,6 +26,9 @@ public class Moviment : MonoBehaviourPunCallbacks, IPunObservable
     {
         rigidbody = GetComponent<Rigidbody>();
         intermig = new Vector3(0, 0, 0);
+#if UNITY_STANDALONE
+        Destroy(joystick.gameObject);
+#endif
     }
 
     public override void OnEnable()
