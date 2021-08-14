@@ -68,7 +68,6 @@ public class RoomController : MonoBehaviourPunCallbacks, IInRoomCallbacks {
     public override void OnJoinedRoom()
     {
         base.OnJoinedRoom();
-        Debug.Log("We r now in a room");
         /*photonPlayers = PhotonNetwork.PlayerList;
         playersInRoom = photonPlayers.Length;
         myNumberInRoom = playersInRoom;
