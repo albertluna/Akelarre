@@ -44,18 +44,15 @@ public class JoystickVirtual : MonoBehaviour, IDragHandler, IPointerUpHandler, I
         //to define the area in which joystick can move around
         joystick.rectTransform.anchoredPosition = new Vector3(InputDirection.x * (jsContainer.rectTransform.sizeDelta.x / 3)
                                                                , InputDirection.y * (jsContainer.rectTransform.sizeDelta.y) / 3);
-
     }
 
     public void OnPointerDown(PointerEventData ped)
     {
-
         OnDrag(ped);
     }
 
     public void OnPointerUp(PointerEventData ped)
     {
-
         InputDirection = Vector3.zero;
         joystick.rectTransform.anchoredPosition = Vector3.zero;
     }
