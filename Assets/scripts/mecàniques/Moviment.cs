@@ -26,9 +26,7 @@ public class Moviment : MonoBehaviourPunCallbacks, IPunObservable
     {
         rigidbody = GetComponent<Rigidbody>();
         intermig = new Vector3(0, 0, 0);
-#if UNITY_STANDALONE
         Destroy(joystick.gameObject);
-#endif
     }
 
     public override void OnEnable()
@@ -41,17 +39,17 @@ public class Moviment : MonoBehaviourPunCallbacks, IPunObservable
     void Update()
     {
         if (PV.IsMine) {
+            horizontalInput = 0;
+            verticalInput = 0;
 #if UNITY_STANDALONE
             
                 horizontalInput = Input.GetAxis("Horizontal");
                 verticalInput = Input.GetAxis("Vertical");
 
 #endif
-#if UNITY_ANDROID
 
-            horizontalInput = joystick.InputDirection.x;
-            verticalInput = joystick.InputDirection.y;
-#endif
+            horizontalInput += joystick.InputDirection.x;
+            verticalInput += joystick.InputDirection.y;
             dir = camera.transform.right * horizontalInput + camera.transform.forward * verticalInput*3;
             rigidbody.velocity = velocity * new Vector3(dir.x, 0, dir.z);
         }
