@@ -19,6 +19,7 @@ public class JoystickVirtual : MonoBehaviour, IDragHandler, IPointerUpHandler, I
         //jsContainer = GetComponent<Image>();
         //joystick = transform.GetChild(0).GetComponent<Image>(); //this command is used because there is only one child in hierarchy
         InputDirection = Vector3.zero;
+        jsContainer.rectTransform.sizeDelta = new Vector2(Screen.width/5, Screen.width/5);
     }
 
     public void OnDrag(PointerEventData ped)
