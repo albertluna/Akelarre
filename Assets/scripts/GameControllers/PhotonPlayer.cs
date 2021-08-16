@@ -7,7 +7,6 @@ using System.IO;
 public class PhotonPlayer : MonoBehaviour
 {
     public PhotonView PV;
-    public GameObject myAvatar;
     public string Rol;
 
     public const string CONSTRUCTOR = "CONSTRUCTOR";

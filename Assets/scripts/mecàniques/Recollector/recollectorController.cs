@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
 using Photon.Pun;
-using UnityEngine.Rendering.PostProcessing;
 
 public class recollectorController : MonoBehaviourPunCallbacks// , IPunObservable
 {
@@ -91,7 +90,7 @@ public class recollectorController : MonoBehaviourPunCallbacks// , IPunObservabl
     [PunRPC]
     private void RPC_crearColleccionable(int posicio, string color)
     {
-        Debug.Log("L'index es " + posicio);
+        //Debug.Log("L'index es " + posicio);
         this.creators[posicio].Instantiate(escollirColleccionable(color), PV.IsMine);
     }
 
@@ -123,20 +122,4 @@ public class recollectorController : MonoBehaviourPunCallbacks// , IPunObservabl
         creators[index].GetComponentInChildren<Colleccionable>().parent.estaOcupat = false;
         Destroy(creators[index].GetComponentInChildren<Colleccionable>().gameObject);
     }
-    /// <summary>
-    /// Funcio per posar la pantalla en blanc i negre
-    /// </summary>
-    public void SetBiN() {
-        if (PV.IsMine)
-        {
-            Debug.Log("Anem a postposejar");
-            PostProcessVolume postpo = FindObjectOfType<PostProcessVolume>();
-            ColorGrading color;
-            if (postpo.profile.TryGetSettings<ColorGrading>(out color))
-            {
-                color.saturation.value = -100;
-            }
-        }
-    }
-
 }

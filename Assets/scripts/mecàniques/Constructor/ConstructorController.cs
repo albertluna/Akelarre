@@ -99,6 +99,5 @@ public class ConstructorController : MonoBehaviour
     private void RPC_PartidaGuanyada()
     {
         GS.FiPartida(true);
-    }
-    
+    }    
 }

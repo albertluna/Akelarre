@@ -158,7 +158,8 @@ public class RoomController : MonoBehaviourPunCallbacks, IInRoomCallbacks {
             || currentScene.Equals(ScenesManager.GetScene(ScenesManager.Scene.Nivell3)))
         {
             photonPlayer.Instantiate();
-            //Destroy(this.gameObject);
+            Debug.Log("NEM A DESTRUIR AQUEST GO " + this.gameObject.name);
+            Destroy(this.gameObject);
         }
     }
 

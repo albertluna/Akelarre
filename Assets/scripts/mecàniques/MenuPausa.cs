@@ -5,9 +5,11 @@ using Photon.Pun;
 
 public class MenuPausa : MonoBehaviour
 {
-    public GameObject boto;
+    //public GameObject boto;
     public GameObject menu;
     public GameObject comprovar;
+    [SerializeField]
+    private GameObject[] HudPartida;
 
     private PhotonView PV;
     //boolea per detectar qui ha obert el menu
@@ -40,24 +42,28 @@ public class MenuPausa : MonoBehaviour
 
     public void OnSortirPartida()
     {
-        PhotonNetwork.AutomaticallySyncScene = true;
-
-        PhotonNetwork.LoadLevel(ScenesManager.GetScene(ScenesManager.Scene.MapaNivells));
+        if (PhotonNetwork.MasterClient.IsLocal)
+        {
+            PhotonNetwork.AutomaticallySyncScene = true;
+            PhotonNetwork.LoadLevel(ScenesManager.GetScene(ScenesManager.Scene.MapaNivells));
+            Time.timeScale = 1f;
+        }
     }
 
     [PunRPC]
     private void RPC_ObrirMenu()
     {
         Time.timeScale = 0f;
-        boto.SetActive(false);
         menu.SetActive(true);
+        foreach (GameObject go in HudPartida) go.SetActive(false);
     }
 
     [PunRPC]
     private void RPC_Reanudar()
     {
-        boto.SetActive(true);
         menu.SetActive(false);
+        foreach (GameObject go in HudPartida) go.SetActive(true);
+
         Time.timeScale = 1f;
     }
 

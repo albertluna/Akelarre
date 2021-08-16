@@ -533,6 +533,21 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2472671552661902244, guid: 25667044bcc3f7944b5727c0157aff8e,
+        type: 3}
+      propertyPath: HudPartida.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2472671552661902244, guid: 25667044bcc3f7944b5727c0157aff8e,
+        type: 3}
+      propertyPath: HudPartida.Array.data[0]
+      value: 
+      objectReference: {fileID: 341200869604734531}
+    - target: {fileID: 2472671552661902244, guid: 25667044bcc3f7944b5727c0157aff8e,
+        type: 3}
+      propertyPath: HudPartida.Array.data[1]
+      value: 
+      objectReference: {fileID: 9184622743455611986}
     - target: {fileID: 2966775323380685993, guid: 25667044bcc3f7944b5727c0157aff8e,
         type: 3}
       propertyPath: m_IsActive
@@ -617,6 +632,12 @@ GameObject:
 --- !u!224 &7044643628358105454 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6697919141244779032, guid: 25667044bcc3f7944b5727c0157aff8e,
+    type: 3}
+  m_PrefabInstance: {fileID: 4409116353398555510}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &341200869604734531 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4146798846698583349, guid: 25667044bcc3f7944b5727c0157aff8e,
     type: 3}
   m_PrefabInstance: {fileID: 4409116353398555510}
   m_PrefabAsset: {fileID: 0}
