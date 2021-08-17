@@ -56,7 +56,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &366791293593869680
 RectTransform:
   m_ObjectHideFlags: 0
@@ -710,7 +710,7 @@ GameObject:
   - component: {fileID: 6396355681641813668}
   - component: {fileID: 2982806483887187843}
   - component: {fileID: 8228311371940480908}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Minimapa
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -29,6 +29,8 @@ public class Defensor : MonoBehaviour
         HUDVides.maxValue = GS.videsPartida;
 
         vides = GS.videsPartida;
+        HUDVides.maxValue = vides;
+        HUDVides.value = vides;
     }
 
     public void OnTriggerEnter(Collider collision)
