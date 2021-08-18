@@ -8,14 +8,13 @@ public class Recollector : MonoBehaviour
     private int vides;
     public PhotonView PV;
     public GameSetUp GS;
-    public HUD_Recollector HUD;
     public recollectorController rc;
     
 
     // Start is called before the first frame update
     void Start()
     {
-        vides = HUD.NombreVides();
+        vides = rc.NombreVides();
         GS = FindObjectOfType<GameSetUp>();        
     }
 
@@ -23,8 +22,6 @@ public class Recollector : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Colleccionable") && PV.IsMine)
         {
-            Debug.Log("Transportar colleccionable a constructor");
-
             Colleccionable colleccionable = collision.gameObject.GetComponentInParent<Colleccionable>();
 
             ConstructorController constructor = FindObjectOfType<ConstructorController>();
@@ -44,7 +41,7 @@ public class Recollector : MonoBehaviour
         if (collision.gameObject.CompareTag("Bullet") && vides > 0)
         {
             vides--;
-            HUD.ActualitzarVides(vides);
+            rc.ActualitzarVides(vides);
             Destroy(collision.gameObject);
         }
     }

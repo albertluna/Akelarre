@@ -17,8 +17,6 @@ public class GameSetUp : MonoBehaviour
     public GameObject GameOver;
     public GameObject Victory;
 
-
-
     public Transform[] spawnPoints;
 
     public Colleccionable[] llistaColleccionables;
@@ -44,6 +42,11 @@ public class GameSetUp : MonoBehaviour
     [Header("Referència a la visibilitat")]
     public bool grisRecollector;
     public bool grisConstructor;
+
+    [Header("Llistes inicials")]
+    public GameObject llistesRecollector;
+    public GameObject llistaCreadorsAtac;
+    public GameObject llistaBoles;
     #endregion variables
 
     void Awake()

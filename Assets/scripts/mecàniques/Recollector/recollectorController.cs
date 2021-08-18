@@ -2,45 +2,45 @@
 using System.Collections;
 using Photon.Pun;
 
-public class recollectorController : MonoBehaviourPunCallbacks// , IPunObservable
+public class recollectorController : RolController
 {
-    public GameObject RC;
+    [Header("Elements a control·lar")]
     public ColleccionableCreators[] creators;
-    public float timer;
-    public float maxEspera;
-    public float minEspera;
-    public PhotonView PV;
-
-    public Colleccionable[] colleccionables;
-    public static Colleccionable[] llistaColleccionables;
-
     [SerializeField]
-    private GameObject[] eliminar;
+    private Colleccionable[] colleccionables;
+    [SerializeField]
+    private static Colleccionable[] llistaColleccionables;
+    [Header("Referència a la gestió del temps")]
+    [SerializeField]
+    private float timer;
+    [SerializeField]
+    private float maxEspera;
+    [SerializeField]
+    private float minEspera;
+    [Header("Gestió del HUD")]
+    [SerializeField]
+    private GameObject[] vides;
 
-    void Start()
+    protected override void Start()
     {
-        PV = GetComponent<PhotonView>();
-        RC = GameObject.Find("RecollectorController");
-        creators = RC.GetComponentsInChildren<ColleccionableCreators>();
-        colleccionables = RC.GetComponentsInChildren<Colleccionable>();
+        base.Start();
+        creators = GS.llistesRecollector.GetComponentsInChildren<ColleccionableCreators>();
+        colleccionables = GS.llistesRecollector.GetComponentsInChildren<Colleccionable>();
         
         llistaColleccionables = colleccionables;
+        //Comprovacio que la suma de percentatges de probabilitat de sortir un col·leccionable concret
+        //sigui del 100%
         float percentatgeTotal = 0;
-        foreach(Colleccionable col in colleccionables)
-        {
+        foreach(Colleccionable col in colleccionables) {
             percentatgeTotal += col.percentatge;
         }
         if (percentatgeTotal != 100) Debug.LogError("El percentatge total dels colleccionables no suma 100, suma" + percentatgeTotal);
+
         //set index de cada creator
         for (int i = 0; i < creators.Length; i++)
         {
             creators[i].index = i;
         }
-        if (!PV.IsMine)
-        {
-            foreach (GameObject go in eliminar) Destroy(go);
-        }
-
     }
 
     // Update is called once per frame
@@ -48,10 +48,7 @@ public class recollectorController : MonoBehaviourPunCallbacks// , IPunObservabl
     {
         if (PV.IsMine)
         {
-            if (timer >= 0)
-            {
-                timer -= Time.deltaTime;
-            }
+            if (timer >= 0) timer -= Time.deltaTime;
             else
             {
                 int resultat = Random.Range(0, 99);
@@ -82,7 +79,7 @@ public class recollectorController : MonoBehaviourPunCallbacks// , IPunObservabl
     {
         foreach (Colleccionable col in llistaColleccionables)
         {
-            if (col.color.Equals(color)) { return col; }
+            if (col.color.Equals(color)) return col;
         }
         return null;
     }
@@ -122,4 +119,17 @@ public class recollectorController : MonoBehaviourPunCallbacks// , IPunObservabl
         creators[index].GetComponentInChildren<Colleccionable>().parent.estaOcupat = false;
         Destroy(creators[index].GetComponentInChildren<Colleccionable>().gameObject);
     }
+
+    #region HUD
+    public void ActualitzarVides(int nVides)
+    {
+        for (int i = 0; i < vides.Length; i++)
+        {
+            if (i < nVides) vides[i].SetActive(true);
+            else vides[i].SetActive(false);
+        }
+    }
+
+    public int NombreVides() { return vides.Length; }
+    #endregion
 }

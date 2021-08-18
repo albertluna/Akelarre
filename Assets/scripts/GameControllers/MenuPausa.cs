@@ -5,22 +5,26 @@ using Photon.Pun;
 
 public class MenuPausa : MonoBehaviour
 {
-    //public GameObject boto;
-    public GameObject menu;
-    public GameObject comprovar;
+    private PhotonView PV;
+
+    #region MenuPausa
+    [Header("Menú Pausa")]
+    [SerializeField]
+    private GameObject menu;
+    [SerializeField]
+    private GameObject comprovar;
     [SerializeField]
     private GameObject[] HudPartida;
-
-    private PhotonView PV;
     //boolea per detectar qui ha obert el menu
     private bool jo;
+    #endregion
 
-    void Start()
+    private void Start()
     {
         PV = GetComponent<PhotonView>();
         jo = false;
     }
-
+    #region lògica Menú Pausa
     public void OnBotoPressed()
     {
         PV.RPC("RPC_ObrirMenu", RpcTarget.All);
@@ -66,5 +70,5 @@ public class MenuPausa : MonoBehaviour
 
         Time.timeScale = 1f;
     }
-
+    #endregion
 }
