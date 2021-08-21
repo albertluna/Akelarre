@@ -42,8 +42,9 @@ public class Defensor : MonoBehaviour
         }
         if (collision.gameObject.CompareTag("Colleccionable"))
         {
+            Colleccionable colleccionable = collision.GetComponentInParent<Colleccionable>();
+            colleccionable.parent.destruirColleccionable(colleccionable);
             GetComponent<AudioSource>().PlayOneShot(destrossarColleccionables, 1f);
-            Destroy(collision.gameObject);
         }
     }
 

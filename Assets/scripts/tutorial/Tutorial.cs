@@ -5,7 +5,7 @@ using Photon.Pun;
 public class Tutorial : MonoBehaviour
 {
     public atacController defensor;
-    public recollectorController recolector;
+    public RecollectorController recolector;
     public ConstructorController constructor;
 
     [SerializeField]
@@ -24,7 +24,7 @@ public class Tutorial : MonoBehaviour
         Time.timeScale = 0f;
         constructor = FindObjectOfType<ConstructorController>();
         defensor = FindObjectOfType<atacController>();
-        recolector = FindObjectOfType<recollectorController>();
+        recolector = FindObjectOfType<RecollectorController>();
         if (constructor.PV.IsMine)
         {
             HudTutorial = Instantiate(tutorialConstructor);

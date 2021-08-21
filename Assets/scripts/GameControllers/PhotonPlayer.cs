@@ -19,6 +19,9 @@ public class PhotonPlayer : MonoBehaviour
         PV = GetComponent<PhotonView>();
     }
 
+    /// <summary>
+    /// Funció que es crida per instanciar un dels 3 personatges a escena
+    /// </summary>
     public void Instantiate()
     {
         GameSetUp GS = FindObjectOfType<GameSetUp>();
@@ -40,7 +43,6 @@ public class PhotonPlayer : MonoBehaviour
                     GS.spawnPoints[spawnPicker].position, GS.spawnPoints[spawnPicker].rotation, 0);
                     break;
         }
-        GS.getRols();
-
+        //GS.getRols();
     }
 }

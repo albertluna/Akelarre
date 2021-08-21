@@ -6,9 +6,7 @@ using UnityEngine;
 public class RolController : MonoBehaviour
 {
     public PhotonView PV;
-
-    [SerializeField]
-    protected GameSetUp GS;
+    public GameSetUp GS;
 
     [SerializeField]
     private GameObject[] eliminar;
@@ -17,12 +15,13 @@ public class RolController : MonoBehaviour
     {
         PV = GetComponent<PhotonView>();
         GS = FindObjectOfType<GameSetUp>();
+        GS.getRols();
 
+        //S'eliminen tots els objectes innecessaris de cada personatge
+        //que no està sent controlats pel jugador com la càmera o el hud
         if (!PV.IsMine)
         {
             foreach (GameObject go in eliminar) Destroy(go);
         }
     }
-
-    
 }

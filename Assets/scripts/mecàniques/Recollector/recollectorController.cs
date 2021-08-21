@@ -2,14 +2,19 @@
 using System.Collections;
 using Photon.Pun;
 
-public class recollectorController : RolController
+public class RecollectorController : RolController
 {
+
     [Header("Elements a control·lar")]
     public ColleccionableCreators[] creators;
     [SerializeField]
     private Colleccionable[] colleccionables;
     [SerializeField]
     private static Colleccionable[] llistaColleccionables;
+    /// <summary>
+    /// Variable per determinar si les boles recol·lectores son invisibles pel recol·lector
+    /// </summary>
+    public bool isInvisible;
     [Header("Referència a la gestió del temps")]
     [SerializeField]
     private float timer;
@@ -39,7 +44,7 @@ public class recollectorController : RolController
         //set index de cada creator
         for (int i = 0; i < creators.Length; i++)
         {
-            creators[i].index = i;
+            creators[i].SetIndex(i);
         }
     }
 
@@ -88,7 +93,7 @@ public class recollectorController : RolController
     private void RPC_crearColleccionable(int posicio, string color)
     {
         //Debug.Log("L'index es " + posicio);
-        this.creators[posicio].Instantiate(escollirColleccionable(color), PV.IsMine);
+        this.creators[posicio].Instantiate(escollirColleccionable(color), PV.IsMine, isInvisible);
     }
 
     public int indexColleccionable(GameObject colleccionable)
@@ -123,10 +128,13 @@ public class recollectorController : RolController
     #region HUD
     public void ActualitzarVides(int nVides)
     {
-        for (int i = 0; i < vides.Length; i++)
+        if (PV.IsMine)
         {
-            if (i < nVides) vides[i].SetActive(true);
-            else vides[i].SetActive(false);
+            for (int i = 0; i < vides.Length; i++)
+            {
+                if (i < nVides) vides[i].SetActive(true);
+                else vides[i].SetActive(false);
+            }
         }
     }
 

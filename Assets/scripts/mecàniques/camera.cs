@@ -4,30 +4,30 @@ using UnityEngine;
 
 public class camera : MonoBehaviour
 {
-    // Start is called before the first frame update
-    public GameObject jugador;
-    public float yOriginal;
-    public float movimentSuau;
-    public float radi;
-    public float offset;
+    [SerializeField]
+    private GameObject jugador;
+    private float yOriginal;
+    [SerializeField]
+    private float movimentSuau;
+    private float offset;
 
-    // Start is called before the first frame update
     void Awake()
     {
         yOriginal = this.transform.position.y;
+        //l'offset és la distància entre la càmera i el jugador que sempre es matindrà
         offset = Vector3.Distance(this.transform.position, jugador.transform.position);
-        Vector3 dir = jugador.transform.position.normalized;
-
-        transform.position = new Vector3(dir.x * radi, yOriginal + (radi), dir.z * radi);
     }
-#if UNITY_STANDALONE
 
-    // Update is called once per frame
+#if UNITY_STANDALONE
     void FixedUpdate()
     {
+        //es calcula la direcció del jugador respecte la casa
         Vector3 dir = jugador.transform.position.normalized;
+        //es calcula la distància
         float distanciaAlCentre = Vector3.Distance(jugador.transform.position, new Vector3(0, 0, 0));
-        radi = distanciaAlCentre + offset;
+        //es suma un offset per calcular la distància de la càmera al centre
+        float radi = distanciaAlCentre + offset;
+        //es fa una interposció entre la posició antiga de la càmera i on hauria d'anar per tenir un moviment susu
         Vector3 posicioDesitjada = new Vector3(dir.x*radi, yOriginal+(radi), dir.z*radi); //posar a y distanciaAlCentre
         Vector3 posicioIntermitja = Vector3.Lerp(this.transform.position, posicioDesitjada, movimentSuau);
         transform.position = posicioIntermitja;
@@ -35,7 +35,6 @@ public class camera : MonoBehaviour
     }
 #endif
 #if UNITY_ANDROID
-// Update is called once per frame
     void Update()
     {
         Vector3 dir = jugador.transform.position.normalized;

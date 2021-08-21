@@ -207,6 +207,11 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 339322942050960696, guid: 22cd134b69c394f25b008c6e0c365163,
+        type: 3}
+      propertyPath: minTimer
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 5595243224804743798, guid: 22cd134b69c394f25b008c6e0c365163,
         type: 3}
       propertyPath: m_Name
@@ -465,7 +470,6 @@ MonoBehaviour:
   - {fileID: 6042104233109182230, guid: eb426a18de6b34f95a36e2d782da852c, type: 3}
   - {fileID: 339322942050960696, guid: 22cd134b69c394f25b008c6e0c365163, type: 3}
   index: 0
-  final: 0
 --- !u!1 &566276976
 GameObject:
   m_ObjectHideFlags: 0
@@ -494,8 +498,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1588071279}
-  - {fileID: 1933969755}
   - {fileID: 662757754}
+  - {fileID: 1933969755}
   - {fileID: 447298519}
   m_Father: {fileID: 0}
   m_RootOrder: 3
@@ -530,7 +534,7 @@ Transform:
   - {fileID: 1291061709}
   - {fileID: 839914699}
   m_Father: {fileID: 566276977}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!108 &715209782 stripped
 Light:
@@ -793,7 +797,7 @@ PrefabInstance:
     - target: {fileID: 6042104233109182230, guid: eb426a18de6b34f95a36e2d782da852c,
         type: 3}
       propertyPath: maxTimer
-      value: 200
+      value: 120
       objectReference: {fileID: 0}
     - target: {fileID: 6042104233109182230, guid: eb426a18de6b34f95a36e2d782da852c,
         type: 3}
@@ -804,6 +808,11 @@ PrefabInstance:
         type: 3}
       propertyPath: percentatge
       value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 6042104233109182230, guid: eb426a18de6b34f95a36e2d782da852c,
+        type: 3}
+      propertyPath: minTimer
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 7921181934266583281, guid: eb426a18de6b34f95a36e2d782da852c,
         type: 3}
@@ -1401,7 +1410,7 @@ PrefabInstance:
     - target: {fileID: 3433828906125573923, guid: fede07ec0445443dd8487a41d80551a1,
         type: 3}
       propertyPath: minTimer
-      value: 50
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 3433828906125573923, guid: fede07ec0445443dd8487a41d80551a1,
         type: 3}

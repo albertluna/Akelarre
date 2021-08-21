@@ -4,13 +4,22 @@ using UnityEngine;
 
 public class Colleccionable : MonoBehaviour
 {
+    #region variables
     public int percentatge;
     public string color;
     public ColleccionableCreators parent;
-    public float timer;
-    public float minTimer;
-    public float maxTimer;
-        
+    private float timer;
+    [SerializeField]
+    [Range(5, 30)]
+    private float minTimer;
+    [SerializeField]
+    [Range(20, 120)]
+    private float maxTimer;
+    [SerializeField]
+    private GameObject llum;
+    [SerializeField]
+    private MeshRenderer bola;
+    #endregion
 
     private void Awake()
     {
@@ -26,10 +35,15 @@ public class Colleccionable : MonoBehaviour
         else
         {
             parent.destruirColleccionable(this);
-            /*parent.estaOcupat = false;
-            Destroy(this.gameObject);*/
         }
     }
 
-
+    /// <summary>
+    /// S'elimina la llum i el render de la bola quan ha de ser invisible
+    /// </summary>
+    public void setInivisible()
+    {
+        Destroy(llum);
+        bola.enabled = false;
+    }
 }

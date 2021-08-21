@@ -4,10 +4,9 @@ using UnityEngine.UI;
 
 public class ButtonRolController : MonoBehaviour
 {
-    public string rol;
     public Button boto;
     public bool isSelected;
-    public string nom;
+    private string nom;
 
     // Start is called before the first frame update
     void Start()
@@ -16,9 +15,15 @@ public class ButtonRolController : MonoBehaviour
         nom = GetComponentInChildren<Text>().text;
     }
 
+    /// <summary>
+    /// Botó per modificar la interactibilitat del botó
+    /// </summary>
+    /// <param name="estat">true es selecciona, false es des-selecciona</param>
     public void seleccionarBoto(bool estat)
     {
         boto.interactable = estat;
         isSelected = !estat;
     }
+
+    public string getNom() { return nom; }
 }

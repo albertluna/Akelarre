@@ -9,30 +9,32 @@ using UnityEngine.UI;
 
 public class RoomController : MonoBehaviourPunCallbacks, IInRoomCallbacks {
 
-    public static RoomController room;
+    private static RoomController room;
     private PhotonView PV;
     
-    public string currentScene;
-    public string multiplayerScene;
+    private string currentScene;
+    private PhotonPlayer photonPlayer;
 
-    public PhotonPlayer photonPlayer;
-
+    //Nom de la persona seleccionada
     public Text text;
-    public ButtonRolController constructor;
-    public ButtonRolController defensor;
-    public ButtonRolController recollector;
-    public GameObject PanelMapa;
-    public GameObject PanelCinematica;
 
+    //Els tres botons dels rols
+    [SerializeField]
+    private ButtonRolController constructor;
+    [SerializeField]
+    private ButtonRolController defensor;
+    [SerializeField]
+    private ButtonRolController recollector;
+    [SerializeField]
+    private GameObject PanelMapa;
+    [SerializeField]
+    private GameObject PanelCinematica;
 
-
-    // Start is called before the first frame update
     void Start()
     {
         PV = GetComponent<PhotonView>();
         PhotonNetwork.AutomaticallySyncScene = true;
         photonPlayer = this.GetComponent<PhotonPlayer>();
-
     }
 
     private void Awake()
@@ -65,16 +67,21 @@ public class RoomController : MonoBehaviourPunCallbacks, IInRoomCallbacks {
         SceneManager.sceneLoaded -= OnSceneFinishedLoading;
     }
 
-    public override void OnJoinedRoom()
+    /*public override void OnJoinedRoom()
     {
         base.OnJoinedRoom();
         /*photonPlayers = PhotonNetwork.PlayerList;
         playersInRoom = photonPlayers.Length;
         myNumberInRoom = playersInRoom;
-        PhotonNetwork.Nickname = myNumberInRoom.ToString();*/
-    }
+        PhotonNetwork.Nickname = myNumberInRoom.ToString();
+    }*/
 
+    #region Obrir nivells
 
+    /// <summary>
+    /// Funció que es crida quan es clica un dels botons de nivells i es selecciona quin nivell s'obre
+    /// </summary>
+    /// <param name="nivell">Numero de nivell de 0 a 3</param>
     public void OnNivellButtonClicked(int nivell)
     {
         if(constructor.isSelected && defensor.isSelected && recollector.isSelected)
@@ -101,22 +108,19 @@ public class RoomController : MonoBehaviourPunCallbacks, IInRoomCallbacks {
             }
         } else
         {
+            text.text = "No estan tots els personatges seleccionats";
             Debug.Log("NO ESTAN TOTS ELS ROLS SELECCIONATS");
         }
         
     }
-    
 
-    IEnumerator EsperarCinematica(AudioSource audio)
-    {
-        yield return new WaitWhile(() => audio.isPlaying == true);
-        if(PhotonNetwork.IsMasterClient) PhotonNetwork.LoadLevel(ScenesManager.GetScene(ScenesManager.Scene.Nivell0));
-    }
-
+    /// <summary>
+    /// Activació del nivell 0
+    /// </summary>
     [PunRPC]
     private void RPC_OnNivell0()
     {
-        //PV.RPC("RPC_LoadGameScene", RpcTarget.All);
+        //Activació de la cinemàtica inicial
         PanelMapa.SetActive(false);
         PanelCinematica.SetActive(true);
         AudioSource explicacio = PanelCinematica.GetComponent<AudioSource>();
@@ -133,22 +137,48 @@ public class RoomController : MonoBehaviourPunCallbacks, IInRoomCallbacks {
         }
     }
 
+    /// <summary>
+    /// Funció per mostrar la cinemàtica i canviar automàticament d'escena quan acabi l'àudio
+    /// </summary>
+    /// <param name="audio">Fitxar d'àudio de la cinemàtica</param>
+    /// <returns>Temps d'espera</returns>
+    IEnumerator EsperarCinematica(AudioSource audio)
+    {
+        yield return new WaitWhile(() => audio.isPlaying == true);
+        if(PhotonNetwork.IsMasterClient) PhotonNetwork.LoadLevel(ScenesManager.GetScene(ScenesManager.Scene.Nivell0));
+    }
+
+    /// <summary>
+    /// Activació del nivell 1
+    /// </summary>
     private void OnNivell1()
     {
         PhotonNetwork.LoadLevel(ScenesManager.GetScene(ScenesManager.Scene.Nivell1));
     }
 
+    /// <summary>
+    /// Activació del nivell 1
+    /// </summary>
     private void OnNivell2()
     {
         PhotonNetwork.LoadLevel(ScenesManager.GetScene(ScenesManager.Scene.Nivell2));
     }
 
+    /// <summary>
+    /// Activació del nivell 1
+    /// </summary>
     private void OnNivell3()
     {
         PhotonNetwork.LoadLevel(ScenesManager.GetScene(ScenesManager.Scene.Nivell3));
     }
+    #endregion
 
-    void OnSceneFinishedLoading(Scene scene, LoadSceneMode mode)
+    /// <summary>
+    /// Funció per activar els nous elements de l'escena un cop s'ha carregat la nova escena
+    /// </summary>
+    /// <param name="scene">Nova escena</param>
+    /// <param name="mode"></param>
+    private void OnSceneFinishedLoading(Scene scene, LoadSceneMode mode)
     {
         currentScene = scene.name;
         Debug.Log("current scene = " + currentScene);
@@ -158,19 +188,14 @@ public class RoomController : MonoBehaviourPunCallbacks, IInRoomCallbacks {
             || currentScene.Equals(ScenesManager.GetScene(ScenesManager.Scene.Nivell3)))
         {
             photonPlayer.Instantiate();
-            Debug.Log("NEM A DESTRUIR AQUEST GO " + this.gameObject.name);
             Destroy(this.gameObject);
         }
     }
 
-    void CreatePlayer()
-    {
-        //GameObject pp = PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "PhotonNetworkPlayer"), transform.position,
-            //Quaternion.identity, 0);
-        photonPlayer = this.GetComponent<PhotonPlayer>();
-        
-    }
-
+    /// <summary>
+    /// Gestió de l'abandonament de la sala per part d'un jugador
+    /// </summary>
+    /// <param name="otherPlayer"></param>
     public override void OnPlayerLeftRoom(Player otherPlayer)
     {
         PhotonNetwork.AutomaticallySyncScene = true;
@@ -208,13 +233,9 @@ public class RoomController : MonoBehaviourPunCallbacks, IInRoomCallbacks {
             PV.RPC("RPC_setInteractableButton", RpcTarget.Others, rol, false);
             botoNou.seleccionarBoto(true);
             botoNou.isSelected = true;
-            text.text = botoNou.nom;
+            text.text = botoNou.getNom();
             photonPlayer.Rol = rol;
-        }
-
-
-        //activarBoto(rol, false);
-        
+        }        
     }
 
     /// <summary>
@@ -248,6 +269,9 @@ public class RoomController : MonoBehaviourPunCallbacks, IInRoomCallbacks {
         return null;
     }
 
+    /// <summary>
+    /// Es crida quan un jugador clica el botó de sortir de la sala
+    /// </summary>
     public void OnTancar()
     {
         PhotonNetwork.LeaveRoom();

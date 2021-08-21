@@ -4,33 +4,38 @@ using UnityEngine;
 
 public class MovimentAtac : MonoBehaviour
 {
+    /// <summary>
+    /// posició actual de la bola en el pla XZ
+    /// </summary>
     [SerializeField]
     private Vector2 posicio;
+    /// <summary>
+    /// Posició de la casa
+    /// </summary>
     [SerializeField]
     private Vector2 objectiu;
-    public float velocitat;
+
+    private float velocitat;
     [SerializeField]
     GameObject bola;
-    [SerializeField]
-    bool isVisible;
     
-    // Start is called before the first frame update
     void Start()
     {
         posicio = new Vector2(transform.position.x, transform.position.z);
-        if (!isVisible) EliminarBola();
     }
 
-    // Update is called once per frame
     void Update()
     {
+        //S'actualitza la posició de la bola, avançant per apropar-se a la casa
         posicio = Vector2.Lerp(posicio, objectiu, Time.deltaTime*velocitat);
         transform.position += new Vector3(posicio.x-transform.position.x, 0, posicio.y-transform.position.z);
     }
 
-    public void EliminarBola()
-    {
-        Destroy(bola);
-    }
+    /// <summary>
+    /// Funció per eliminar el render de la bola quan és invisible pel defensor
+    /// </summary>
+    public void EliminarBola() { Destroy(bola); }
+
+    public void SetVelocitat(float velocitat) { this.velocitat = velocitat; }
 
 }

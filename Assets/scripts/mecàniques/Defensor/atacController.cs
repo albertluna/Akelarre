@@ -5,24 +5,25 @@ using Photon.Pun;
 
 public class atacController : RolController
 {
+    #region variables
     [Header("GameObjects a control·lar")]
     [SerializeField]
     private Transform[] creators;
     [SerializeField]
     private GameObject bullet;
 
+    //Referència al tempo de l'atac
     private float timer;
     private float maxEspera;
     private float minEspera;
     private float velocitat;
     //Bool per saber si les boles son visibles o no
-    [SerializeField]
     private bool isVisible;
+    #endregion
 
     /// <summary> array de gameobjects
     /// https://stuartspixelgames.com/2017/08/02/make-all-of-objects-children-into-an-array-unity-c/
     /// </summary>
-    /// 
     protected override void Start()
     {
         base.Start();
@@ -49,28 +50,41 @@ public class atacController : RolController
         }
     }
 
+    /// <summary>
+    /// Funció per instanciar les boles
+    /// </summary>
+    /// <param name="posicio">posicio a la llista de creadors on s'ha d'instanciar</param>
     [PunRPC]
     private void RPC_instanciarAtac(int posicio)
     {
         GameObject instancia =
             Instantiate(bullet, creators[posicio].position, Quaternion.identity, GS.llistaBoles.transform);
-        instancia.GetComponent<MovimentAtac>().velocitat = velocitat;
-        //Condicional per saber sifer invisible o no les boles d'atac
+        instancia.GetComponent<MovimentAtac>().SetVelocitat(velocitat);
+        //Condicional per saber si fer invisible o no les boles d'atac
         if (!isVisible && PV.IsMine) instancia.GetComponent<MovimentAtac>().EliminarBola();
     }
 
-
+    /// <summary>
+    /// Funció per cridar quan s'ha acabat la vida de la casa
+    /// </summary>
     public void PartidaPerduda()
     {
         PV.RPC("RPC_PartidaPerduda", RpcTarget.All);
     }
 
+    /// <summary>
+    /// Funció per mostrar que s'ha perdut la partida
+    /// </summary>
     [PunRPC]
     private void RPC_PartidaPerduda()
     {
         GS.FiPartida(false);
     }
 
+    /// <summary>
+    /// Funció set de la variable isVisible
+    /// </summary>
+    /// <param name="visible">valor de la variable</param>
     public void SetVisibility(bool visible) {
         isVisible = visible;
     }

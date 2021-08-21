@@ -343,7 +343,6 @@ MonoBehaviour:
   - {fileID: 6042104233109182230, guid: eb426a18de6b34f95a36e2d782da852c, type: 3}
   - {fileID: 339322942050960696, guid: 22cd134b69c394f25b008c6e0c365163, type: 3}
   index: 0
-  final: 0
 --- !u!1 &497270967
 GameObject:
   m_ObjectHideFlags: 0
@@ -659,7 +658,17 @@ PrefabInstance:
     - target: {fileID: 5810669214599791384, guid: 22d2088d20d63464bb9b1319938406bd,
         type: 3}
       propertyPath: percentatge
-      value: 5
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5810669214599791384, guid: 22d2088d20d63464bb9b1319938406bd,
+        type: 3}
+      propertyPath: minTimer
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 5810669214599791384, guid: 22d2088d20d63464bb9b1319938406bd,
+        type: 3}
+      propertyPath: maxTimer
+      value: 120
       objectReference: {fileID: 0}
     - target: {fileID: 7969058056378785023, guid: 22d2088d20d63464bb9b1319938406bd,
         type: 3}
@@ -824,7 +833,7 @@ PrefabInstance:
     - target: {fileID: 6042104233109182230, guid: eb426a18de6b34f95a36e2d782da852c,
         type: 3}
       propertyPath: maxTimer
-      value: 200
+      value: 120
       objectReference: {fileID: 0}
     - target: {fileID: 6042104233109182230, guid: eb426a18de6b34f95a36e2d782da852c,
         type: 3}
@@ -834,6 +843,11 @@ PrefabInstance:
     - target: {fileID: 6042104233109182230, guid: eb426a18de6b34f95a36e2d782da852c,
         type: 3}
       propertyPath: percentatge
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 6042104233109182230, guid: eb426a18de6b34f95a36e2d782da852c,
+        type: 3}
+      propertyPath: minTimer
       value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 7921181934266583281, guid: eb426a18de6b34f95a36e2d782da852c,
@@ -1118,6 +1132,16 @@ PrefabInstance:
       propertyPath: llistaCreadorsAtac
       value: 
       objectReference: {fileID: 1291061708}
+    - target: {fileID: 6361388450302999206, guid: 5ab8ba155ef5f4e66af93ccde88d8e7b,
+        type: 3}
+      propertyPath: atacVisible
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6361388450302999206, guid: 5ab8ba155ef5f4e66af93ccde88d8e7b,
+        type: 3}
+      propertyPath: colleccionablesInvisibles
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6361388450302999207, guid: 5ab8ba155ef5f4e66af93ccde88d8e7b,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1836,7 +1860,7 @@ PrefabInstance:
     - target: {fileID: 3433828906125573923, guid: fede07ec0445443dd8487a41d80551a1,
         type: 3}
       propertyPath: minTimer
-      value: 50
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 3433828906125573923, guid: fede07ec0445443dd8487a41d80551a1,
         type: 3}
@@ -2016,7 +2040,7 @@ PrefabInstance:
     - target: {fileID: 7286559677663493442, guid: 3f55b34d20f5f476991f35ea4345d6b9,
         type: 3}
       propertyPath: minTimer
-      value: 40
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 7286559677663493442, guid: 3f55b34d20f5f476991f35ea4345d6b9,
         type: 3}

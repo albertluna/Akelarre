@@ -4,30 +4,36 @@ using UnityEngine;
 
 public class ColleccionableCreators : MonoBehaviour
 {
-    public Transform transform;
+    #region variables
     public bool estaOcupat;
-    public int index;
+    private int index;
+    #endregion
 
-    // Start is called before the first frame update
-    void Start()
+    /// <summary>
+    /// Funció que controla la instanciació dels col·leccionables
+    /// </summary>
+    /// <param name="collecionable">Referència al col·leccionable a instanciar</param>
+    /// <param name="enable">true per la pantalla del recol·lector, false per la resta</param>
+    /// <param name="isInvisible">true si els col·leccionables són invisibles</param>
+    public void Instantiate(Colleccionable collecionable, bool enable, bool isInvisible)
     {
-        transform = GetComponent<Transform>();
-    }
-
-    public void Instantiate(Colleccionable col, bool enable)
-    {
-        Colleccionable nouColleccionable = Instantiate(col, transform.position, Quaternion.identity, transform);
+        Colleccionable nouColleccionable = Instantiate(collecionable, transform.position, Quaternion.identity, transform);
         nouColleccionable.parent = this;
         nouColleccionable.enabled = enable;
         estaOcupat = true;
+        if (isInvisible && enable) nouColleccionable.setInivisible();
     }
 
-    //TODO: sistema per esborrar colleccionables quan ha passat X temps i que
-    //aquest temps vagi en proprcio al percentatge del colleccionable
-    public void destruirColleccionable(Colleccionable col)
+    /// <summary>
+    /// Funció per gestionar quan el recol·lector ha agafat el col·leccionable i s'ha d'eliminar
+    /// </summary>
+    /// <param name="collecionable">Referència al col·leccionable a eliminar</param>
+    public void destruirColleccionable(Colleccionable collecionable)
     {
-        recollectorController rc = FindObjectOfType<recollectorController>();
-        int index = rc.indexColleccionable(col.gameObject);
+        RecollectorController rc = FindObjectOfType<RecollectorController>();
+        int index = rc.indexColleccionable(collecionable.gameObject);
         rc.deleteColleccionable(index);
     }
+
+    public void SetIndex(int index) { this.index = index; }
 }

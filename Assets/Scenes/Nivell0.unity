@@ -313,7 +313,6 @@ MonoBehaviour:
   - {fileID: 7286559677663493442, guid: 3f55b34d20f5f476991f35ea4345d6b9, type: 3}
   - {fileID: 6042104233109182230, guid: eb426a18de6b34f95a36e2d782da852c, type: 3}
   index: 0
-  final: 0
 --- !u!1 &566276976
 GameObject:
   m_ObjectHideFlags: 0
@@ -525,7 +524,7 @@ PrefabInstance:
     - target: {fileID: 6042104233109182230, guid: eb426a18de6b34f95a36e2d782da852c,
         type: 3}
       propertyPath: maxTimer
-      value: 200
+      value: 120
       objectReference: {fileID: 0}
     - target: {fileID: 6042104233109182230, guid: eb426a18de6b34f95a36e2d782da852c,
         type: 3}
@@ -669,12 +668,17 @@ PrefabInstance:
     - target: {fileID: 339322942050960696, guid: 22cd134b69c394f25b008c6e0c365163,
         type: 3}
       propertyPath: maxTimer
-      value: 50
+      value: 88
       objectReference: {fileID: 0}
     - target: {fileID: 339322942050960696, guid: 22cd134b69c394f25b008c6e0c365163,
         type: 3}
       propertyPath: m_Enabled
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 339322942050960696, guid: 22cd134b69c394f25b008c6e0c365163,
+        type: 3}
+      propertyPath: minTimer
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 5595243224804743798, guid: 22cd134b69c394f25b008c6e0c365163,
         type: 3}
@@ -1061,7 +1065,7 @@ PrefabInstance:
     - target: {fileID: 7286559677663493442, guid: 3f55b34d20f5f476991f35ea4345d6b9,
         type: 3}
       propertyPath: minTimer
-      value: 40
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 7286559677663493442, guid: 3f55b34d20f5f476991f35ea4345d6b9,
         type: 3}

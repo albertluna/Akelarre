@@ -726,11 +726,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 6361388450302999205}
+      objectReference: {fileID: 6361388450302999206}
     - target: {fileID: 4705951279343295659, guid: 9be20a957d9204d91a9c8d9ad3984db5,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: 
+      value: OnBotoVictoria
+      objectReference: {fileID: 0}
+    - target: {fileID: 4705951279343295659, guid: 9be20a957d9204d91a9c8d9ad3984db5,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4705951279343295659, guid: 9be20a957d9204d91a9c8d9ad3984db5,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_BoolArgument
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9be20a957d9204d91a9c8d9ad3984db5, type: 3}

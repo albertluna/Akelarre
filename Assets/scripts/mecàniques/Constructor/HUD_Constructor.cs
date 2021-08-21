@@ -8,14 +8,16 @@ public class HUD_Constructor : MonoBehaviour
     public Slider llista;
     public Pocio pocio;
 
-    // Start is called before the first frame update
     void Start()
     {
-        llista.maxValue = pocio.llista.Length;
+        llista.maxValue = pocio.getMaxValue();
     }
 
+    /// <summary>
+    /// Funció per actualitzar la llista de colors
+    /// </summary>
     public void actualitzarProgres()
     {
-        llista.value = pocio.index;
+        llista.value = pocio.getIndex();
     }
 }

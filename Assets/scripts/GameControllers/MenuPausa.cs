@@ -7,7 +7,7 @@ public class MenuPausa : MonoBehaviour
 {
     private PhotonView PV;
 
-    #region MenuPausa
+    #region variables
     [Header("Menú Pausa")]
     [SerializeField]
     private GameObject menu;
@@ -15,35 +15,47 @@ public class MenuPausa : MonoBehaviour
     private GameObject comprovar;
     [SerializeField]
     private GameObject[] HudPartida;
-    //boolea per detectar qui ha obert el menu
-    private bool jo;
     #endregion
 
     private void Start()
     {
         PV = GetComponent<PhotonView>();
-        jo = false;
     }
-    #region lògica Menú Pausa
+    /// <summary>
+    /// Funció que es crida quan es clica el botó de la pausa i es para el temps
+    /// i s'obre el menú de pausa
+    /// </summary>
     public void OnBotoPressed()
     {
         PV.RPC("RPC_ObrirMenu", RpcTarget.All);
-        jo = true;
+
+        menu.SetActive(true);
+        foreach (GameObject go in HudPartida) go.SetActive(false);
     }
 
+    /// <summary>
+    /// Funció que es crida quan es clica el botó de reprendre la partida
+    /// </summary>
     public void OnReanudarPressed()
     {
-        if (jo)
-            PV.RPC("RPC_Reanudar", RpcTarget.All);
-        jo = false;
+        menu.SetActive(false);
+        foreach (GameObject go in HudPartida) go.SetActive(true);
+        PV.RPC("RPC_Reprendre", RpcTarget.All);
     }
 
+    /// <summary>
+    /// Funció per obrir o tancar el menú de comprovació de tancar la partida
+    /// </summary>
+    /// <param name="estat">true si s'obre el menú comprovació, false si es tanca</param>
     public void OnComprovar(bool estat)
     {
         menu.SetActive(!estat);
         comprovar.SetActive(estat);
     }
 
+    /// <summary>
+    /// Funció per sortir del joc i tornar al mapa
+    /// </summary>
     public void OnSortirPartida()
     {
         if (PhotonNetwork.MasterClient.IsLocal)
@@ -54,21 +66,22 @@ public class MenuPausa : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Funció per posar la pausa
+    /// </summary>
     [PunRPC]
     private void RPC_ObrirMenu()
     {
         Time.timeScale = 0f;
-        menu.SetActive(true);
-        foreach (GameObject go in HudPartida) go.SetActive(false);
+        
     }
 
+    /// <summary>
+    /// Funció per retornar a la parita
+    /// </summary>
     [PunRPC]
-    private void RPC_Reanudar()
+    private void RPC_Reprendre()
     {
-        menu.SetActive(false);
-        foreach (GameObject go in HudPartida) go.SetActive(true);
-
         Time.timeScale = 1f;
     }
-    #endregion
 }
