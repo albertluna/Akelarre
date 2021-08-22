@@ -64,9 +64,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   posicio: {x: 0, y: 0}
   objectiu: {x: 0, y: 0}
-  velocitat: 0.2
   bola: {fileID: 3352401208843363222}
-  isVisible: 1
 --- !u!54 &6284246136318194922
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -329,7 +327,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 55370839cd080c547bbe81236436e12b, type: 2}
+  - {fileID: 2100000, guid: 332a002b68e3348baaf8e91774210c67, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

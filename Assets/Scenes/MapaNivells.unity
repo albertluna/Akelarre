@@ -1172,10 +1172,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e3d7a38e93d34b9e968bd0c9c24cadd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rol: DEFENSOR
   boto: {fileID: 0}
   isSelected: 1
-  nom: 
 --- !u!114 &665362292
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1278,6 +1276,7 @@ GameObject:
   - component: {fileID: 674072928}
   - component: {fileID: 674072927}
   - component: {fileID: 674072926}
+  - component: {fileID: 674072929}
   m_Layer: 0
   m_Name: Camera
   m_TagString: MainCamera
@@ -1350,6 +1349,103 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &674072929
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 674072925}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 4608063410594966530, guid: 77e1c957cf47747fe9aa46bdbdb2cb69,
+    type: 2}
+  m_audioClip: {fileID: 8300000, guid: f2ae83a9d23794dbbb762c0347beb2e2, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 1
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 2
+  Pan2D: 0
+  rolloffMode: 1
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &682277137
 GameObject:
   m_ObjectHideFlags: 0
@@ -1883,9 +1979,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7942ce9a360f240de8587cf57792b79e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentScene: 0
-  multiplayerScene: 3
-  photonPlayer: {fileID: 0}
   text: {fileID: 885931287}
   constructor: {fileID: 2078418774}
   defensor: {fileID: 665362291}
@@ -2568,10 +2661,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e3d7a38e93d34b9e968bd0c9c24cadd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rol: RECOLLECTOR
   boto: {fileID: 0}
   isSelected: 1
-  nom: 
 --- !u!114 &1697839724
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2884,10 +2975,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e3d7a38e93d34b9e968bd0c9c24cadd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rol: CONSTRUCTOR
   boto: {fileID: 0}
   isSelected: 1
-  nom: 
 --- !u!114 &2078418775
 MonoBehaviour:
   m_ObjectHideFlags: 0
