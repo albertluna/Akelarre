@@ -36,7 +36,7 @@ public class ConstructorController : RolController
     /// <param name="colleccionable">Color del col·leccionable a enviar</param>
     public void EnviarColleccionable(string colleccionable)
     {
-        PV.RPC("RPC_CrearColleccionable", RpcTarget.All, colleccionable);
+        photonView.RPC("RPC_CrearColleccionable", RpcTarget.All, colleccionable);
     }
 
     /// <summary>
@@ -46,20 +46,20 @@ public class ConstructorController : RolController
     [PunRPC]
     private void RPC_CrearColleccionable(string nouColleccionable)
     {
-        NouColleccionable(RecollectorController.escollirColleccionable(nouColleccionable));
+        NouColleccionable(RecollectorController.EscollirColleccionable(nouColleccionable));
     }
 
     /// <summary>
     /// Funció que introdueix el colleccionable agafat pel recol·lector i el posa a la pantalla del constructor
     /// </summary>
     /// <param name="nouColleccionable">el tipus del nou colleccionable</param>
-    public void NouColleccionable(Colleccionable nouColleccionable)
+    private void NouColleccionable(Colleccionable nouColleccionable)
     {
         if (colleccionable != null) Destroy(colleccionable.gameObject);
         colleccionable = Instantiate(nouColleccionable.gameObject,
             creadorColleccionables.transform.position, Quaternion.identity, creadorColleccionables.transform);
         //Es reprodueix l'audio d'aparicio de colleccionable
-        if(PV.IsMine) audioConstructor.PlayOneShot(audioConstructor.clip, 1f);
+        if(photonView.IsMine) audioConstructor.PlayOneShot(audioConstructor.clip, 1f);
     }
 
     /// <summary>
@@ -71,11 +71,11 @@ public class ConstructorController : RolController
         if (colleccionable != null)
         {
             //Si s'ha introduit el col·leccionable correcte
-            if (hud.pocio.esColleccionableCorrecte(colleccionable.GetComponent<Colleccionable>()))
+            if (hud.pocio.EsColleccionableCorrecte(colleccionable.GetComponent<Colleccionable>()))
             {
                 audioConstructor.PlayOneShot(colleccionableCorrecte, 1f);
                 hud.pocio.Seguent();
-                if(hud.pocio.EsUltim() && PV.IsMine) PV.RPC("RPC_PartidaGuanyada", RpcTarget.All);
+                if(hud.pocio.EsUltim() && photonView.IsMine) photonView.RPC("RPC_PartidaGuanyada", RpcTarget.All);
             }
             //Si s'ha equivocat de color
             else
@@ -83,7 +83,7 @@ public class ConstructorController : RolController
                 audioConstructor.PlayOneShot(colleccionableErroni, 1f);
                 hud.pocio.Comencar();
             }
-            hud.actualitzarProgres();
+            hud.ActualitzaProgres();
             Destroy(colleccionable);
         }
     }
@@ -94,6 +94,6 @@ public class ConstructorController : RolController
     [PunRPC]
     private void RPC_PartidaGuanyada()
     {
-        GS.FiPartida(true);
+        gameSetup.FiPartida(true);
     }
 }

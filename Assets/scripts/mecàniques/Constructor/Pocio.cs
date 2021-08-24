@@ -23,7 +23,7 @@ public class Pocio : MonoBehaviour
     /// Funció per extreure la quantitat de col·leccionables de la llista
     /// </summary>
     /// <returns>Llargada de la llista</returns>
-    public int getMaxValue()
+    public int GetLlargadaLlista()
     {
         return llista.Length;
     }
@@ -32,7 +32,7 @@ public class Pocio : MonoBehaviour
     /// Obtenir el valors de l'index
     /// </summary>
     /// <returns>valor de l'index</returns>
-    public int getIndex()
+    public int GetIndex()
     {
         return index;
     }
@@ -42,7 +42,7 @@ public class Pocio : MonoBehaviour
     /// </summary>
     /// <param name="colleccionable">Valor del col·leccionable d'entrada</param>
     /// <returns>true si és correcte, false si és fals</returns>
-    public bool esColleccionableCorrecte(Colleccionable colleccionable)
+    public bool EsColleccionableCorrecte(Colleccionable colleccionable)
     {
         return colleccionable.color.Equals(llista[index].color);
     }

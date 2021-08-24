@@ -8,13 +8,11 @@ public class Recollector : MonoBehaviour
     //Nombre de vides que té el recol·lector
     private int nombreVides;
     [SerializeField]
-    private PhotonView PV;
-    [SerializeField]
-    private RecollectorController rc;
+    private RecollectorController recollectorController;
     
     void Start()
     {
-        nombreVides = rc.NombreVides();
+        nombreVides = recollectorController.NombreVides();
     }
 
     /// <summary>
@@ -23,19 +21,19 @@ public class Recollector : MonoBehaviour
     /// <param name="collision">Col·leccionable recollit</param>
     public void OnTriggerEnter(Collider collision)
     {
-        if (collision.gameObject.CompareTag("Colleccionable") && PV.IsMine)
+        if (collision.gameObject.CompareTag("Colleccionable") && recollectorController.photonView.IsMine)
         {
             Colleccionable colleccionable = collision.gameObject.GetComponentInParent<Colleccionable>();
 
             //ConstructorController constructor = FindObjectOfType<ConstructorController>();
             //S'envia el col·leccionable al constructor
-            rc.GS.constructor.EnviarColleccionable(colleccionable.color);
+            recollectorController.gameSetup.constructor.EnviarColleccionable(colleccionable.color);
 
             //S'elimina el col·leccionable
-            int index = rc.indexColleccionable(colleccionable.gameObject);
+            int index = recollectorController.IndexColleccionable(colleccionable.gameObject);
             if (index == -1) Debug.LogError("Fail");
 
-            rc.deleteColleccionable(index);
+            recollectorController.EliminarColleccionable(index);
         }
     }
 
@@ -48,7 +46,7 @@ public class Recollector : MonoBehaviour
         if (collision.gameObject.CompareTag("Bullet") && nombreVides > 0)
         {
             nombreVides--;
-            rc.ActualitzarVides(nombreVides);
+            recollectorController.ActualitzarVides(nombreVides);
             Destroy(collision.gameObject);
         }
     }

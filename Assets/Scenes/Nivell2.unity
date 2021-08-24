@@ -1223,6 +1223,16 @@ PrefabInstance:
       propertyPath: llistaBoles
       value: 
       objectReference: {fileID: 839914698}
+    - target: {fileID: 6361388450302999206, guid: 5ab8ba155ef5f4e66af93ccde88d8e7b,
+        type: 3}
+      propertyPath: tempsMinimAtac
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6361388450302999206, guid: 5ab8ba155ef5f4e66af93ccde88d8e7b,
+        type: 3}
+      propertyPath: tempsOffsetInicial
+      value: 17
+      objectReference: {fileID: 0}
     - target: {fileID: 6361388450302999207, guid: 5ab8ba155ef5f4e66af93ccde88d8e7b,
         type: 3}
       propertyPath: m_LocalPosition.x

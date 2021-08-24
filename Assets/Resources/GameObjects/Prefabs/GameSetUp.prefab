@@ -253,27 +253,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64245d90afec9c24a8d20251c978fc22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
   constructor: {fileID: 0}
   defensor: {fileID: 0}
   recollector: {fileID: 0}
-  GameOver: {fileID: 1803362716825842029}
-  Victory: {fileID: 6408826598148012891}
+  gameOver: {fileID: 1803362716825842029}
+  victory: {fileID: 6408826598148012891}
+  HudLlistaPocio: {fileID: 6361388449074476044}
   spawnPoints:
   - {fileID: 6361388450274183962}
   - {fileID: 6361388449795157416}
   - {fileID: 6361388449220396809}
-  llistaColleccionables:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  HUD: {fileID: 6361388449074476044}
+  colleccionablesInvisibles: 0
   videsPartida: 4
   atacVisible: 1
-  initialOffsetTimer: 30
-  minimTime: 8
-  maximTime: 20
+  tempsOffsetInicial: 20
+  tempsMinimAtac: 15
+  tempsMaximAtac: 20
   velocitatBoles: 0.05
   grisRecollector: 0
   grisConstructor: 0
@@ -557,6 +552,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: HUD_Pocio
+      objectReference: {fileID: 0}
+    - target: {fileID: 8693375435539610128, guid: a59ad0eb96a9b488697c30aa9e18f8f6,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8693375435539610128, guid: a59ad0eb96a9b488697c30aa9e18f8f6,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8693375435539610128, guid: a59ad0eb96a9b488697c30aa9e18f8f6,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8693375435633223750, guid: a59ad0eb96a9b488697c30aa9e18f8f6,
         type: 3}

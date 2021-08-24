@@ -6,13 +6,13 @@ using UnityEngine.UI;
 
 public class Defensor : MonoBehaviour
 {
-    public GameSetUp GS;
+    /*public GameSetUp GS;
     [SerializeField]
-    private PhotonView PV;
+    private PhotonView PV;*/
     [SerializeField]
-    public int vides;
+    private int vides;
     [SerializeField]
-    private atacController controller;
+    private AtacController controller;
     [SerializeField]
     private Slider HUDVides;
     [SerializeField]
@@ -20,15 +20,12 @@ public class Defensor : MonoBehaviour
     [SerializeField]
     private AudioClip destrossarColleccionables;
     
-    //public int NombreVides;
-
-    // Start is called before the first frame update
     void Start()
     {
-        GS = FindObjectOfType<GameSetUp>();
-        HUDVides.maxValue = GS.videsPartida;
+        vides = controller.gameSetup.GetVides();
 
-        vides = GS.videsPartida;
+        HUDVides.maxValue = vides;
+
         HUDVides.maxValue = vides;
         HUDVides.value = vides;
     }
@@ -43,7 +40,7 @@ public class Defensor : MonoBehaviour
         if (collision.gameObject.CompareTag("Colleccionable"))
         {
             Colleccionable colleccionable = collision.GetComponentInParent<Colleccionable>();
-            colleccionable.parent.destruirColleccionable(colleccionable);
+            colleccionable.parent.EliminarColleccionable(colleccionable);
             GetComponent<AudioSource>().PlayOneShot(destrossarColleccionables, 1f);
         }
     }
@@ -51,7 +48,7 @@ public class Defensor : MonoBehaviour
     public void UnaVidaMenys()
     {
         vides--;
-        if (PV.IsMine)
+        if (controller.photonView.IsMine)
         {
             HUDVides.value = vides;
             if (vides <= 0)
@@ -61,9 +58,9 @@ public class Defensor : MonoBehaviour
         }
     }
 
-    public void setVisibility(bool visiblity)
+    public void SetVisibilitat(bool visiblitat)
     {
-        if(PV.IsMine)
-            controller.SetVisibility(visiblity);
+        if(controller.photonView.IsMine)
+            controller.SetVisibilitat(visiblitat);
     } 
 }

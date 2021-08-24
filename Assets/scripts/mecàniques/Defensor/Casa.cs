@@ -5,12 +5,10 @@ using UnityEngine;
 public class Casa : MonoBehaviour
 {
     private AudioSource audioXoc;
-    private GameSetUp GS;
 
     private void Start()
     {
         audioXoc = GetComponent<AudioSource>();
-        GS = FindObjectOfType<GameSetUp>();
     }
 
     /// <summary>

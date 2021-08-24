@@ -7,21 +7,20 @@ public class MovimentAtac : MonoBehaviour
     /// <summary>
     /// posició actual de la bola en el pla XZ
     /// </summary>
-    [SerializeField]
     private Vector2 posicio;
     /// <summary>
-    /// Posició de la casa
+    /// Posició de la casa en el pla 2D
     /// </summary>
-    [SerializeField]
     private Vector2 objectiu;
 
     private float velocitat;
     [SerializeField]
-    GameObject bola;
+    private GameObject bola;
     
     void Start()
     {
         posicio = new Vector2(transform.position.x, transform.position.z);
+        objectiu = new Vector2(0, 0);
     }
 
     void Update()

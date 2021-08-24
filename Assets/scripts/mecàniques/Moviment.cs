@@ -5,58 +5,51 @@ using Photon.Pun;
 
 public class Moviment : MonoBehaviourPunCallbacks, IPunObservable
 {
+    #region variables
     private Rigidbody rigidbody;
-    [SerializeField]
-    private PhotonView PV;
-    [SerializeField]
-    [Range(9000, 14000)]
-    public float MaxSpeed;
+    private Transform transform;
 
-    private float horizontalInput;
-    private float verticalInput;
-
+    [SerializeField]
     [Range(4000, 6000)]
-    public float velocity;
-
+    private float velocitat;
+    //Punter al personatge que es controla, al joystick i la càmera
     [SerializeField]
-    private camera camera;
-
-    private Vector3 dir;
-
+    RolController controller;
     [SerializeField]
     private JoystickVirtual joystick;
-
+    [SerializeField]
+    private Camera camera;
+    #endregion
 
     void Awake()
     {
         rigidbody = GetComponent<Rigidbody>();
-    }
-
-    void Update()
-    {
-        if (PV.IsMine) {
-            horizontalInput = 0;
-            verticalInput = 0;
-        #if UNITY_STANDALONE || PLATFORM_STANDALONE    
-            horizontalInput = Input.GetAxis("Horizontal");
-            verticalInput = Input.GetAxis("Vertical");
-        #endif
-
-            horizontalInput += joystick.InputDirection.x;
-            verticalInput += joystick.InputDirection.y;
-            dir = camera.transform.right * horizontalInput + camera.transform.forward * verticalInput*3;
-            rigidbody.velocity = velocity * new Vector3(dir.x, 0, dir.z);
-        }
+        transform = GetComponent<Transform>();
+        camera.SetJugador(this);
     }
 
     public void FixedUpdate()
     {
-        if (dir != Vector3.zero)
+        if (controller.photonView.IsMine)
         {
-            GetComponent<Transform>().forward = new Vector3(rigidbody.velocity.x,
-                GetComponent<Transform>().forward.y, rigidbody.velocity.z);
-            GetComponent<Transform>().Rotate(new Vector3(-90, -90, 0));
-        }
+            //S'obté la informació dels inputs
+            float horizontalInput = 0;
+            float verticalInput = 0;
+            #if UNITY_STANDALONE || PLATFORM_STANDALONE
+            horizontalInput = Input.GetAxis("Horizontal");
+            verticalInput = Input.GetAxis("Vertical");
+            #endif
+            horizontalInput += joystick.InputDirection.x;
+            verticalInput += joystick.InputDirection.y;
+            //Es calcula a direcció i velocitat amb la que s'ha de moure
+            Vector3 direccio = camera.transform.right * horizontalInput + camera.transform.forward * verticalInput * 3;
+            rigidbody.velocity = velocitat * new Vector3(direccio.x, 0, direccio.z);
+            //Es rota el personatge mirant cap on es mou
+            if (direccio != Vector3.zero) {
+                transform.forward = new Vector3(rigidbody.velocity.x, transform.forward.y, rigidbody.velocity.z);
+                transform.Rotate(new Vector3(-90, -90, 0));
+            }
+        }  
     }
 
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)

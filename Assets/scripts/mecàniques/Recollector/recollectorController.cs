@@ -29,8 +29,8 @@ public class RecollectorController : RolController
     protected override void Start()
     {
         base.Start();
-        creators = GS.llistesRecollector.GetComponentsInChildren<ColleccionableCreators>();
-        colleccionables = GS.llistesRecollector.GetComponentsInChildren<Colleccionable>();
+        creators = gameSetup.llistesRecollector.GetComponentsInChildren<ColleccionableCreators>();
+        colleccionables = gameSetup.llistesRecollector.GetComponentsInChildren<Colleccionable>();
         
         llistaColleccionables = colleccionables;
         //Comprovacio que la suma de percentatges de probabilitat de sortir un col·leccionable concret
@@ -41,17 +41,18 @@ public class RecollectorController : RolController
         }
         if (percentatgeTotal != 100) Debug.LogError("El percentatge total dels colleccionables no suma 100, suma" + percentatgeTotal);
 
-        //set index de cada creator
+        //TODO: MIRAR SI SOBRE
+        /*set index de cada creator
         for (int i = 0; i < creators.Length; i++)
         {
             creators[i].SetIndex(i);
-        }
+        }*/
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (PV.IsMine)
+        if (photonView.IsMine)
         {
             if (timer >= 0) timer -= Time.deltaTime;
             else
@@ -71,7 +72,7 @@ public class RecollectorController : RolController
                 {
                     if (resultat >= percentatgeAnterior && resultat < (col.percentatge + percentatgeAnterior))
                     {
-                        PV.RPC("RPC_crearColleccionable", RpcTarget.All, posicio, col.color);
+                        photonView.RPC("RPC_CrearColleccionable", RpcTarget.All, posicio, col.color);
                     }
                     percentatgeAnterior += col.percentatge;
                 }
@@ -80,7 +81,7 @@ public class RecollectorController : RolController
         }
     }
 
-    public static Colleccionable escollirColleccionable(string color)
+    public static Colleccionable EscollirColleccionable(string color)
     {
         foreach (Colleccionable col in llistaColleccionables)
         {
@@ -90,13 +91,13 @@ public class RecollectorController : RolController
     }
 
     [PunRPC]
-    private void RPC_crearColleccionable(int posicio, string color)
+    private void RPC_CrearColleccionable(int posicio, string color)
     {
         //Debug.Log("L'index es " + posicio);
-        this.creators[posicio].Instantiate(escollirColleccionable(color), PV.IsMine, isInvisible);
+        this.creators[posicio].Instantiate(EscollirColleccionable(color), photonView.IsMine, isInvisible);
     }
 
-    public int indexColleccionable(GameObject colleccionable)
+    public int IndexColleccionable(GameObject colleccionable)
     {
         int i = 0;
         Colleccionable c = colleccionable.GetComponent<Colleccionable>();
@@ -112,14 +113,14 @@ public class RecollectorController : RolController
         return -1;
     }
 
-    public void deleteColleccionable(int index)
+    public void EliminarColleccionable(int index)
     {
-        PV.RPC("RPC_deleteColleccionable", RpcTarget.All, index);
+        photonView.RPC("RPC_EliminarColleccionable", RpcTarget.All, index);
 
     }
 
     [PunRPC]
-    private void RPC_deleteColleccionable(int index)
+    private void RPC_EliminarColleccionable(int index)
     {
         creators[index].GetComponentInChildren<Colleccionable>().parent.estaOcupat = false;
         Destroy(creators[index].GetComponentInChildren<Colleccionable>().gameObject);
@@ -128,7 +129,7 @@ public class RecollectorController : RolController
     #region HUD
     public void ActualitzarVides(int nVides)
     {
-        if (PV.IsMine)
+        if (photonView.IsMine)
         {
             for (int i = 0; i < vides.Length; i++)
             {

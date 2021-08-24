@@ -11,43 +11,43 @@ public class GameSetUp : MonoBehaviour
     public ConstructorController constructor;
     public Defensor defensor;
     public RecollectorController recollector;
-
+    //Panells amb la pantalla de game over i la de victòria
     [SerializeField]
-    private GameObject GameOver;
+    private GameObject gameOver;
     [SerializeField]
-    private GameObject Victory;
+    private GameObject victory;
 
     //Variable per borrar la llista de la pocio
     [SerializeField]
-    private GameObject HUD;
+    private GameObject HudLlistaPocio;
 
     [Header("Posició d'origen de cada rol")]
-    public Transform[] spawnPoints;
-
-    [Header("Referència a la recol·lecció")]
-    [SerializeField]
-    private bool colleccionablesInvisibles;
+    public Transform[] spawnPoints;   
 
     [Header("Referència a l'atac")]
-    public int videsPartida;
-    /// Variable per indicar si el defensor pot veure les boles d'atac
-    public bool atacVisible;
-    public float initialOffsetTimer;
-    public float minimTime;
-    public float maximTime;
+    [SerializeField]
+    private int videsPartida;
+    
+    [Range(5, 30)]
+    public float tempsOffsetInicial;
+    [Range(5, 20)]
+    public float tempsMinimAtac;
+    [Range(10, 30)]
+    public float tempsMaximAtac;
     [Range(0.03f, 0.20f)]
     public float velocitatBoles;
 
-    /// <summary>
-    /// Variable per indicar si el rol veu en blanc i negre
-    /// </summary>
+    //Variable per indicar si el rol veu en blanc i negre
     [Header("Referència a la visibilitat")]
     public bool grisRecollector;
     public bool grisConstructor;
+    //Variable per indicar si el recol·lector veu les boles a col·leccionar
+    private bool colleccionablesInvisibles;
+    //Variable per indicar si el defensor pot veure les boles d'atac
+    [SerializeField]
+    private bool atacVisible;
 
-    /// <summary>
-    /// GameObjects amb tota les llistes de col·leccionables i atacs
-    /// </summary>
+    //GameObjects amb tota les llistes de col·leccionables i atacs
     [Header("Llistes inicials")]
     public GameObject llistesRecollector;
     public GameObject llistaCreadorsAtac;
@@ -56,39 +56,34 @@ public class GameSetUp : MonoBehaviour
 
     void Awake()
     {
-        GameOver.SetActive(false);
-        Victory.SetActive(false);
+        gameOver.SetActive(false);
+        victory.SetActive(false);
         Time.timeScale = 1;
         PhotonNetwork.MinimalTimeScaleToDispatchInFixedUpdate = 0;
     }
-
-    public int getSpawnpointLength() { return spawnPoints.Length; }
 
     /// <summary>
     /// Funció per obtenir la referència de tots els jugadors
     /// i actualitzar la seva visibilitat a la del nivell
     /// </summary>
-    public void getRols()
+    public void GetRols()
     {
         constructor = FindObjectOfType<ConstructorController>();
         defensor = FindObjectOfType<Defensor>();
         recollector = FindObjectOfType<RecollectorController>();
-        /*Debug.LogError("Tenim constructor? " + constructor.name);
-        Debug.LogError("Defensor? " + defensor.name);
-        Debug.LogError("Recol? " + recollector.name);*/
 
         //s'indica si el defensor pot veure les boles o no
-        if (defensor != null) defensor.setVisibility(atacVisible);
+        if (defensor != null) defensor.SetVisibilitat(atacVisible);
         if (recollector != null) recollector.isInvisible = colleccionablesInvisibles;
         //s'indica si els rols han de veure en blanc i negre
-        if (recollector != null) if(grisRecollector && recollector.PV.IsMine) setBiN();
-        if (constructor != null) if(grisConstructor && constructor.PV.IsMine) setBiN();
+        if (recollector != null) if(grisRecollector && recollector.photonView.IsMine) SetBlancNegre();
+        if (constructor != null) if(grisConstructor && constructor.photonView.IsMine) SetBlancNegre();
         //Es destrueix la llista de la pocio pels no-constructors
-        if (constructor == null || !constructor.PV.IsMine) if(HUD!=null) Destroy(HUD);
+        if (constructor == null || !constructor.photonView.IsMine) if(HudLlistaPocio!=null) Destroy(HudLlistaPocio);
     }
 
     /// <summary>
-    /// Funció que es crida quan es clica el botó de tornar un cop has guanyat
+    /// Funció que es crida quan es clica el botó de tornar un cop has guanyat o perdut
     /// </summary>
     public void OnBotoVictoria()
     {
@@ -109,18 +104,18 @@ public class GameSetUp : MonoBehaviour
         Time.timeScale = 0;
         if (estat)
         {
-            Victory.SetActive(true);
+            victory.SetActive(true);
         }
         else
         {
-            GameOver.SetActive(true);
+            gameOver.SetActive(true);
         }
     }
 
     /// <summary>
-    /// Funcio per transformar la visio de la camera a blanc i negre
+    /// Funció per transformar la visió de la càmera a blanc i negre
     /// </summary>
-    private void setBiN()
+    private void SetBlancNegre()
     {
         PostProcessVolume postpo = FindObjectOfType<PostProcessVolume>();
         ColorGrading color;
@@ -129,4 +124,7 @@ public class GameSetUp : MonoBehaviour
             color.saturation.value = -100;
         }
     }
+
+    public int GetVides() { return videsPartida;}
+    public int GetSpawnpointLength() { return spawnPoints.Length; }
 }

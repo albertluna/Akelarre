@@ -4,7 +4,7 @@ using Photon.Pun;
 
 public class Tutorial : MonoBehaviour
 {
-    public atacController defensor;
+    public AtacController defensor;
     public RecollectorController recolector;
     public ConstructorController constructor;
 
@@ -23,22 +23,22 @@ public class Tutorial : MonoBehaviour
     {
         Time.timeScale = 0f;
         constructor = FindObjectOfType<ConstructorController>();
-        defensor = FindObjectOfType<atacController>();
+        defensor = FindObjectOfType<AtacController>();
         recolector = FindObjectOfType<RecollectorController>();
-        if (constructor.PV.IsMine)
+        if (constructor.photonView.IsMine)
         {
             HudTutorial = Instantiate(tutorialConstructor);
             player = constructor.gameObject.AddComponent<PlayerTutorial>();
             player.setVariables(this);
 
         }
-        else if (defensor.PV.IsMine)
+        else if (defensor.photonView.IsMine)
         {
             HudTutorial = Instantiate(tutorialDefensor);
             player = defensor.gameObject.AddComponent<PlayerTutorial>();
             player.setVariables(this);
         }
-        else if (recolector.PV.IsMine)
+        else if (recolector.photonView.IsMine)
         {
             HudTutorial = Instantiate(tutorialRecolector);
             player = recolector.gameObject.AddComponent<PlayerTutorial>();

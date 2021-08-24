@@ -10,14 +10,14 @@ public class HUD_Constructor : MonoBehaviour
 
     void Start()
     {
-        llista.maxValue = pocio.getMaxValue();
+        llista.maxValue = pocio.GetLlargadaLlista();
     }
 
     /// <summary>
     /// Funció per actualitzar la llista de colors
     /// </summary>
-    public void actualitzarProgres()
+    public void ActualitzaProgres()
     {
-        llista.value = pocio.getIndex();
+        llista.value = pocio.GetIndex();
     }
 }

@@ -26,7 +26,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 867521238309778435}
   m_LocalRotation: {x: 0.6895733, y: -0.37694767, z: -0.15648875, w: 0.59825623}
-  m_LocalPosition: {x: 243.25912, y: 82.88895, z: -604.5072}
+  m_LocalPosition: {x: 70, y: 83, z: -113}
   m_LocalScale: {x: 47.824738, y: 59.23332, z: 22.063063}
   m_Children: []
   m_Father: {fileID: 2553201836819330319}
@@ -392,8 +392,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92c56c83ef2724f24988962424913f5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PV: {fileID: 4385597908887047418}
-  rc: {fileID: 3868904633533839791}
+  recollectorController: {fileID: 3868904633533839791}
 --- !u!114 &4862692928164743463
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -406,11 +405,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfa55fba696394332b5c5373c539a9b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PV: {fileID: 4385597908887047418}
-  MaxSpeed: 10000
-  velocity: 5000
-  camera: {fileID: 6572874378697524695}
+  velocitat: 5000
+  controller: {fileID: 3868904633533839791}
   joystick: {fileID: 1165238292325544788}
+  camera: {fileID: 6572874378697524695}
 --- !u!1 &5968628871304879744
 GameObject:
   m_ObjectHideFlags: 0
@@ -511,7 +509,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6305315651040082374}
   m_LocalRotation: {x: 0.5915527, y: 0.16855858, z: 0.38738203, w: 0.6867232}
-  m_LocalPosition: {x: 247, y: -95, z: -604}
+  m_LocalPosition: {x: 75, y: -95, z: -114}
   m_LocalScale: {x: 47.824738, y: 59.23332, z: 22.063063}
   m_Children: []
   m_Father: {fileID: 2553201836819330319}
@@ -592,8 +590,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6039f497f60949238bd0f7d2e604743, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PV: {fileID: 4385597908887047418}
-  GS: {fileID: 0}
+  photonView: {fileID: 4385597908887047418}
+  gameSetup: {fileID: 0}
   eliminar:
   - {fileID: 6572874378697524683}
   - {fileID: 8891145196691412339}
@@ -993,6 +991,10 @@ PrefabInstance:
       propertyPath: far clip plane
       value: 100000
       objectReference: {fileID: 0}
+    - target: {fileID: 501862320, guid: 25667044bcc3f7944b5727c0157aff8e, type: 3}
+      propertyPath: field of view
+      value: 23
+      objectReference: {fileID: 0}
     - target: {fileID: 501862321, guid: 25667044bcc3f7944b5727c0157aff8e, type: 3}
       propertyPath: m_LocalPosition.x
       value: -310
@@ -1008,7 +1010,7 @@ PrefabInstance:
     - target: {fileID: 501862322, guid: 25667044bcc3f7944b5727c0157aff8e, type: 3}
       propertyPath: jugador
       value: 
-      objectReference: {fileID: 4721438826719436031}
+      objectReference: {fileID: 4862692928164743463}
     - target: {fileID: 525196355173965437, guid: 25667044bcc3f7944b5727c0157aff8e,
         type: 3}
       propertyPath: m_RootOrder

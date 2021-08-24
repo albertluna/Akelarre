@@ -34,14 +34,14 @@ public class Colleccionable : MonoBehaviour
         }
         else
         {
-            parent.destruirColleccionable(this);
+            parent.EliminarColleccionable(this);
         }
     }
 
     /// <summary>
     /// S'elimina la llum i el render de la bola quan ha de ser invisible
     /// </summary>
-    public void setInivisible()
+    public void SetInivisible()
     {
         Destroy(llum);
         bola.enabled = false;

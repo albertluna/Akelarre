@@ -334,7 +334,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -481,11 +481,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfa55fba696394332b5c5373c539a9b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PV: {fileID: 4385597908887047418}
-  MaxSpeed: 11000
-  velocity: 5000
-  camera: {fileID: 6572874378697524695}
+  velocitat: 5000
+  controller: {fileID: 2625093685106254652}
   joystick: {fileID: 8165861546670215440}
+  camera: {fileID: 6572874378697524695}
 --- !u!1 &3680523482378488798
 GameObject:
   m_ObjectHideFlags: 0
@@ -593,8 +592,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe27b82ff670e4e6789f6f1241f705f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GS: {fileID: 0}
-  PV: {fileID: 4385597908887047418}
   vides: 3
   controller: {fileID: 2625093685106254652}
   HUDVides: {fileID: 4551476445274505740}
@@ -746,14 +743,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38a254cae6b8d466da5c5695e2eb7e95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PV: {fileID: 4385597908887047418}
-  GS: {fileID: 0}
+  photonView: {fileID: 4385597908887047418}
+  gameSetup: {fileID: 0}
   eliminar:
   - {fileID: 8891145196691412339}
   - {fileID: 6572874378697524683}
   - {fileID: 191016836076230111}
   creators: []
-  bullet: {fileID: 2299448995042824429, guid: 693daf6f040b34329ac74b59590e1f8d, type: 3}
+  pedra: {fileID: 2299448995042824429, guid: 693daf6f040b34329ac74b59590e1f8d, type: 3}
 --- !u!114 &1039483434245108595
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -999,8 +996,8 @@ RectTransform:
   m_Father: {fileID: 173731084584484245}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -1166,13 +1163,17 @@ PrefabInstance:
       propertyPath: m_projectionMatrixMode
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 501862320, guid: 25667044bcc3f7944b5727c0157aff8e, type: 3}
+      propertyPath: field of view
+      value: 23
+      objectReference: {fileID: 0}
     - target: {fileID: 501862321, guid: 25667044bcc3f7944b5727c0157aff8e, type: 3}
       propertyPath: m_LocalPosition.x
       value: -122
       objectReference: {fileID: 0}
     - target: {fileID: 501862321, guid: 25667044bcc3f7944b5727c0157aff8e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1503
+      value: 3334
       objectReference: {fileID: 0}
     - target: {fileID: 501862321, guid: 25667044bcc3f7944b5727c0157aff8e, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1205,7 +1206,7 @@ PrefabInstance:
     - target: {fileID: 501862322, guid: 25667044bcc3f7944b5727c0157aff8e, type: 3}
       propertyPath: jugador
       value: 
-      objectReference: {fileID: 1354641780655880605}
+      objectReference: {fileID: 2013024833801249921}
     - target: {fileID: 501862322, guid: 25667044bcc3f7944b5727c0157aff8e, type: 3}
       propertyPath: movimentSuau
       value: 0.3
@@ -1324,7 +1325,7 @@ PrefabInstance:
     - target: {fileID: 2329551910871752470, guid: 25667044bcc3f7944b5727c0157aff8e,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2472671552661902244, guid: 25667044bcc3f7944b5727c0157aff8e,
         type: 3}

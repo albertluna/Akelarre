@@ -59,7 +59,7 @@ namespace Photon.Pun.Demo.Asteroids
             cachedRoomList = new Dictionary<string, RoomInfo>();
             roomListEntries = new Dictionary<string, GameObject>();
             
-            PlayerNameInput.text = "Jugador " + Random.Range(1000, 10000);
+            PlayerNameInput.text = "Bruixa " + Random.Range(1000, 10000);
         }
 
         #endregion
@@ -105,9 +105,9 @@ namespace Photon.Pun.Demo.Asteroids
 
         public override void OnJoinRandomFailed(short returnCode, string message)
         {
-            string roomName = "Sala " + Random.Range(1000, 10000);
+            string roomName = "Aquelarre " + Random.Range(1000, 10000);
 
-            RoomOptions options = new RoomOptions {MaxPlayers = 8};
+            RoomOptions options = new RoomOptions {MaxPlayers = 3};
 
             PhotonNetwork.CreateRoom(roomName, options, null);
         }
@@ -227,12 +227,7 @@ namespace Photon.Pun.Demo.Asteroids
         public void OnCreateRoomButtonClicked()
         {
             string roomName = RoomNameInputField.text;
-            roomName = (roomName.Equals(string.Empty)) ? "Sala " + Random.Range(1000, 10000) : roomName;
-
-            //byte maxPlayers;
-            //byte.TryParse(MaxPlayersInputField.text, out maxPlayers);
-            //maxPlayers = (byte)3;//(byte) Mathf.Clamp(maxPlayers, 2, 8);
-
+            roomName = (roomName.Equals(string.Empty)) ? "Aquelarre " + Random.Range(1000, 10000) : roomName;
             //sales de 3 persones
             RoomOptions options = new RoomOptions {MaxPlayers = (byte)3, PlayerTtl = 10000 };
             PhotonNetwork.CreateRoom(roomName, options, null);
@@ -263,6 +258,7 @@ namespace Photon.Pun.Demo.Asteroids
             {
                 
                 PhotonNetwork.LocalPlayer.NickName = playerName;
+
                 PhotonNetwork.ConnectUsingSettings();
             }
             else

@@ -6,7 +6,7 @@ public class ColleccionableCreators : MonoBehaviour
 {
     #region variables
     public bool estaOcupat;
-    private int index;
+    //private int index;
     #endregion
 
     /// <summary>
@@ -21,19 +21,19 @@ public class ColleccionableCreators : MonoBehaviour
         nouColleccionable.parent = this;
         nouColleccionable.enabled = enable;
         estaOcupat = true;
-        if (isInvisible && enable) nouColleccionable.setInivisible();
+        if (isInvisible && enable) nouColleccionable.SetInivisible();
     }
 
     /// <summary>
     /// Funció per gestionar quan el recol·lector ha agafat el col·leccionable i s'ha d'eliminar
     /// </summary>
     /// <param name="collecionable">Referència al col·leccionable a eliminar</param>
-    public void destruirColleccionable(Colleccionable collecionable)
+    public void EliminarColleccionable(Colleccionable collecionable)
     {
         RecollectorController rc = FindObjectOfType<RecollectorController>();
-        int index = rc.indexColleccionable(collecionable.gameObject);
-        rc.deleteColleccionable(index);
+        int index = rc.IndexColleccionable(collecionable.gameObject);
+        rc.EliminarColleccionable(index);
     }
 
-    public void SetIndex(int index) { this.index = index; }
+    //public void SetIndex(int index) { this.index = index; }
 }

@@ -1433,6 +1433,11 @@ PrefabInstance:
       propertyPath: llistaBoles
       value: 
       objectReference: {fileID: 839914698}
+    - target: {fileID: 6361388450302999206, guid: 5ab8ba155ef5f4e66af93ccde88d8e7b,
+        type: 3}
+      propertyPath: tempsMinimAtac
+      value: 13
+      objectReference: {fileID: 0}
     - target: {fileID: 6361388450302999207, guid: 5ab8ba155ef5f4e66af93ccde88d8e7b,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1511,6 +1516,54 @@ PrefabInstance:
     - target: {fileID: 6408826598148012891, guid: 5ab8ba155ef5f4e66af93ccde88d8e7b,
         type: 3}
       propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6408826598421208276, guid: 5ab8ba155ef5f4e66af93ccde88d8e7b,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 6408826598421208276, guid: 5ab8ba155ef5f4e66af93ccde88d8e7b,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6408826598421208276, guid: 5ab8ba155ef5f4e66af93ccde88d8e7b,
+        type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6408826598421208276, guid: 5ab8ba155ef5f4e66af93ccde88d8e7b,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6408826598421208279, guid: 5ab8ba155ef5f4e66af93ccde88d8e7b,
+        type: 3}
+      propertyPath: m_Text
+      value: "Ha tornat la pluja a T\xFAria!\nTots els pagesos de la zona estan molt
+        agra\xEFts amb l'aquelarre de bruixes i ja hi ha cua amb tot de persones
+        amb problemes esperant que la m\xE0gia els salvi. \nEncara que el rei Felip
+        amena\xE7a en tornar a atacar si continuen amb la bruixeria..."
+      objectReference: {fileID: 0}
+    - target: {fileID: 6408826598421208279, guid: 5ab8ba155ef5f4e66af93ccde88d8e7b,
+        type: 3}
+      propertyPath: m_FontData.m_AlignByGeometry
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6408826598421208279, guid: 5ab8ba155ef5f4e66af93ccde88d8e7b,
+        type: 3}
+      propertyPath: m_FontData.m_Alignment
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6408826598421208279, guid: 5ab8ba155ef5f4e66af93ccde88d8e7b,
+        type: 3}
+      propertyPath: m_FontData.m_MaxSize
+      value: 108
+      objectReference: {fileID: 0}
+    - target: {fileID: 6408826598421208279, guid: 5ab8ba155ef5f4e66af93ccde88d8e7b,
+        type: 3}
+      propertyPath: m_FontData.m_BestFit
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
