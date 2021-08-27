@@ -25,7 +25,7 @@ public class Moviment : MonoBehaviourPunCallbacks, IPunObservable
     {
         rigidbody = GetComponent<Rigidbody>();
         transform = GetComponent<Transform>();
-        camera.SetJugador(this);
+        if (camera != null) camera.SetJugador(this);
     }
 
     public void FixedUpdate()
