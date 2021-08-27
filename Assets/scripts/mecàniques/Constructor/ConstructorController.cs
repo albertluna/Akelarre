@@ -31,10 +31,13 @@ public class ConstructorController : RolController
     protected override void Start()
     {
         base.Start();
-        llista = gameSetup.GetHudLlista().GetComponentInChildren<Slider>();
-        pocio = gameSetup.GetPocio();
-        llista.maxValue = pocio.GetLlargadaLlista();
-        pocio.Comencar();
+        if (photonView.IsMine)
+        {
+            llista = gameSetup.GetHudLlista().GetComponentInChildren<Slider>();
+            pocio = gameSetup.GetPocio();
+            llista.maxValue = pocio.GetLlargadaLlista();
+            pocio.Comencar();
+        }
     }
 
     /// <summary>
