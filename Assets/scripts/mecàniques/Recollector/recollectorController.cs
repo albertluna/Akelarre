@@ -5,15 +5,13 @@ using Photon.Pun;
 public class RecollectorController : RolController
 {
 
-    [Header("Elements a control·lar")]
+    [Header("Elements a controlar")]
+    //Llista de creadors de col·leccionables
     public ColleccionableCreators[] creators;
+    //Llista dels col·leccionables del nivell
     [SerializeField]
     private Colleccionable[] colleccionables;
-    [SerializeField]
-    private static Colleccionable[] llistaColleccionables;
-    /// <summary>
-    /// Variable per determinar si les boles recol·lectores son invisibles pel recol·lector
-    /// </summary>
+    //Variable per determinar si les boles recol·lectores son invisibles pel recol·lector
     public bool isInvisible;
     [Header("Referència a la gestió del temps")]
     [SerializeField]
@@ -31,32 +29,24 @@ public class RecollectorController : RolController
         base.Start();
         creators = gameSetup.llistesRecollector.GetComponentsInChildren<ColleccionableCreators>();
         colleccionables = gameSetup.llistesRecollector.GetComponentsInChildren<Colleccionable>();
-        
-        llistaColleccionables = colleccionables;
-        //Comprovacio que la suma de percentatges de probabilitat de sortir un col·leccionable concret
-        //sigui del 100%
+
+        foreach(ColleccionableCreators cc in creators) { cc.SetRecollector(this); }
+
+        //Comprovacio que la suma de percentatges de probabilitat de sortir un col·leccionable concret sigui del 100%
         float percentatgeTotal = 0;
         foreach(Colleccionable col in colleccionables) {
             percentatgeTotal += col.percentatge;
         }
-        if (percentatgeTotal != 100) Debug.LogError("El percentatge total dels colleccionables no suma 100, suma" + percentatgeTotal);
-
-        //TODO: MIRAR SI SOBRE
-        /*set index de cada creator
-        for (int i = 0; i < creators.Length; i++)
-        {
-            creators[i].SetIndex(i);
-        }*/
+        if (percentatgeTotal != 100)
+            Debug.LogError("El percentatge total dels colleccionables no suma 100, suma" + percentatgeTotal);
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (photonView.IsMine)
         {
             if (timer >= 0) timer -= Time.deltaTime;
-            else
-            {
+            else {
                 int resultat = Random.Range(0, 99);
                 int percentatgeAnterior = 0;
                 int posicio = Random.Range(0, this.creators.Length - 1);
@@ -72,38 +62,53 @@ public class RecollectorController : RolController
                 {
                     if (resultat >= percentatgeAnterior && resultat < (col.percentatge + percentatgeAnterior))
                     {
+                        //Funció per crear el colleccionable per tots els jugadors
                         photonView.RPC("RPC_CrearColleccionable", RpcTarget.All, posicio, col.color);
                     }
                     percentatgeAnterior += col.percentatge;
                 }
+                //Es torna a comptar el temps d'espera
                 timer = Random.Range(minEspera, maxEspera);
             }
         }
     }
 
-    public static Colleccionable EscollirColleccionable(string color)
+    /// <summary>
+    /// Funció encarregada de retornar el colleccionable del color d'entrada
+    /// </summary>
+    /// <param name="color">nom del color</param>
+    /// <returns>Colleccionable del color introduït</returns>
+    public Colleccionable EscollirColleccionable(string color)
     {
-        foreach (Colleccionable col in llistaColleccionables)
+        foreach (Colleccionable col in colleccionables)
         {
             if (col.color.Equals(color)) return col;
         }
         return null;
     }
 
+    /// <summary>
+    /// Funció encarregada d'instanciar un col·leccionable en el mapa
+    /// </summary>
+    /// <param name="posicio">Posició on s'instancia de la llista de creadors</param>
+    /// <param name="color">Color del col·leccionable a instanciar</param>
     [PunRPC]
     private void RPC_CrearColleccionable(int posicio, string color)
     {
-        //Debug.Log("L'index es " + posicio);
-        this.creators[posicio].Instantiate(EscollirColleccionable(color), photonView.IsMine, isInvisible);
+        creators[posicio].Instantiate(EscollirColleccionable(color), photonView.IsMine, isInvisible);
     }
 
+    /// <summary>
+    /// Funció per obtenir la posició del col·leccionable  dins l'array de creadors
+    /// </summary>
+    /// <param name="colleccionable">col·leccionable que es passa per referència</param>
+    /// <returns>index dins l'array de creadors</returns>
     public int IndexColleccionable(GameObject colleccionable)
     {
         int i = 0;
         Colleccionable c = colleccionable.GetComponent<Colleccionable>();
         foreach (ColleccionableCreators index in creators)
         {           
-            //GameObject fill = index.gameObject.GetComponentInChildren<Colleccionable>().gameObject;
             if(index == c.parent)
             {
                 return i;
@@ -113,20 +118,32 @@ public class RecollectorController : RolController
         return -1;
     }
 
-    public void EliminarColleccionable(int index)
+    /// <summary>
+    /// Funció per gestionar quan el recol·lector ha agafat el col·leccionable i s'ha d'eliminar
+    /// </summary>
+    /// <param name="collecionable">Referència al col·leccionable a eliminar</param>
+    public void EliminarColleccionable(Colleccionable collecionable)
     {
-        photonView.RPC("RPC_EliminarColleccionable", RpcTarget.All, index);
-
+        int posicio = IndexColleccionable(collecionable.gameObject);
+        photonView.RPC("RPC_EliminarColleccionable", RpcTarget.All, posicio);
     }
 
+    /// <summary>
+    /// Funció per eliminar per tots els jugadors el col·leccionable
+    /// </summary>
+    /// <param name="posicio">index dins l'array de creadors</param>
     [PunRPC]
-    private void RPC_EliminarColleccionable(int index)
+    private void RPC_EliminarColleccionable(int posicio)
     {
-        creators[index].GetComponentInChildren<Colleccionable>().parent.estaOcupat = false;
-        Destroy(creators[index].GetComponentInChildren<Colleccionable>().gameObject);
+        creators[posicio].estaOcupat = false;
+        Destroy(creators[posicio].GetFill().gameObject);
     }
 
     #region HUD
+    /// <summary>
+    /// Funció per mostrar per pantalla la quantitat de vides que té el recol·lector
+    /// </summary>
+    /// <param name="nVides">Nombre de vides del recol·lector</param>
     public void ActualitzarVides(int nVides)
     {
         if (photonView.IsMine)

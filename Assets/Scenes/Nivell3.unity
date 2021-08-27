@@ -1142,6 +1142,11 @@ PrefabInstance:
       propertyPath: colleccionablesInvisibles
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6361388450302999206, guid: 5ab8ba155ef5f4e66af93ccde88d8e7b,
+        type: 3}
+      propertyPath: pocio
+      value: 
+      objectReference: {fileID: 447298520}
     - target: {fileID: 6361388450302999207, guid: 5ab8ba155ef5f4e66af93ccde88d8e7b,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1205,6 +1210,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1509643918}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1509643920 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6361388450302999206, guid: 5ab8ba155ef5f4e66af93ccde88d8e7b,
+    type: 3}
+  m_PrefabInstance: {fileID: 1509643918}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64245d90afec9c24a8d20251c978fc22, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1529308566
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1554,6 +1571,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: entorn
       objectReference: {fileID: 0}
+    - target: {fileID: 8415048318421950496, guid: b4baa5bc75147419aa0503492bd3df51,
+        type: 3}
+      propertyPath: gameSetUp
+      value: 
+      objectReference: {fileID: 1509643920}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b4baa5bc75147419aa0503492bd3df51, type: 3}
 --- !u!1 &1728524213

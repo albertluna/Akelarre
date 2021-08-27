@@ -9,17 +9,19 @@ public class GameSetUp : MonoBehaviour
     #region variables
     //Punters als 3 rols en escena
     public ConstructorController constructor;
-    public Defensor defensor;
+    public AtacController defensor;
     public RecollectorController recollector;
     //Panells amb la pantalla de game over i la de victòria
     [SerializeField]
     private GameObject gameOver;
     [SerializeField]
     private GameObject victory;
-
+    [Header("Referència al constructor")]
     //Variable per borrar la llista de la pocio
     [SerializeField]
     private GameObject HudLlistaPocio;
+    [SerializeField]
+    private Pocio pocio;
 
     [Header("Posició d'origen de cada rol")]
     public Transform[] spawnPoints;   
@@ -69,7 +71,7 @@ public class GameSetUp : MonoBehaviour
     public void GetRols()
     {
         constructor = FindObjectOfType<ConstructorController>();
-        defensor = FindObjectOfType<Defensor>();
+        defensor = FindObjectOfType<AtacController>();
         recollector = FindObjectOfType<RecollectorController>();
 
         //s'indica si el defensor pot veure les boles o no
@@ -127,4 +129,6 @@ public class GameSetUp : MonoBehaviour
 
     public int GetVides() { return videsPartida;}
     public int GetSpawnpointLength() { return spawnPoints.Length; }
+    public Pocio GetPocio() { return pocio; }
+    public GameObject GetHudLlista() { return HudLlistaPocio; }
 }

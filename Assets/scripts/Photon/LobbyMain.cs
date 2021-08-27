@@ -39,6 +39,7 @@ namespace Photon.Pun.Demo.Asteroids
 
         [Header("Inside Room Panel")]
         public GameObject InsideRoomPanel;
+        public Text nomSala;
 
         [Header("cinematica inicial")]
         public GameObject PanelCinematica;
@@ -58,8 +59,6 @@ namespace Photon.Pun.Demo.Asteroids
 
             cachedRoomList = new Dictionary<string, RoomInfo>();
             roomListEntries = new Dictionary<string, GameObject>();
-            
-            PlayerNameInput.text = "Bruixa " + Random.Range(1000, 10000);
         }
 
         #endregion
@@ -98,20 +97,7 @@ namespace Photon.Pun.Demo.Asteroids
             SetActivePanel(SelectionPanel.name);
         }
 
-        public override void OnJoinRoomFailed(short returnCode, string message)
-        {
-            SetActivePanel(SelectionPanel.name);
-        }
-
-        public override void OnJoinRandomFailed(short returnCode, string message)
-        {
-            string roomName = "Aquelarre " + Random.Range(1000, 10000);
-
-            RoomOptions options = new RoomOptions {MaxPlayers = 3};
-
-            PhotonNetwork.CreateRoom(roomName, options, null);
-        }
-
+        //TODO: persoanlitzar akela
         public override void OnJoinedRoom()
         {
             // joining (or entering) a room invalidates any cached lobby room list (even if LeaveLobby was not called due to just joining a room)
@@ -119,6 +105,7 @@ namespace Photon.Pun.Demo.Asteroids
 
 
             SetActivePanel(InsideRoomPanel.name);
+            nomSala.text = "Aquelarre " + PhotonNetwork.CurrentRoom.Name;
 
             if (playerListEntries == null)
             {
@@ -135,7 +122,7 @@ namespace Photon.Pun.Demo.Asteroids
                 object isPlayerReady;
                 if (p.CustomProperties.TryGetValue(AsteroidsGame.PLAYER_READY, out isPlayerReady))
                 {
-                    entry.GetComponent<PlayerListEntry>().SetPlayerReady((bool) isPlayerReady);
+                    entry.GetComponent<PlayerListEntry>().SetPlayerReady((bool)isPlayerReady);
                 }
                 playerListEntries.Add(p.ActorNumber, entry);
             }
@@ -254,17 +241,13 @@ namespace Photon.Pun.Demo.Asteroids
         {
             string playerName = PlayerNameInput.text;
 
-            if (!playerName.Equals(""))
+            if (playerName.Equals(""))
             {
-                
-                PhotonNetwork.LocalPlayer.NickName = playerName;
-
-                PhotonNetwork.ConnectUsingSettings();
+                playerName = "Bruixa " + Random.Range(1000, 10000);
+                PlayerNameInput.text = playerName;
             }
-            else
-            {
-                Debug.LogError("Player Name is invalid.");
-            }
+            PhotonNetwork.LocalPlayer.NickName = playerName;
+            PhotonNetwork.ConnectUsingSettings();
         }
 
         public void OnRoomListButtonClicked()

@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 6361388449074476040}
   - component: {fileID: 6361388449074476047}
   - component: {fileID: 6361388449074476046}
-  - component: {fileID: 6361388449074476041}
   m_Layer: 5
   m_Name: SliderPocio
   m_TagString: Untagged
@@ -100,20 +99,6 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &6361388449074476041
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6361388449074476044}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 254ef37c5da444d6dbfa7fa0a6799f26, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  llista: {fileID: 2372592098081985775}
-  pocio: {fileID: 0}
 --- !u!1 &6361388449220396808
 GameObject:
   m_ObjectHideFlags: 0
@@ -259,19 +244,19 @@ MonoBehaviour:
   gameOver: {fileID: 1803362716825842029}
   victory: {fileID: 6408826598148012891}
   HudLlistaPocio: {fileID: 6361388449074476044}
+  pocio: {fileID: 0}
   spawnPoints:
   - {fileID: 6361388450274183962}
   - {fileID: 6361388449795157416}
   - {fileID: 6361388449220396809}
-  colleccionablesInvisibles: 0
   videsPartida: 4
-  atacVisible: 1
   tempsOffsetInicial: 20
   tempsMinimAtac: 15
   tempsMaximAtac: 20
   velocitatBoles: 0.05
   grisRecollector: 0
   grisConstructor: 0
+  atacVisible: 1
   llistesRecollector: {fileID: 0}
   llistaCreadorsAtac: {fileID: 0}
   llistaBoles: {fileID: 0}
@@ -603,18 +588,6 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 6361388450066956578}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &2372592098081985775 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8693375435021538765, guid: a59ad0eb96a9b488697c30aa9e18f8f6,
-    type: 3}
-  m_PrefabInstance: {fileID: 6361388450066956578}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &6361388450111930101
 PrefabInstance:
   m_ObjectHideFlags: 0

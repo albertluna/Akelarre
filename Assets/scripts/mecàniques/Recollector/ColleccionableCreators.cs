@@ -6,6 +6,8 @@ public class ColleccionableCreators : MonoBehaviour
 {
     #region variables
     public bool estaOcupat;
+    private RecollectorController recollector;
+    private Colleccionable fill;
     //private int index;
     #endregion
 
@@ -17,23 +19,16 @@ public class ColleccionableCreators : MonoBehaviour
     /// <param name="isInvisible">true si els col·leccionables són invisibles</param>
     public void Instantiate(Colleccionable collecionable, bool enable, bool isInvisible)
     {
-        Colleccionable nouColleccionable = Instantiate(collecionable, transform.position, Quaternion.identity, transform);
-        nouColleccionable.parent = this;
-        nouColleccionable.enabled = enable;
+        fill = Instantiate(collecionable.gameObject, transform.position, Quaternion.identity, transform).GetComponent<Colleccionable>();
+        fill.parent = this;
+        fill.enabled = enable;
         estaOcupat = true;
-        if (isInvisible && enable) nouColleccionable.SetInivisible();
+        if (isInvisible && enable) fill.SetInivisible();
     }
 
-    /// <summary>
-    /// Funció per gestionar quan el recol·lector ha agafat el col·leccionable i s'ha d'eliminar
-    /// </summary>
-    /// <param name="collecionable">Referència al col·leccionable a eliminar</param>
-    public void EliminarColleccionable(Colleccionable collecionable)
-    {
-        RecollectorController rc = FindObjectOfType<RecollectorController>();
-        int index = rc.IndexColleccionable(collecionable.gameObject);
-        rc.EliminarColleccionable(index);
-    }
+    public void SetRecollector(RecollectorController recollector) { this.recollector = recollector; }
 
-    //public void SetIndex(int index) { this.index = index; }
+    public RecollectorController GetRecollector() { return recollector; }
+
+    public Colleccionable GetFill() { return fill; }
 }

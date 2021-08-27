@@ -5,6 +5,8 @@ using UnityEngine;
 public class Casa : MonoBehaviour
 {
     private AudioSource audioXoc;
+    [SerializeField]
+    private GameSetUp gameSetUp;
 
     private void Start()
     {
@@ -22,7 +24,7 @@ public class Casa : MonoBehaviour
             Destroy(collision.gameObject);
             audioXoc.PlayOneShot(audioXoc.clip, 1f);
             //Es resta una vida
-            FindObjectOfType<Defensor>().UnaVidaMenys();
+            gameSetUp.defensor.UnaVidaMenys();
         }
     }
 }

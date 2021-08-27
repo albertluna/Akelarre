@@ -2,17 +2,22 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
+using UnityEngine.UI;
 
 public class ConstructorController : RolController
 {
     #region variables
-    [Header("GameObjects a control·lar")]
+    [Header("GameObjects a controlar")]
+    //Posició on es crea els col·leccionables recollits pel recol·lector
     [SerializeField]
     private GameObject creadorColleccionables;
+    //Punter al col·leccionable de la vista
     [SerializeField]
     private GameObject colleccionable;
-    [SerializeField]
-    public HUD_Constructor hud;
+    [Header("Gestió del HUD")]
+    //HUD de la llista de la poció
+    private Slider llista;
+    private Pocio pocio;
 
     [Header("Audios")]
     [SerializeField]
@@ -26,8 +31,10 @@ public class ConstructorController : RolController
     protected override void Start()
     {
         base.Start();
-        hud = FindObjectOfType<HUD_Constructor>();
-        if(hud != null) hud.pocio.Comencar();
+        llista = gameSetup.GetHudLlista().GetComponentInChildren<Slider>();
+        pocio = gameSetup.GetPocio();
+        llista.maxValue = pocio.GetLlargadaLlista();
+        pocio.Comencar();
     }
 
     /// <summary>
@@ -40,13 +47,13 @@ public class ConstructorController : RolController
     }
 
     /// <summary>
-    /// Funció per afegir a tothom un col·lecccionable en el mapa
+    /// Funció per afegir a tothom un col·lecccionable a la terrasa de la casa
     /// </summary>
     /// <param name="nouColleccionable">Color del col·leccionable</param>
     [PunRPC]
     private void RPC_CrearColleccionable(string nouColleccionable)
     {
-        NouColleccionable(RecollectorController.EscollirColleccionable(nouColleccionable));
+        NouColleccionable(gameSetup.recollector.EscollirColleccionable(nouColleccionable));
     }
 
     /// <summary>
@@ -55,6 +62,7 @@ public class ConstructorController : RolController
     /// <param name="nouColleccionable">el tipus del nou colleccionable</param>
     private void NouColleccionable(Colleccionable nouColleccionable)
     {
+        //S'elimina el col·leccionable anterior i s'instancia el nou
         if (colleccionable != null) Destroy(colleccionable.gameObject);
         colleccionable = Instantiate(nouColleccionable.gameObject,
             creadorColleccionables.transform.position, Quaternion.identity, creadorColleccionables.transform);
@@ -63,29 +71,35 @@ public class ConstructorController : RolController
     }
 
     /// <summary>
-    /// Funció que es crida quan el constructor clica el col·leccionable que
-    /// li apareix a la pantalla, per continuar amb la poció
+    /// Funció per gestionar quan s'insereix un nou col·leccionable a la poció
     /// </summary>
     public void ClicarMaterial()
     {
         if (colleccionable != null)
         {
-            //Si s'ha introduit el col·leccionable correcte
-            if (hud.pocio.EsColleccionableCorrecte(colleccionable.GetComponent<Colleccionable>()))
+            //Si s'ha introduït el col·leccionable correcte
+            if (pocio.EsColleccionableCorrecte(colleccionable.GetComponent<Colleccionable>()))
             {
                 audioConstructor.PlayOneShot(colleccionableCorrecte, 1f);
-                hud.pocio.Seguent();
-                if(hud.pocio.EsUltim() && photonView.IsMine) photonView.RPC("RPC_PartidaGuanyada", RpcTarget.All);
+                pocio.Seguent();
+                if (pocio.EsUltim() && photonView.IsMine) photonView.RPC("RPC_PartidaGuanyada", RpcTarget.All);
             }
             //Si s'ha equivocat de color
             else
             {
                 audioConstructor.PlayOneShot(colleccionableErroni, 1f);
-                hud.pocio.Comencar();
+                pocio.Comencar();
             }
-            hud.ActualitzaProgres();
-            Destroy(colleccionable);
+            //S'actualitza el HUD en funció de com va la poció
+            llista.value = pocio.GetIndex();
+            photonView.RPC("RPC_EliminarColleccionable", RpcTarget.All);
         }
+    }
+
+    [PunRPC]
+    private void RPC_EliminarColleccionable()
+    {
+        Destroy(colleccionable);
     }
 
     /// <summary>

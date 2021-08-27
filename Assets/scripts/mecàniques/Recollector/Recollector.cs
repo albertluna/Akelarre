@@ -25,15 +25,11 @@ public class Recollector : MonoBehaviour
         {
             Colleccionable colleccionable = collision.gameObject.GetComponentInParent<Colleccionable>();
 
-            //ConstructorController constructor = FindObjectOfType<ConstructorController>();
             //S'envia el col·leccionable al constructor
             recollectorController.gameSetup.constructor.EnviarColleccionable(colleccionable.color);
 
             //S'elimina el col·leccionable
-            int index = recollectorController.IndexColleccionable(colleccionable.gameObject);
-            if (index == -1) Debug.LogError("Fail");
-
-            recollectorController.EliminarColleccionable(index);
+            recollectorController.EliminarColleccionable(colleccionable);
         }
     }
 

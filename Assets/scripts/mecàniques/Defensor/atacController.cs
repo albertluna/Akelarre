@@ -2,16 +2,23 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
+using UnityEngine.UI;
 
 public class AtacController : RolController
 {
     #region variables
-    [Header("GameObjects a control·lar")]
+    [Header("GameObjects a controlar")]
+    //Llista de punts de creació del objecte pedra
     [SerializeField]
     private Transform[] creators;
     [SerializeField]
     private GameObject pedra;
-
+    [SerializeField]
+    private Defensor defensor;
+    private int vides;
+    [SerializeField]
+    private Slider HUDVides;
+    
     //Referència al tempo de l'atac
     private float timer;
     private float maxEspera;
@@ -33,6 +40,10 @@ public class AtacController : RolController
         maxEspera = gameSetup.tempsMaximAtac;
         minEspera = gameSetup.tempsMinimAtac;
         velocitat = gameSetup.velocitatBoles;
+
+        vides = gameSetup.GetVides();
+        HUDVides.maxValue = vides;
+        HUDVides.value = vides;
     }
 
     // Update is called once per frame
@@ -51,25 +62,17 @@ public class AtacController : RolController
     }
 
     /// <summary>
-    /// Funció per instanciar les boles
+    /// Funció per instanciar les boles a tots els jugadors
     /// </summary>
     /// <param name="posicio">posicio a la llista de creadors on s'ha d'instanciar</param>
     [PunRPC]
     private void RPC_InstanciarAtac(int posicio)
     {
-        GameObject instancia =
-            Instantiate(pedra, creators[posicio].position, Quaternion.identity, gameSetup.llistaBoles.transform);
-        instancia.GetComponent<MovimentAtac>().SetVelocitat(velocitat);
+        MovimentAtac instancia = Instantiate(pedra, creators[posicio].position, Quaternion.identity,
+            gameSetup.llistaBoles.transform).GetComponent<MovimentAtac>();
+        instancia.SetVelocitat(velocitat);
         //Condicional per saber si fer invisible o no les boles d'atac
-        if (!isVisible && photonView.IsMine) instancia.GetComponent<MovimentAtac>().EliminarBola();
-    }
-
-    /// <summary>
-    /// Funció per cridar quan s'ha acabat la vida de la casa
-    /// </summary>
-    public void PartidaPerduda()
-    {
-        photonView.RPC("RPC_PartidaPerduda", RpcTarget.All);
+        if (!isVisible && photonView.IsMine) instancia.EliminarBola();
     }
 
     /// <summary>
@@ -82,10 +85,21 @@ public class AtacController : RolController
     }
 
     /// <summary>
-    /// Funció set de la variable isVisible
+    /// Funció per restar una vida i activar la pantalla si es perd la partida
     /// </summary>
-    /// <param name="visible">valor de la variable</param>
-    public void SetVisibilitat(bool visible) {
-        isVisible = visible;
+    public void UnaVidaMenys()
+    {
+        vides--;
+        if (photonView.IsMine)
+        {
+            HUDVides.value = vides;
+            if (vides <= 0)
+            {
+                //Crida de la funció per acabar la partida a tots els jugadors
+                photonView.RPC("RPC_PartidaPerduda", RpcTarget.All);
+            }
+        }
     }
+
+    public void SetVisibilitat(bool visible) { isVisible = visible; }
 }

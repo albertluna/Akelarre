@@ -34,7 +34,7 @@ public class Colleccionable : MonoBehaviour
         }
         else
         {
-            parent.EliminarColleccionable(this);
+            parent.GetRecollector().EliminarColleccionable(this);
         }
     }
 
