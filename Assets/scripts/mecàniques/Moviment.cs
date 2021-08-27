@@ -18,13 +18,14 @@ public class Moviment : MonoBehaviourPunCallbacks, IPunObservable
     [SerializeField]
     private JoystickVirtual joystick;
     [SerializeField]
-    private Camera camera;
+    private CameraMoviment camera;
     #endregion
 
     void Awake()
     {
         rigidbody = GetComponent<Rigidbody>();
         transform = GetComponent<Transform>();
+        
         if (controller.photonView.IsMine) camera.SetJugador(this);
     }
 
