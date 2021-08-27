@@ -38,12 +38,12 @@ public class Camera : MonoBehaviour
         transform.LookAt(jugador.transform.position);
     }
 #endif
-#if UNITY_ANDROID
+    #if UNITY_ANDROID
     void Update()
     {
         Vector3 dir = jugador.transform.position.normalized;
         float distanciaAlCentre = Vector3.Distance(jugador.transform.position, new Vector3(0, 0, 0));
-        radi = distanciaAlCentre + offset;
+        float radi = distanciaAlCentre + offset;
         Vector3 posicioDesitjada = new Vector3(dir.x*radi, yOriginal+(radi), dir.z*radi); //posar a y distanciaAlCentre
         Vector3 posicioIntermitja = Vector3.Lerp(this.transform.position, posicioDesitjada, movimentSuau);
         transform.position = posicioIntermitja;
