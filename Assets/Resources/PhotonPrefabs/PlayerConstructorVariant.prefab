@@ -719,6 +719,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerConstructorVariant
       objectReference: {fileID: 0}
+    - target: {fileID: 4209077786902632799, guid: 25667044bcc3f7944b5727c0157aff8e,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 5517605395959104663, guid: 25667044bcc3f7944b5727c0157aff8e,
         type: 3}
       propertyPath: HudPartida.Array.size
