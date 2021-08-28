@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
+using UnityEngine.Audio;
+using UnityEngine.UI;
 
 public class MenuPausa : MonoBehaviour
 {
@@ -14,7 +16,12 @@ public class MenuPausa : MonoBehaviour
     [SerializeField]
     private GameObject comprovar;
     [SerializeField]
+    private GameObject configuracio;
+    [SerializeField]
     private GameObject[] HudPartida;
+    [SerializeField]
+    private AudioMixer mixer;
+    
     #endregion
 
     private void Start()
@@ -29,8 +36,6 @@ public class MenuPausa : MonoBehaviour
     {
         PV.RPC("RPC_ObrirMenu", RpcTarget.All);
 
-        menu.SetActive(true);
-        foreach (GameObject go in HudPartida) go.SetActive(false);
     }
 
     /// <summary>
@@ -38,8 +43,7 @@ public class MenuPausa : MonoBehaviour
     /// </summary>
     public void OnReanudarPressed()
     {
-        menu.SetActive(false);
-        foreach (GameObject go in HudPartida) go.SetActive(true);
+        
         PV.RPC("RPC_Reprendre", RpcTarget.All);
     }
 
@@ -53,17 +57,20 @@ public class MenuPausa : MonoBehaviour
         comprovar.SetActive(estat);
     }
 
+    public void onObrirConfig(bool estat)
+    {
+        menu.SetActive(!estat);
+        configuracio.SetActive(estat);
+    }
+
     /// <summary>
     /// Funció per sortir del joc i tornar al mapa
     /// </summary>
     public void OnSortirPartida()
     {
-        if (PhotonNetwork.MasterClient.IsLocal)
-        {
-            PhotonNetwork.AutomaticallySyncScene = true;
-            PhotonNetwork.LoadLevel(ScenesManager.GetScene(ScenesManager.Scene.MapaNivells));
-            Time.timeScale = 1f;
-        }
+        PhotonNetwork.AutomaticallySyncScene = true;
+        PhotonNetwork.LoadLevel(ScenesManager.GetScene(ScenesManager.Scene.MapaNivells));
+        Time.timeScale = 1f;
     }
 
     /// <summary>
@@ -73,7 +80,8 @@ public class MenuPausa : MonoBehaviour
     private void RPC_ObrirMenu()
     {
         Time.timeScale = 0f;
-        
+        menu.SetActive(true);
+        foreach (GameObject go in HudPartida) go.SetActive(false); 
     }
 
     /// <summary>
@@ -82,6 +90,13 @@ public class MenuPausa : MonoBehaviour
     [PunRPC]
     private void RPC_Reprendre()
     {
+        menu.SetActive(false);
+        foreach (GameObject go in HudPartida) go.SetActive(true);
         Time.timeScale = 1f;
+    }
+
+    public void onVolumUpdated(Slider slider)
+    {
+        mixer.SetFloat(slider.gameObject.name, slider.value);
     }
 }

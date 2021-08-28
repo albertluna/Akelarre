@@ -581,6 +581,26 @@ PrefabInstance:
       propertyPath: pocio
       value: 
       objectReference: {fileID: 447298520}
+    - target: {fileID: 6361388450302999206, guid: 5ab8ba155ef5f4e66af93ccde88d8e7b,
+        type: 3}
+      propertyPath: maxEsperaRecollecta
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6361388450302999206, guid: 5ab8ba155ef5f4e66af93ccde88d8e7b,
+        type: 3}
+      propertyPath: minEsperaRecollecta
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6361388450302999206, guid: 5ab8ba155ef5f4e66af93ccde88d8e7b,
+        type: 3}
+      propertyPath: minVidaColleccionables
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6361388450302999206, guid: 5ab8ba155ef5f4e66af93ccde88d8e7b,
+        type: 3}
+      propertyPath: maxVidaColleccionables
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 6361388450302999207, guid: 5ab8ba155ef5f4e66af93ccde88d8e7b,
         type: 3}
       propertyPath: m_LocalPosition.x

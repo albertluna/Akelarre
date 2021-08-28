@@ -16,10 +16,10 @@ public class RecollectorController : RolController
     [Header("Referència a la gestió del temps")]
     [SerializeField]
     private float timer;
-    [SerializeField]
     private float maxEspera;
-    [SerializeField]
     private float minEspera;
+    private float minVida;
+    private float maxVida;
     [Header("Gestió del HUD")]
     [SerializeField]
     private GameObject[] vides;
@@ -29,6 +29,10 @@ public class RecollectorController : RolController
         base.Start();
         creators = gameSetup.llistesRecollector.GetComponentsInChildren<ColleccionableCreators>();
         colleccionables = gameSetup.llistesRecollector.GetComponentsInChildren<Colleccionable>();
+        maxEspera = gameSetup.maxEsperaRecollecta;
+        minEspera = gameSetup.minEsperaRecollecta;
+        minVida = gameSetup.minVidaColleccionables;
+        maxVida = gameSetup.maxVidaColleccionables;
 
         foreach(ColleccionableCreators cc in creators) { cc.SetRecollector(this); }
 
@@ -62,8 +66,9 @@ public class RecollectorController : RolController
                 {
                     if (resultat >= percentatgeAnterior && resultat < (col.percentatge + percentatgeAnterior))
                     {
+                        float tempsVida = Random.Range(minVida, maxVida);
                         //Funció per crear el colleccionable per tots els jugadors
-                        photonView.RPC("RPC_CrearColleccionable", RpcTarget.All, posicio, col.color);
+                        photonView.RPC("RPC_CrearColleccionable", RpcTarget.All, posicio, col.color, tempsVida);
                     }
                     percentatgeAnterior += col.percentatge;
                 }
@@ -93,9 +98,10 @@ public class RecollectorController : RolController
     /// <param name="posicio">Posició on s'instancia de la llista de creadors</param>
     /// <param name="color">Color del col·leccionable a instanciar</param>
     [PunRPC]
-    private void RPC_CrearColleccionable(int posicio, string color)
+    private void RPC_CrearColleccionable(int posicio, string color, float vida)
     {
         creators[posicio].Instantiate(EscollirColleccionable(color), photonView.IsMine, isInvisible);
+        creators[posicio].GetFill().tempsVida = vida;
     }
 
     /// <summary>

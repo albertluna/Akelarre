@@ -39,11 +39,26 @@ public class GameSetUp : MonoBehaviour
     [Range(0.03f, 0.20f)]
     public float velocitatBoles;
 
+    [Header("Referència a la recol·lecta")]
+    [Range(2,20)]
+    [SerializeField]
+    public float maxEsperaRecollecta;
+    [Range(1,7)]
+    [SerializeField]
+    public float minEsperaRecollecta;
+    [SerializeField]
+    [Range(5, 30)]
+    public float minVidaColleccionables;
+    [SerializeField]
+    [Range(20, 120)]
+    public float maxVidaColleccionables;
+
     //Variable per indicar si el rol veu en blanc i negre
     [Header("Referència a la visibilitat")]
     public bool grisRecollector;
     public bool grisConstructor;
     //Variable per indicar si el recol·lector veu les boles a col·leccionar
+    [SerializeField]
     private bool colleccionablesInvisibles;
     //Variable per indicar si el defensor pot veure les boles d'atac
     [SerializeField]

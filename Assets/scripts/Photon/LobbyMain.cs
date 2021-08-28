@@ -21,6 +21,7 @@ namespace Photon.Pun.Demo.Asteroids
         [Header("Configuracio Panel")]
         public GameObject ConfigPanel;
         public AudioMixer mixer;
+        private bool esDinsSala;
 
         [Header("Create Room Panel")]
         public GameObject CreateRoomPanel;
@@ -273,9 +274,16 @@ namespace Photon.Pun.Demo.Asteroids
             mixer.SetFloat(slider.gameObject.name, slider.value);
         }
 
-        public void OnConfigButtonClicked()
+        public void OnConfigButtonClicked(bool esDinsSala)
         {
+            this.esDinsSala = esDinsSala;
             SetActivePanel(ConfigPanel.name);
+        }
+
+        public void OnBackButtonFromConfig()
+        {
+            if (esDinsSala) SetActivePanel(InsideRoomPanel.name);
+            else OnBackButtonClicked();
         }
 
         #endregion

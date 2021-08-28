@@ -6,6 +6,7 @@ using Photon.Realtime;
 using UnityEngine.SceneManagement;
 using System.IO;
 using UnityEngine.UI;
+using UnityEngine.Audio;
 
 public class RoomController : MonoBehaviourPunCallbacks, IInRoomCallbacks {
 
@@ -29,6 +30,12 @@ public class RoomController : MonoBehaviourPunCallbacks, IInRoomCallbacks {
     private GameObject PanelMapa;
     [SerializeField]
     private GameObject PanelCinematica;
+    [SerializeField]
+    private GameObject PanelConfiguracio;
+    [SerializeField]
+    private AudioMixer mixer;
+
+    private bool esDinsConfig;
 
     void Start()
     {
@@ -122,6 +129,7 @@ public class RoomController : MonoBehaviourPunCallbacks, IInRoomCallbacks {
     {
         //Activació de la cinemàtica inicial
         PanelMapa.SetActive(false);
+        PanelConfiguracio.SetActive(false);
         PanelCinematica.SetActive(true);
         AudioSource explicacio = PanelCinematica.GetComponent<AudioSource>();
         if (!explicacio.isPlaying)
@@ -278,5 +286,18 @@ public class RoomController : MonoBehaviourPunCallbacks, IInRoomCallbacks {
         Destroy(RoomController.room.gameObject);
         PhotonNetwork.AutomaticallySyncScene = true;
         PhotonNetwork.LoadLevel(ScenesManager.GetScene(ScenesManager.Scene.MenuMultijugador));
+    }
+
+    public void OnConfig()
+    {
+        esDinsConfig = !esDinsConfig;
+        PanelMapa.SetActive(!esDinsConfig);
+        PanelConfiguracio.SetActive(esDinsConfig);
+
+    }
+
+    public void onVolumUpdated(Slider slider)
+    {
+        mixer.SetFloat(slider.gameObject.name, slider.value);
     }
 }

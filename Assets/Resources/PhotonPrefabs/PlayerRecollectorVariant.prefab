@@ -734,8 +734,6 @@ MonoBehaviour:
   colleccionables: []
   isInvisible: 0
   timer: 1
-  maxEspera: 3
-  minEspera: 15
   vides:
   - {fileID: 6712119402394625149}
   - {fileID: 5968628871304879744}

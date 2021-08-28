@@ -8,33 +8,32 @@ public class Colleccionable : MonoBehaviour
     public int percentatge;
     public string color;
     public ColleccionableCreators parent;
-    private float timer;
+    public float tempsVida;
+    /*
     [SerializeField]
     [Range(5, 30)]
     private float minTimer;
     [SerializeField]
     [Range(20, 120)]
-    private float maxTimer;
+    private float maxTimer;*/
     [SerializeField]
     private GameObject llum;
     [SerializeField]
     private MeshRenderer bola;
     #endregion
 
-    private void Awake()
-    {
-        timer = Random.Range(minTimer, maxTimer);
-    }
-
     private void Update()
     {
-        if (timer >= 0)
+        if (parent.GetRecollector().photonView.IsMine)
         {
-            timer -= Time.deltaTime;
-        }
-        else
-        {
-            parent.GetRecollector().EliminarColleccionable(this);
+            if (tempsVida >= 0)
+            {
+                tempsVida -= Time.deltaTime;
+            }
+            else
+            {
+                parent.GetRecollector().EliminarColleccionable(this);
+            }
         }
     }
 
