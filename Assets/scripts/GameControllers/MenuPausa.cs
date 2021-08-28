@@ -70,9 +70,12 @@ public class MenuPausa : MonoBehaviour
     /// </summary>
     public void OnSortirPartida()
     {
-        PhotonNetwork.AutomaticallySyncScene = true;
-        PhotonNetwork.LoadLevel(ScenesManager.GetScene(ScenesManager.Scene.MapaNivells));
-        Time.timeScale = 1f;
+        if (PhotonNetwork.MasterClient.IsLocal)
+        {
+            PhotonNetwork.AutomaticallySyncScene = true;
+            PhotonNetwork.LoadLevel(ScenesManager.GetScene(ScenesManager.Scene.MapaNivells));
+            Time.timeScale = 1f;
+        }
     }
 
     /// <summary>
