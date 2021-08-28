@@ -35,7 +35,8 @@ public class MenuPausa : MonoBehaviour
     public void OnBotoPressed()
     {
         PV.RPC("RPC_ObrirMenu", RpcTarget.All);
-
+        menu.SetActive(true);
+        foreach (GameObject go in HudPartida) go.SetActive(false);
     }
 
     /// <summary>
@@ -43,7 +44,8 @@ public class MenuPausa : MonoBehaviour
     /// </summary>
     public void OnReanudarPressed()
     {
-        
+        menu.SetActive(false);
+        foreach (GameObject go in HudPartida) go.SetActive(true);
         PV.RPC("RPC_Reprendre", RpcTarget.All);
     }
 
@@ -80,8 +82,7 @@ public class MenuPausa : MonoBehaviour
     private void RPC_ObrirMenu()
     {
         Time.timeScale = 0f;
-        menu.SetActive(true);
-        foreach (GameObject go in HudPartida) go.SetActive(false); 
+        
     }
 
     /// <summary>
@@ -90,8 +91,7 @@ public class MenuPausa : MonoBehaviour
     [PunRPC]
     private void RPC_Reprendre()
     {
-        menu.SetActive(false);
-        foreach (GameObject go in HudPartida) go.SetActive(true);
+        
         Time.timeScale = 1f;
     }
 
