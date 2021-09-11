@@ -135,6 +135,8 @@ public class RoomController : MonoBehaviourPunCallbacks, IInRoomCallbacks {
         if (!explicacio.isPlaying)
         {
             explicacio.Play();
+            PanelCinematica.GetComponentInChildren<Animation>().Play("ExplicacioHistoriaInicial");
+
             StartCoroutine(EsperarCinematica(PanelCinematica.GetComponent<AudioSource>()));
 
         }
