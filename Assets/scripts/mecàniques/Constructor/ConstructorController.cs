@@ -113,4 +113,10 @@ public class ConstructorController : RolController
     {
         gameSetup.FiPartida(true);
     }
+
+    [PunRPC]
+    protected override void RPC_DestruirTutorial()
+    {
+        base.RPC_DestruirTutorial();
+    }
 }

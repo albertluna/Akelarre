@@ -46,4 +46,9 @@ public class Recollector : MonoBehaviour
             Destroy(collision.gameObject);
         }
     }
+
+    public void CanviarCapa()
+    {
+        this.gameObject.layer = LayerMask.NameToLayer("Recollector");
+    }
 }

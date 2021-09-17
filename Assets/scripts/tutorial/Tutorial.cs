@@ -4,59 +4,39 @@ using Photon.Pun;
 
 public class Tutorial : MonoBehaviour
 {
-    public AtacController defensor;
-    public RecollectorController recolector;
-    public ConstructorController constructor;
+    [SerializeField]
+    private GameSetUp GS;
 
     [SerializeField]
     private GameObject tutorialDefensor;
     [SerializeField]
-    private GameObject tutorialRecolector;
+    private GameObject tutorialRecollector;
     [SerializeField]
     private GameObject tutorialConstructor;
+    [SerializeField]
+    private GameObject boto;
 
-    private PlayerTutorial player;
-    GameObject HudTutorial;
-
-    // Use this for initialization
-    void Start()
-    {
+    public void MostrarTutorial() { 
         Time.timeScale = 0f;
-        constructor = FindObjectOfType<ConstructorController>();
-        defensor = FindObjectOfType<AtacController>();
-        recolector = FindObjectOfType<RecollectorController>();
-        if (constructor.photonView.IsMine)
-        {
-            HudTutorial = Instantiate(tutorialConstructor);
-            player = constructor.gameObject.AddComponent<PlayerTutorial>();
-            player.setVariables(this);
-
-        }
-        else if (defensor.photonView.IsMine)
-        {
-            HudTutorial = Instantiate(tutorialDefensor);
-            player = defensor.gameObject.AddComponent<PlayerTutorial>();
-            player.setVariables(this);
-        }
-        else if (recolector.photonView.IsMine)
-        {
-            HudTutorial = Instantiate(tutorialRecolector);
-            player = recolector.gameObject.AddComponent<PlayerTutorial>();
-            player.setVariables(this);
-        }
-        HudTutorial.GetComponent<HUD_tutorial>().setTutorial(this);
+        this.gameObject.SetActive(true);
+        if (GS.constructor != null) tutorialConstructor.SetActive(GS.constructor.photonView.IsMine);
+        if (GS.recollector != null) tutorialRecollector.SetActive(GS.recollector.photonView.IsMine);
+        if (GS.defensor != null) tutorialDefensor.SetActive(GS.defensor.photonView.IsMine);
+        boto.SetActive(PhotonNetwork.IsMasterClient);
     }
     /// <summary>
-    /// Funcio per tancar els tutorials, cridat de playr
+    /// Funcio per tancar els tutorials
     /// </summary>
     public void Comencar()
     {
-        player.Comencar();
+        Debug.Log("Controla? " + GS.QuiControla().gameObject.name);
+        GS.QuiControla().DestruirTutorial();
+
     }
 
-    public void EsborrarHUDTutorial()
+    /*public void EsborrarHUDTutorial()
     {
         Destroy(HudTutorial);
         Destroy(this.gameObject);
-    }
+    }*/
 }

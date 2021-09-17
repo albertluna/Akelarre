@@ -101,5 +101,11 @@ public class AtacController : RolController
         }
     }
 
+    [PunRPC]
+    protected override void RPC_DestruirTutorial()
+    {
+        base.RPC_DestruirTutorial();
+    }
+
     public void SetVisibilitat(bool visible) { isVisible = visible; }
 }

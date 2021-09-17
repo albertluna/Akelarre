@@ -44,7 +44,7 @@ public class Moviment : MonoBehaviourPunCallbacks, IPunObservable
             verticalInput += joystick.InputDirection.y;
             //Es calcula a direcció i velocitat amb la que s'ha de moure
             Vector3 direccio = camera.transform.right * horizontalInput + camera.transform.forward * verticalInput * 3;
-            rigidbody.velocity = velocitat * new Vector3(direccio.x, 0, direccio.z);
+            rigidbody.velocity = velocitat * direccio;// * new Vector3(direccio.x, 0, direccio.z);
             //Es rota el personatge mirant cap on es mou
             if (direccio != Vector3.zero) {
                 transform.forward = new Vector3(rigidbody.velocity.x, transform.forward.y, rigidbody.velocity.z);

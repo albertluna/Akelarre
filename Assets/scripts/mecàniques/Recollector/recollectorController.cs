@@ -8,6 +8,7 @@ public class RecollectorController : RolController
     [Header("Elements a controlar")]
     //Llista de creadors de col·leccionables
     public ColleccionableCreators[] creators;
+    private Recollector recollector;
     //Llista dels col·leccionables del nivell
     [SerializeField]
     private Colleccionable[] colleccionables;
@@ -33,6 +34,7 @@ public class RecollectorController : RolController
         minEspera = gameSetup.minEsperaRecollecta;
         minVida = gameSetup.minVidaColleccionables;
         maxVida = gameSetup.maxVidaColleccionables;
+        recollector = GetComponentInChildren<Recollector>();
 
         foreach(ColleccionableCreators cc in creators) { cc.SetRecollector(this); }
 
@@ -154,14 +156,25 @@ public class RecollectorController : RolController
     {
         if (photonView.IsMine)
         {
-            for (int i = 0; i < vides.Length; i++)
+            for (int i = 0; i < NombreVides(); i++)
             {
                 if (i < nVides) vides[i].SetActive(true);
                 else vides[i].SetActive(false);
             }
+            if (nVides <= 0)
+            {
+                recollector.CanviarCapa();
+            }
         }
+        
     }
 
     public int NombreVides() { return vides.Length; }
+
+    [PunRPC]
+    protected override void RPC_DestruirTutorial()
+    {
+        base.RPC_DestruirTutorial();
+    }
     #endregion
 }

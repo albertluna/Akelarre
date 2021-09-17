@@ -11,11 +11,16 @@ public class GameSetUp : MonoBehaviour
     public ConstructorController constructor;
     public AtacController defensor;
     public RecollectorController recollector;
+
     //Panells amb la pantalla de game over i la de victòria
     [SerializeField]
     private GameObject gameOver;
     [SerializeField]
     private GameObject victory;
+    //Tutorial
+    [SerializeField]
+    public Tutorial tutorial;
+
     [Header("Referència al constructor")]
     //Variable per borrar la llista de la pocio
     [SerializeField]
@@ -97,6 +102,8 @@ public class GameSetUp : MonoBehaviour
         if (constructor != null) if(grisConstructor && constructor.photonView.IsMine) SetBlancNegre();
         //Es destrueix la llista de la pocio pels no-constructors
         if (constructor == null || !constructor.photonView.IsMine) if(HudLlistaPocio!=null) Destroy(HudLlistaPocio);
+        //Es mostra el tutorial si n'hi ha
+        if (tutorial != null) tutorial.MostrarTutorial();
     }
 
     /// <summary>
@@ -140,6 +147,14 @@ public class GameSetUp : MonoBehaviour
         {
             color.saturation.value = -100;
         }
+    }
+
+    public RolController QuiControla()
+    {
+        if (constructor != null) { if (constructor.photonView.IsMine) return constructor; }
+        else if (recollector != null) { if (recollector.photonView.IsMine) return recollector; }
+        else if(defensor != null) { if (defensor.photonView.IsMine) return defensor;  }
+        return null;
     }
 
     public int GetVides() { return videsPartida;}

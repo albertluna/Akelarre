@@ -215,7 +215,7 @@ namespace Photon.Pun.Demo.Asteroids
         public void OnCreateRoomButtonClicked()
         {
             string roomName = RoomNameInputField.text;
-            roomName = (roomName.Equals(string.Empty)) ? "Aquelarre " + Random.Range(1000, 10000) : roomName;
+            roomName = (roomName.Equals(string.Empty)) ? Random.Range(1000, 10000).ToString() : roomName;
             //sales de 3 persones
             RoomOptions options = new RoomOptions {MaxPlayers = (byte)3, PlayerTtl = 10000 };
             PhotonNetwork.CreateRoom(roomName, options, null);

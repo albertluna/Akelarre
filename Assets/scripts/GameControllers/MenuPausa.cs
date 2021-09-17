@@ -7,7 +7,8 @@ using UnityEngine.UI;
 
 public class MenuPausa : MonoBehaviour
 {
-    private PhotonView PV;
+    private PhotonView photonView;
+    private RolController controller;
 
     #region variables
     [Header("Menú Pausa")]
@@ -26,17 +27,19 @@ public class MenuPausa : MonoBehaviour
 
     private void Start()
     {
-        PV = GetComponent<PhotonView>();
+        photonView = GetComponent<PhotonView>();
+        controller = GetComponent<RolController>();
     }
+
     /// <summary>
     /// Funció que es crida quan es clica el botó de la pausa i es para el temps
     /// i s'obre el menú de pausa
     /// </summary>
     public void OnBotoPressed()
     {
-        PV.RPC("RPC_ObrirMenu", RpcTarget.All);
+        photonView.RPC("RPC_PararPartida", RpcTarget.All);
         menu.SetActive(true);
-        foreach (GameObject go in HudPartida) go.SetActive(false);
+        AmagarHUD(false);
     }
 
     /// <summary>
@@ -45,9 +48,11 @@ public class MenuPausa : MonoBehaviour
     public void OnReanudarPressed()
     {
         menu.SetActive(false);
-        foreach (GameObject go in HudPartida) go.SetActive(true);
-        PV.RPC("RPC_Reprendre", RpcTarget.All);
+        AmagarHUD(true);
+        photonView.RPC("RPC_ReprendrePartida", RpcTarget.All);
     }
+
+    public void AmagarHUD(bool estat) { foreach (GameObject go in HudPartida) go.SetActive(estat); }
 
     /// <summary>
     /// Funció per obrir o tancar el menú de comprovació de tancar la partida
@@ -82,7 +87,7 @@ public class MenuPausa : MonoBehaviour
     /// Funció per posar la pausa
     /// </summary>
     [PunRPC]
-    private void RPC_ObrirMenu()
+    private void RPC_PararPartida()
     {
         Time.timeScale = 0f;
         
@@ -92,7 +97,7 @@ public class MenuPausa : MonoBehaviour
     /// Funció per retornar a la parita
     /// </summary>
     [PunRPC]
-    private void RPC_Reprendre()
+    private void RPC_ReprendrePartida()
     {
         
         Time.timeScale = 1f;

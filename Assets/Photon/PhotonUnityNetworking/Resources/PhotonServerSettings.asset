@@ -32,7 +32,23 @@ MonoBehaviour:
   EnableSupportLogger: 0
   RunInBackground: 1
   StartInOfflineMode: 0
-  RpcList: []
+  RpcList:
+  - ClickRpc
+  - DestroyRpc
+  - DestroySpaceship
+  - Fire
+  - RespawnSpaceship
+  - RPC_CrearColleccionable
+  - RPC_DestruirTutorial
+  - RPC_EliminarColleccionable
+  - RPC_InstanciarAtac
+  - RPC_OnNivell0
+  - RPC_PararPartida
+  - RPC_PartidaGuanyada
+  - RPC_PartidaPerduda
+  - RPC_ReprendrePartida
+  - RPC_SendTimer
+  - RPC_setInteractableButton
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1
