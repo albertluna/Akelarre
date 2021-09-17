@@ -163,7 +163,7 @@ public class RecollectorController : RolController
             }
             if (nVides <= 0)
             {
-                recollector.CanviarCapa();
+                photonView.RPC("RPC_CanviarCapa", RpcTarget.All);
             }
         }
         
@@ -175,6 +175,12 @@ public class RecollectorController : RolController
     protected override void RPC_DestruirTutorial()
     {
         base.RPC_DestruirTutorial();
+    }
+
+    [PunRPC]
+    private void RPC_CanviarCapa()
+    {
+        recollector.CanviarCapa();
     }
     #endregion
 }
