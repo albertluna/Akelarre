@@ -29,7 +29,9 @@ public class Tutorial : MonoBehaviour
     /// </summary>
     public void Comencar()
     {
+        Debug.Log("Controla? " + GS.gameObject.name);
         Debug.Log("Controla? " + GS.QuiControla().gameObject.name);
+
         GS.QuiControla().DestruirTutorial();
 
     }

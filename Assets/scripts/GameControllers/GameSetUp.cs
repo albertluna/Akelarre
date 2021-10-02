@@ -151,9 +151,29 @@ public class GameSetUp : MonoBehaviour
 
     public RolController QuiControla()
     {
-        if (constructor != null) { if (constructor.photonView.IsMine) return constructor; }
-        else if (recollector != null) { if (recollector.photonView.IsMine) return recollector; }
-        else if(defensor != null) { if (defensor.photonView.IsMine) return defensor;  }
+        if (constructor != null)
+        {
+            if (constructor.photonView.IsMine)
+            {
+                Debug.Log("Es constructor");
+                return constructor;
+            }
+        }
+        if (recollector != null)
+        {
+            if (recollector.photonView.IsMine)
+            {
+                Debug.Log("Es recollector");
+                return recollector;
+            }
+        }
+        if (defensor != null) { if (defensor.photonView.IsMine)
+            {
+                Debug.Log("ES defensor");
+                return defensor;
+            }
+        }
+        Debug.Log("Es null");
         return null;
     }
 
