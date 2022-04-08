@@ -305,13 +305,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55c6ec0585fa9401bb7ad7dfb2f9690f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  llista:
+  llista: []
+  diferentsColleccionables:
   - {fileID: 7286559677663493442, guid: 3f55b34d20f5f476991f35ea4345d6b9, type: 3}
   - {fileID: 6042104233109182230, guid: eb426a18de6b34f95a36e2d782da852c, type: 3}
   - {fileID: 339322942050960696, guid: 22cd134b69c394f25b008c6e0c365163, type: 3}
-  - {fileID: 7286559677663493442, guid: 3f55b34d20f5f476991f35ea4345d6b9, type: 3}
-  - {fileID: 7286559677663493442, guid: 3f55b34d20f5f476991f35ea4345d6b9, type: 3}
-  - {fileID: 6042104233109182230, guid: eb426a18de6b34f95a36e2d782da852c, type: 3}
+  nColleccionablesPocio: 6
   index: 0
 --- !u!1 &566276976
 GameObject:
@@ -1236,6 +1235,11 @@ PrefabInstance:
       propertyPath: GS
       value: 
       objectReference: {fileID: 6361388448706340398}
+    - target: {fileID: 5887007553020566419, guid: 44619ad2501cc4560b9892ceacec8a1c,
+        type: 3}
+      propertyPath: sceneViewId
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 44619ad2501cc4560b9892ceacec8a1c, type: 3}
 --- !u!1001 &4758627212007793774

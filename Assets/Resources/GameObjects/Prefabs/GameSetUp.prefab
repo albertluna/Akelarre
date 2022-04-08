@@ -243,7 +243,8 @@ MonoBehaviour:
   recollector: {fileID: 0}
   gameOver: {fileID: 1803362716825842029}
   victory: {fileID: 6408826598148012891}
-  HudLlistaPocio: {fileID: 6361388449074476044}
+  tutorial: {fileID: 0}
+  HudLlistaPocio: {fileID: 3013048799415107278}
   pocio: {fileID: 0}
   spawnPoints:
   - {fileID: 6361388450274183962}
@@ -253,9 +254,14 @@ MonoBehaviour:
   tempsOffsetInicial: 20
   tempsMinimAtac: 15
   tempsMaximAtac: 20
-  velocitatBoles: 0.05
+  velocitatBoles: 1
+  maxEsperaRecollecta: 0
+  minEsperaRecollecta: 0
+  minVidaColleccionables: 0
+  maxVidaColleccionables: 0
   grisRecollector: 0
   grisConstructor: 0
+  colleccionablesInvisibles: 0
   atacVisible: 1
   llistesRecollector: {fileID: 0}
   llistaCreadorsAtac: {fileID: 0}
@@ -568,12 +574,6 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8693375436256019959, guid: a59ad0eb96a9b488697c30aa9e18f8f6,
-        type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 46ee9cce038da48a1ba67f06a615a229,
-        type: 3}
     - target: {fileID: 8693375436428330041, guid: a59ad0eb96a9b488697c30aa9e18f8f6,
         type: 3}
       propertyPath: m_Sprite
@@ -588,6 +588,18 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 6361388450066956578}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &3013048799415107278 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8185379167128158188, guid: a59ad0eb96a9b488697c30aa9e18f8f6,
+    type: 3}
+  m_PrefabInstance: {fileID: 6361388450066956578}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cedc21bdeb13f4890930f15df9b7fbfa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &6361388450111930101
 PrefabInstance:
   m_ObjectHideFlags: 0

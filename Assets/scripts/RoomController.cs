@@ -34,6 +34,12 @@ public class RoomController : MonoBehaviourPunCallbacks, IInRoomCallbacks {
     private GameObject PanelConfiguracio;
     [SerializeField]
     private AudioMixer mixer;
+    [SerializeField]
+    private GameObject PanellDificultat;
+    [SerializeField]
+    private Slider dificultat;
+
+    private int nivellSeleccionat;
 
     private bool esDinsConfig;
 
@@ -95,23 +101,10 @@ public class RoomController : MonoBehaviourPunCallbacks, IInRoomCallbacks {
         {
             if (PhotonNetwork.IsMasterClient && PV.IsMine)
             {
-
-                PhotonNetwork.AutomaticallySyncScene = true;
-                switch(nivell)
-                {
-                    case 0:
-                        PV.RPC("RPC_OnNivell0", RpcTarget.All);
-                        break;
-                    case 1:
-                        OnNivell1();
-                        break;
-                    case 2:
-                        OnNivell2();
-                        break;
-                    case 3:
-                        OnNivell3();
-                        break;
-                }
+                nivellSeleccionat = nivell;
+                PanelMapa.SetActive(false);
+                PanellDificultat.SetActive(true);
+                
             }
         } else
         {
@@ -119,6 +112,33 @@ public class RoomController : MonoBehaviourPunCallbacks, IInRoomCallbacks {
             Debug.Log("NO ESTAN TOTS ELS ROLS SELECCIONATS");
         }
         
+    }
+
+    public void OnComencarPartida()
+    {
+        PhotonNetwork.AutomaticallySyncScene = true;
+        photonPlayer.SetDificultat((int)dificultat.value);
+        switch (nivellSeleccionat)
+        {
+            case 0:
+                PV.RPC("RPC_OnNivell0", RpcTarget.All);
+                break;
+            case 1:
+                OnNivell1();
+                break;
+            case 2:
+                OnNivell2();
+                break;
+            case 3:
+                OnNivell3();
+                break;
+        }
+    }
+
+    public void OnCancellarPartida()
+    {
+        PanellDificultat.SetActive(false);
+        PanelMapa.SetActive(true);
     }
 
     /// <summary>
@@ -212,6 +232,8 @@ public class RoomController : MonoBehaviourPunCallbacks, IInRoomCallbacks {
         PhotonNetwork.LoadLevel(ScenesManager.GetScene(ScenesManager.Scene.MenuMultijugador));
     }
 
+    #region Rols
+
     /// <summary>
     /// Quan un jugador selecciona un boto dels rols, s'ha de guardar el rol seleccionat i fer que la resta de jugadors no
     /// puguin seleccionar el seu rol. Si torna a clicar en el rol que ja ha seleccionat, es des-seleccionarà
@@ -278,6 +300,8 @@ public class RoomController : MonoBehaviourPunCallbacks, IInRoomCallbacks {
         }
         return null;
     }
+
+    #endregion
 
     /// <summary>
     /// Es crida quan un jugador clica el botó de sortir de la sala

@@ -15,8 +15,9 @@ public class ConstructorController : RolController
     [SerializeField]
     private GameObject colleccionable;
     [Header("Gestió del HUD")]
+    [SerializeField]
     //HUD de la llista de la poció
-    private Slider llista;
+    private SliderPocio llista;
     private Pocio pocio;
 
     [Header("Audios")]
@@ -33,9 +34,10 @@ public class ConstructorController : RolController
         base.Start();
         if (photonView.IsMine)
         {
-            llista = gameSetup.GetHudLlista().GetComponentInChildren<Slider>();
+            llista = gameSetup.GetHudLlista();
             pocio = gameSetup.GetPocio();
-            llista.maxValue = pocio.GetLlargadaLlista();
+            llista.SetMaxValueMascara(pocio.GetLlargadaLlista());
+            llista.PintarLlistaPocio(pocio);
             pocio.Comencar();
         }
     }
@@ -94,7 +96,7 @@ public class ConstructorController : RolController
                 pocio.Comencar();
             }
             //S'actualitza el HUD en funció de com va la poció
-            llista.value = pocio.GetIndex();
+            llista.SetValueMascara(pocio.GetIndex());
             photonView.RPC("RPC_EliminarColleccionable", RpcTarget.All);
         }
     }

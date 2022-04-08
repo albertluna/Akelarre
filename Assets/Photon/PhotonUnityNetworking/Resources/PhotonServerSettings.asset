@@ -49,6 +49,7 @@ MonoBehaviour:
   - RPC_ReprendrePartida
   - RPC_SendTimer
   - RPC_setInteractableButton
+  - RPC_CanviarCapa
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1

@@ -8,6 +8,7 @@ public class PhotonPlayer : MonoBehaviour
 {
     public PhotonView PV;
     public string Rol;
+    private int dificultat;
 
     public const string CONSTRUCTOR = "CONSTRUCTOR";
     public const string DEFENSOR = "DEFENSOR";
@@ -25,6 +26,7 @@ public class PhotonPlayer : MonoBehaviour
     public void Instantiate()
     {
         GameSetUp GS = FindObjectOfType<GameSetUp>();
+        GS.SetDificultatNivell(dificultat);
         int spawnPicker;
             switch (Rol) {
                 case DEFENSOR:      //0
@@ -44,5 +46,10 @@ public class PhotonPlayer : MonoBehaviour
                     break;
         }
         //GS.getRols();
+    }
+
+    public void SetDificultat(int nivell)
+    {
+        dificultat = nivell;
     }
 }

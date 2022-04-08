@@ -20,6 +20,7 @@ MonoBehaviour:
   - {fileID: 8612628287957433214}
   creadorColleccionables: {fileID: 1240628185494915391}
   colleccionable: {fileID: 0}
+  llista: {fileID: 0}
   audioConstructor: {fileID: 2730436117726820051}
   colleccionableCorrecte: {fileID: 8300000, guid: 0513290bb7a294570868751f88131e35,
     type: 3}

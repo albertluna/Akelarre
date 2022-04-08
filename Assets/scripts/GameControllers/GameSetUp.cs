@@ -24,7 +24,7 @@ public class GameSetUp : MonoBehaviour
     [Header("Referència al constructor")]
     //Variable per borrar la llista de la pocio
     [SerializeField]
-    private GameObject HudLlistaPocio;
+    private SliderPocio HudLlistaPocio;
     [SerializeField]
     private Pocio pocio;
 
@@ -41,7 +41,7 @@ public class GameSetUp : MonoBehaviour
     public float tempsMinimAtac;
     [Range(10, 30)]
     public float tempsMaximAtac;
-    [Range(0.03f, 0.20f)]
+    [Range(40f, 100f)]
     public float velocitatBoles;
 
     [Header("Referència a la recol·lecta")]
@@ -101,7 +101,7 @@ public class GameSetUp : MonoBehaviour
         if (recollector != null) if(grisRecollector && recollector.photonView.IsMine) SetBlancNegre();
         if (constructor != null) if(grisConstructor && constructor.photonView.IsMine) SetBlancNegre();
         //Es destrueix la llista de la pocio pels no-constructors
-        if (constructor == null || !constructor.photonView.IsMine) if(HudLlistaPocio!=null) Destroy(HudLlistaPocio);
+        if (constructor == null || !constructor.photonView.IsMine) if(HudLlistaPocio!=null) Destroy(HudLlistaPocio.gameObject);
         //Es mostra el tutorial si n'hi ha
         if (tutorial != null) tutorial.MostrarTutorial();
     }
@@ -180,5 +180,20 @@ public class GameSetUp : MonoBehaviour
     public int GetVides() { return videsPartida;}
     public int GetSpawnpointLength() { return spawnPoints.Length; }
     public Pocio GetPocio() { return pocio; }
-    public GameObject GetHudLlista() { return HudLlistaPocio; }
+
+    public SliderPocio GetHudLlista() { return HudLlistaPocio; }
+
+    /// <summary>
+    /// Gestió de les variables de la partida en funció de la dificlutat
+    /// </summary>
+    /// <param name="dificultat">numero que indica el grau de dificultat, 1 = facil, 2 = mitja, 3 = dificil</param>
+    public void SetDificultatNivell(int dificultat) {
+        tempsMinimAtac /= dificultat;
+        tempsMaximAtac /= dificultat;
+        velocitatBoles *= dificultat;
+        maxEsperaRecollecta *= dificultat;
+        minEsperaRecollecta *= dificultat;
+        minVidaColleccionables /= dificultat;
+        maxVidaColleccionables /= dificultat;
+    }
 }
