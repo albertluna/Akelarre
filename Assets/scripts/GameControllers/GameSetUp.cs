@@ -45,10 +45,10 @@ public class GameSetUp : MonoBehaviour
     public float velocitatBoles;
 
     [Header("Referència a la recol·lecta")]
-    [Range(2,20)]
+    [Range(5,20)]
     [SerializeField]
     public float maxEsperaRecollecta;
-    [Range(1,7)]
+    [Range(3,7)]
     [SerializeField]
     public float minEsperaRecollecta;
     [SerializeField]
@@ -195,5 +195,6 @@ public class GameSetUp : MonoBehaviour
         minEsperaRecollecta *= dificultat;
         minVidaColleccionables /= dificultat;
         maxVidaColleccionables /= dificultat;
+        Debug.Log("Minim espera = " + minEsperaRecollecta + ". Maxespera = " + maxEsperaRecollecta);
     }
 }

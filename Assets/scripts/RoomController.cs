@@ -117,7 +117,7 @@ public class RoomController : MonoBehaviourPunCallbacks, IInRoomCallbacks {
     public void OnComencarPartida()
     {
         PhotonNetwork.AutomaticallySyncScene = true;
-        photonPlayer.SetDificultat((int)dificultat.value);
+        PV.RPC("RPC_OnSetDificultat", RpcTarget.All, (int)dificultat.value);
         switch (nivellSeleccionat)
         {
             case 0:
@@ -165,6 +165,12 @@ public class RoomController : MonoBehaviourPunCallbacks, IInRoomCallbacks {
             StopAllCoroutines();
             PhotonNetwork.LoadLevel(ScenesManager.GetScene(ScenesManager.Scene.Nivell0));
         }
+    }
+
+    [PunRPC]
+    private void RPC_OnSetDificultat(int dificultat)
+    {
+        photonPlayer.SetDificultat(dificultat);
     }
 
     /// <summary>

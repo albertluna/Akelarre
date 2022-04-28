@@ -255,10 +255,10 @@ MonoBehaviour:
   tempsMinimAtac: 15
   tempsMaximAtac: 20
   velocitatBoles: 1
-  maxEsperaRecollecta: 0
-  minEsperaRecollecta: 0
-  minVidaColleccionables: 0
-  maxVidaColleccionables: 0
+  maxEsperaRecollecta: 20
+  minEsperaRecollecta: 1
+  minVidaColleccionables: 5
+  maxVidaColleccionables: 120
   grisRecollector: 0
   grisConstructor: 0
   colleccionablesInvisibles: 0
