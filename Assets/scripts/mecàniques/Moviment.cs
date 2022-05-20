@@ -48,7 +48,7 @@ public class Moviment : MonoBehaviourPunCallbacks, IPunObservable
             //Es rota el personatge mirant cap on es mou
             if (direccio != Vector3.zero) {
                 transform.forward = new Vector3(rigidbody.velocity.x, transform.forward.y, rigidbody.velocity.z);
-                transform.Rotate(new Vector3(-90, -90, 0));
+                //transform.Rotate(new Vector3(0, -90, 0));
             }
         }  
     }

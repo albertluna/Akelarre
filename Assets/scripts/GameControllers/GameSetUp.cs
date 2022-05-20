@@ -41,7 +41,7 @@ public class GameSetUp : MonoBehaviour
     public float tempsMinimAtac;
     [Range(10, 30)]
     public float tempsMaximAtac;
-    [Range(40f, 100f)]
+    [Range(5000000000f, 30000000000f)]
     public float velocitatBoles;
 
     [Header("Referència a la recol·lecta")]

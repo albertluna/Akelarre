@@ -14,6 +14,7 @@ public class MovimentAtac : MonoBehaviour
     private Vector2 objectiu;
     private Vector3 direccio;
 
+    [SerializeField]
     private float velocitat;
     [SerializeField]
     private GameObject bola;
@@ -26,15 +27,22 @@ public class MovimentAtac : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         direccio = new Vector3(-transform.position.x, -transform.position.y, -transform.position.z);
         direccio.Normalize();
-        rb.AddForce(direccio * velocitat * 10000, ForceMode.Force);
+        //rb.AddForce(direccio * velocitat, ForceMode.Impulse);
     }
 
     void FixedUpdate()
     {
         //S'actualitza la posició de la bola, avançant per apropar-se a la casa
-        //posicio = Vector2.Lerp(posicio, objectiu, Time.deltaTime*velocitat);
-        //transform.position += new Vector3(posicio.x-transform.position.x, 0, posicio.y-transform.position.z);
-        
+        posicio = Vector2.Lerp(posicio, objectiu, Time.deltaTime*0.05f);
+        transform.position += new Vector3(posicio.x-transform.position.x, 0, posicio.y-transform.position.z);
+        //rb.AddForce(direccio * velocitat, ForceMode.Acceleration);
+        /*if (rb.velocity.magnitude < 1)
+        {
+            Vector3 pujar = direccio + Vector3.up;
+            pujar.Normalize();
+            Debug.Log("A pujar " + this.gameObject.name);
+            rb.AddForce(Vector3.up * velocitat, ForceMode.Force);
+        }*/
     }
 
     /// <summary>

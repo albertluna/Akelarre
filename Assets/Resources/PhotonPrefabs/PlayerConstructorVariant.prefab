@@ -692,13 +692,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2472671552661902244, guid: 25667044bcc3f7944b5727c0157aff8e,
         type: 3}
-      propertyPath: HudPartida.Array.size
-      value: 2
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2472671552661902244, guid: 25667044bcc3f7944b5727c0157aff8e,
         type: 3}
-      propertyPath: m_Enabled
-      value: 0
+      propertyPath: HudPartida.Array.size
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2472671552661902244, guid: 25667044bcc3f7944b5727c0157aff8e,
         type: 3}
@@ -762,13 +762,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7488162796950587039, guid: 25667044bcc3f7944b5727c0157aff8e,
         type: 3}
-      propertyPath: ObservedComponents.Array.size
-      value: 0
+      propertyPath: sceneViewId
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7488162796950587039, guid: 25667044bcc3f7944b5727c0157aff8e,
         type: 3}
-      propertyPath: sceneViewId
-      value: 3
+      propertyPath: ObservedComponents.Array.size
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7960744767762583944, guid: 25667044bcc3f7944b5727c0157aff8e,
         type: 3}

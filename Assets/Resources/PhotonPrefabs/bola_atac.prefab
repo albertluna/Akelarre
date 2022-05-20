@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 6284246136318194922}
   - component: {fileID: 417310825864904749}
   - component: {fileID: 8053355493471090801}
-  m_Layer: 10
+  m_Layer: 11
   m_Name: bola_atac
   m_TagString: Bullet
   m_Icon: {fileID: 0}
@@ -62,6 +62,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36603b3fe222b4aaeae8abdf42dad6b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  velocitat: 0
   bola: {fileID: 3352401208843363222}
 --- !u!54 &6284246136318194922
 Rigidbody:
@@ -199,7 +200,7 @@ GameObject:
   - component: {fileID: 8882955005278910176}
   - component: {fileID: 3482582343177192821}
   - component: {fileID: 8950429265737427653}
-  m_Layer: 10
+  m_Layer: 11
   m_Name: Bola
   m_TagString: Bullet
   m_Icon: {fileID: 0}
