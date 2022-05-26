@@ -13,7 +13,7 @@ public class SliderPocio : MonoBehaviour
     [SerializeField]
     private Transform parent;
 
-    private void Start()
+    private void Awake()
     {
         mascara = GetComponent<Slider>();
     }

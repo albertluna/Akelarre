@@ -12,7 +12,7 @@ public class RolController : MonoBehaviour
     [SerializeField]
     private GameObject[] eliminar;
 
-    protected virtual void Start()
+    protected virtual void Awake()
     {
         photonView = GetComponent<PhotonView>();
         gameSetup = FindObjectOfType<GameSetUp>();

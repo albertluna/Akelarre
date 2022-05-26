@@ -31,9 +31,9 @@ public class AtacController : RolController
     /// <summary> array de gameobjects
     /// https://stuartspixelgames.com/2017/08/02/make-all-of-objects-children-into-an-array-unity-c/
     /// </summary>
-    protected override void Start()
+    protected override void Awake()
     {
-        base.Start();
+        base.Awake();
         creators = gameSetup.llistaCreadorsAtac.GetComponentsInChildren<Transform>();
         //Es setteja els valors d'instanciar atacs en funcio de la partida
         timer = gameSetup.tempsOffsetInicial;

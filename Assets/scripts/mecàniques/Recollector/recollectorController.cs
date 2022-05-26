@@ -24,9 +24,9 @@ public class RecollectorController : RolController
     [SerializeField]
     private GameObject[] vides;
 
-    protected override void Start()
+    protected override void Awake()
     {
-        base.Start();
+        base.Awake();
         creators = gameSetup.llistesRecollector.GetComponentsInChildren<ColleccionableCreators>();
         colleccionables = gameSetup.llistesRecollector.GetComponentsInChildren<Colleccionable>();
         maxEspera = gameSetup.maxEsperaRecollecta;

@@ -904,7 +904,6 @@ GameObject:
   - component: {fileID: 525196355173965437}
   - component: {fileID: 7488162796950587039}
   - component: {fileID: 5517605395959104663}
-  - component: {fileID: 6317648192109568750}
   m_Layer: 0
   m_Name: PlayerAvatar
   m_TagString: Untagged
@@ -969,24 +968,6 @@ MonoBehaviour:
   HudPartida:
   - {fileID: 4146798846698583349}
   mixer: {fileID: 24100000, guid: 77e1c957cf47747fe9aa46bdbdb2cb69, type: 2}
---- !u!114 &6317648192109568750
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3800794584934393199}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 947436eeb05d64d6495a7f402f01784d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  photonView: {fileID: 7488162796950587039}
-  gameSetup: {fileID: 0}
-  eliminar:
-  - {fileID: 7345796709044065551}
-  - {fileID: 501862318}
-  - {fileID: 2329551910871752470}
 --- !u!1 &4146798846698583349
 GameObject:
   m_ObjectHideFlags: 0
