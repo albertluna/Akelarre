@@ -909,7 +909,7 @@ PrefabInstance:
         type: 3}
       propertyPath: llistaCreadorsAtac
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 2118734402}
     - target: {fileID: 6361388450302999206, guid: 5ab8ba155ef5f4e66af93ccde88d8e7b,
         type: 3}
       propertyPath: llistesRecollector
@@ -1650,13 +1650,19 @@ PrefabInstance:
     - target: {fileID: 1810719241691151271, guid: b9de1f82a21c7f04eb6238bf20af2780,
         type: 3}
       propertyPath: m_Name
-      value: creadorsAtac (1)
+      value: 'creadorsAtac '
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b9de1f82a21c7f04eb6238bf20af2780, type: 3}
 --- !u!4 &2118734401 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1810719241691151270, guid: b9de1f82a21c7f04eb6238bf20af2780,
+    type: 3}
+  m_PrefabInstance: {fileID: 2118734400}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &2118734402 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1810719241691151271, guid: b9de1f82a21c7f04eb6238bf20af2780,
     type: 3}
   m_PrefabInstance: {fileID: 2118734400}
   m_PrefabAsset: {fileID: 0}
