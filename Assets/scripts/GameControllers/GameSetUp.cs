@@ -45,10 +45,10 @@ public class GameSetUp : MonoBehaviour
     public float velocitatBoles;
 
     [Header("Referència a la recol·lecta")]
-    [Range(5,20)]
+    [Range(3,20)]
     [SerializeField]
     public float maxEsperaRecollecta;
-    [Range(3,7)]
+    [Range(1,10)]
     [SerializeField]
     public float minEsperaRecollecta;
     [SerializeField]

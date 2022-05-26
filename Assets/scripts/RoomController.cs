@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 using System.IO;
 using UnityEngine.UI;
 using UnityEngine.Audio;
+using UnityEngine.EventSystems;
 
 public class RoomController : MonoBehaviourPunCallbacks, IInRoomCallbacks {
 
@@ -43,11 +44,16 @@ public class RoomController : MonoBehaviourPunCallbacks, IInRoomCallbacks {
 
     private bool esDinsConfig;
 
+    //KeepEventSystemSelected variables
+    private EventSystem eventSystem;
+    private GameObject lastSelected = null;
+
     void Start()
     {
         PV = GetComponent<PhotonView>();
         PhotonNetwork.AutomaticallySyncScene = true;
         photonPlayer = this.GetComponent<PhotonPlayer>();
+        eventSystem = GetComponent<EventSystem>();
     }
 
     private void Awake()
@@ -78,6 +84,21 @@ public class RoomController : MonoBehaviourPunCallbacks, IInRoomCallbacks {
         base.OnDisable();
         PhotonNetwork.RemoveCallbackTarget(this);
         SceneManager.sceneLoaded -= OnSceneFinishedLoading;
+    }
+
+    void Update()
+    {
+        if (eventSystem != null)
+        {
+            if (eventSystem.currentSelectedGameObject != null)
+            {
+                lastSelected = eventSystem.currentSelectedGameObject;
+            }
+            else
+            {
+                eventSystem.SetSelectedGameObject(lastSelected);
+            }
+        }
     }
 
     /*public override void OnJoinedRoom()
@@ -117,7 +138,7 @@ public class RoomController : MonoBehaviourPunCallbacks, IInRoomCallbacks {
     public void OnComencarPartida()
     {
         PhotonNetwork.AutomaticallySyncScene = true;
-        PV.RPC("RPC_OnSetDificultat", RpcTarget.All, (int)dificultat.value);
+        PV.RPC("RPC_OnSetDificultat", RpcTarget.All, (int)dificultat.value+1);
         switch (nivellSeleccionat)
         {
             case 0:
@@ -251,6 +272,7 @@ public class RoomController : MonoBehaviourPunCallbacks, IInRoomCallbacks {
         if (botoVell != null)
         {
             botoVell.boto.interactable = true;
+            botoVell.desSeleccionarBoto();
             PV.RPC("RPC_setInteractableButton", RpcTarget.All, photonPlayer.Rol, true);
         }
 
@@ -259,6 +281,7 @@ public class RoomController : MonoBehaviourPunCallbacks, IInRoomCallbacks {
         {
             PV.RPC("RPC_setInteractableButton", RpcTarget.All, rol, true);
             photonPlayer.Rol = null;
+            botoVell.desSeleccionarBoto();
             botoVell.boto.interactable = false;
             botoVell.boto.interactable = true;
             text.text = "Selecciona personatge";
@@ -270,6 +293,7 @@ public class RoomController : MonoBehaviourPunCallbacks, IInRoomCallbacks {
             ButtonRolController botoNou = modificarBoto(rol);
             PV.RPC("RPC_setInteractableButton", RpcTarget.Others, rol, false);
             botoNou.seleccionarBoto(true);
+            botoNou.mantenirBotoSeleccionat();
             botoNou.isSelected = true;
             text.text = botoNou.getNom();
             photonPlayer.Rol = rol;

@@ -14,8 +14,7 @@ public class RecollectorController : RolController
     private Colleccionable[] colleccionables;
     //Variable per determinar si les boles recol·lectores son invisibles pel recol·lector
     public bool isInvisible;
-    [Header("Referència a la gestió del temps")]
-    [SerializeField]
+    //Referència a la gestió del temps
     private float timer;
     private float maxEspera;
     private float minEspera;
@@ -45,6 +44,7 @@ public class RecollectorController : RolController
         }
         if (percentatgeTotal != 100)
             Debug.LogError("El percentatge total dels colleccionables no suma 100, suma" + percentatgeTotal);
+        timer = minEspera;
     }
 
     void Update()
@@ -55,13 +55,9 @@ public class RecollectorController : RolController
             else {
                 int resultat = Random.Range(0, 99);
                 int percentatgeAnterior = 0;
-                int posicio = Random.Range(0, this.creators.Length - 1);
-
-                //comprovar que la nova posicio no estigui ocupada
-                while (creators[posicio].estaOcupat)
-                {
-                    posicio = Random.Range(0, this.creators.Length - 1);
-                }
+                int posicio = novaPosicio();
+                if (posicio == -1) return;
+                
 
                 //escollir quin dels diferents tipus de colleccionables es crearà
                 foreach (Colleccionable col in colleccionables)
@@ -78,6 +74,27 @@ public class RecollectorController : RolController
                 timer = Random.Range(minEspera, maxEspera);
             }
         }
+    }
+
+    private int novaPosicio()
+    {
+        int posicio = Random.Range(0, this.creators.Length - 1);
+        //Es comprova si hi ha alguna posicio lliure per a crear un colleccionable
+        bool posicionsOcupades = true;
+        foreach(ColleccionableCreators creator in creators)
+        {
+            posicionsOcupades &= creator.estaOcupat;
+            Debug.Log("El creador " + creator + " esta " + creator.estaOcupat + 
+                " d ocupat, per tant la variable posicionsOcupades es " + posicionsOcupades);
+        }
+        if (posicionsOcupades) posicio = -1;
+
+        //comprovar que la nova posicio no estigui ocupada
+        while (creators[posicio].estaOcupat && !posicionsOcupades)
+        {
+            posicio = Random.Range(0, this.creators.Length - 1);
+        }
+        return posicio;
     }
 
     /// <summary>
