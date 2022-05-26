@@ -10,7 +10,7 @@ public class Recollector : MonoBehaviour
     [SerializeField]
     private RecollectorController recollectorController;
     
-    void Start()
+    void Awake()
     {
         nombreVides = recollectorController.NombreVides();
     }
