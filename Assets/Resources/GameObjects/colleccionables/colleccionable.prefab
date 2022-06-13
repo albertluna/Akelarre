@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 1712975863075060899}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: -1324, z: 0}
-  m_LocalScale: {x: 937.65, y: 937.65, z: 937.65}
+  m_LocalScale: {x: 1250, y: 1250, z: 1250}
   m_Children: []
   m_Father: {fileID: 2677859967802468855}
   m_RootOrder: 1
@@ -128,9 +128,7 @@ MonoBehaviour:
   percentatge: 0
   color: 
   parent: {fileID: 0}
-  timer: 0
-  minTimer: 10
-  maxTimer: 90
+  tempsVida: 0
   llum: {fileID: 7787834968549111603}
   bola: {fileID: 428595360026385719}
 --- !u!1 &5966916352288989233

@@ -458,17 +458,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55c6ec0585fa9401bb7ad7dfb2f9690f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  llista:
-  - {fileID: 3433828906125573923, guid: fede07ec0445443dd8487a41d80551a1, type: 3}
-  - {fileID: 6042104233109182230, guid: eb426a18de6b34f95a36e2d782da852c, type: 3}
-  - {fileID: 5810669214599791384, guid: 22d2088d20d63464bb9b1319938406bd, type: 3}
-  - {fileID: 5810669214599791384, guid: 22d2088d20d63464bb9b1319938406bd, type: 3}
-  - {fileID: 339322942050960696, guid: 22cd134b69c394f25b008c6e0c365163, type: 3}
-  - {fileID: 5810669214599791384, guid: 22d2088d20d63464bb9b1319938406bd, type: 3}
-  - {fileID: 3433828906125573923, guid: fede07ec0445443dd8487a41d80551a1, type: 3}
-  - {fileID: 6042104233109182230, guid: eb426a18de6b34f95a36e2d782da852c, type: 3}
-  - {fileID: 6042104233109182230, guid: eb426a18de6b34f95a36e2d782da852c, type: 3}
-  - {fileID: 339322942050960696, guid: 22cd134b69c394f25b008c6e0c365163, type: 3}
+  llista: []
   diferentsColleccionables:
   - {fileID: 3433828906125573923, guid: fede07ec0445443dd8487a41d80551a1, type: 3}
   - {fileID: 6042104233109182230, guid: eb426a18de6b34f95a36e2d782da852c, type: 3}

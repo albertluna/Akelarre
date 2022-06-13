@@ -16,13 +16,14 @@ public class Pocio : MonoBehaviour
     [SerializeField]
     private int index;
 
-    private void Start()
+    private void Awake()
     {
         //Decidir llista de la pocio en funció de la quantitat de la llista i els colors del nivell
         llista = new Colleccionable[nColleccionablesPocio];
         for(int i = 0; i < llista.Length; i++)
         {
             llista[i] = diferentsColleccionables[(int)Random.Range(0, diferentsColleccionables.Length)];
+            Debug.Log("afegint el color " + llista[i].color);
         }
 
 
